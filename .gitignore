@@ -1,0 +1,43 @@
+# Build artifacts
+*.class
+*.o
+*.out
+
+# Dependencies & libraries
+*.jar
+
+# Database files
+*.db
+*.sqlite
+
+# IDE / Editor
+.vscode/
+.idea/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env / Deploy
+.vercel
+.env*
+
+# Compiled binaries (C)
+bankeralgo
+bankersalgo
+basiccommands
+diningprob
+fcfsandsjfsche
+multithreading
+mutualexecution
+processcreation
+readerwriter
+robin
+tempCodeRunnerFile
+cube
+gen_stl
+stlview
+
+# STL test files
+*.stl

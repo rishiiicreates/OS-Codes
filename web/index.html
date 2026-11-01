@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SRMIST eLab - Master Solutions Portal (DS & OS)</title>
+  <link rel="icon" type="image/png" href="assets/folder-icon.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="elab-top-header">
+    <div class="header-left">
+      <div class="logo-badge" title="SRMIST eLab">&lt;/&gt;</div>
+      <button class="hamburger-btn" id="btnToggleDrawer" title="Toggle Question Catalog">☰</button>
+      <div class="header-badges">
+        <span class="pill-badge badge-time" id="liveClockBadge">
+          <span style="font-size: 13px;">🕒</span>
+          <span id="liveClockText">October 9th 2026, 7:15:12 Am</span>
+        </span>
+        <span class="pill-badge badge-role">Role: Student</span>
+        <span class="pill-badge badge-name">Name: Hrishikesh</span>
+        <span class="pill-badge badge-id">Id: 610028705473</span>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="course-switch-pill" id="courseSwitchPill" title="Switch between DS and OS Courses">
+        <button type="button" class="course-pill-btn active" id="btnCourseDS" data-course="DS">DS (100)</button>
+        <button type="button" class="course-pill-btn" id="btnCourseOS" data-course="OS">OS (100)</button>
+      </div>
+      <button class="logout-btn" id="btnLogout" title="Logout Session">
+        <span>⏻</span> LOGOUT
+      </button>
+    </div>
+  </header>
+
+  <!-- Yellow SRMIST Privacy Notice Banner -->
+  <div class="elab-notice-banner" id="noticeBanner">
+    <div class="notice-content">
+      <span class="notice-icon">⚠️</span>
+      <span>Mange your information and privacy to make eLab work better for you</span>
+    </div>
+    <div class="notice-actions">
+      <button class="btn-update" id="btnUpdateNotice">UPDATE</button>
+      <button class="btn-close-notice" id="btnCloseNotice" title="Dismiss">✕</button>
+    </div>
+  </div>
+
+  <!-- App Body Layout -->
+  <div class="elab-layout">
+
+    <!-- Main Content Area -->
+    <main class="elab-main-container">
+      
+      <!-- Top Action Toolbar with Keyword Search -->
+      <div class="toolbar-header-row">
+        <!-- Keyword Search Input (User's primary requirement) -->
+        <div class="search-container">
+          <div class="search-input-wrapper">
+            <span class="search-icon">🔍</span>
+            <input 
+              type="text" 
+              class="elab-search-input" 
+              id="questionKeywordSearch" 
+              placeholder="Search question by keyword, title, problem, code, or test case... (Press '/' to search)"
+              autocomplete="off"
+            />
+            <button class="search-clear-btn" id="btnSearchClear" title="Clear">✕</button>
+          </div>
+          <!-- Dropdown Search Results -->
+          <div class="search-results-dropdown" id="searchResultsDropdown"></div>
+        </div>
+
+        <!-- Top Right Navigation Buttons -->
+        <div class="top-action-buttons">
+          <button class="action-nav-btn" id="btnNavHome" title="Home / First Challenge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+          </button>
+          <button class="action-nav-btn" id="btnNavPrev" title="Previous Challenge ( [ )">
+            ◀
+          </button>
+          <button class="action-nav-btn" id="btnNavNext" title="Next Challenge ( ] )">
+            ▶
+          </button>
+          <button class="action-nav-btn" id="btnNavGrid" title="All 100 Challenges Catalog ( ⬡ )">
+            ⬡
+          </button>
+        </div>
+      </div>
+
+      <!-- Section: CHALLENGE INFORMATION -->
+      <section class="elab-card">
+        <div class="card-header-blue">
+          <span>CHALLENGE INFORMATION</span>
+          <span style="font-size: 11px; font-weight: 500; opacity: 0.9;" id="cardHeaderTopic">COURSE: OS</span>
+        </div>
+
+        <!-- Green Solved Banner -->
+        <div class="alert-solved-green" id="solvedBanner1">
+          <div class="solved-text-wrap">
+            <span class="check-circle-icon">✓</span>
+            <span>You have already solved this challenge ! Though you can run the code with different logic !</span>
+          </div>
+          <button class="alert-dismiss-btn" onclick="this.parentElement.style.display='none'">✕</button>
+        </div>
+
+        <!-- Challenge Meta Info Table -->
+        <div class="challenge-meta-table">
+          <div class="meta-row">
+            <div class="meta-cell">
+              <span class="meta-cell-label">Course</span>
+              <span class="meta-cell-value" id="valCourse">OS</span>
+            </div>
+            <div class="meta-cell">
+              <span class="meta-cell-label">Session</span>
+              <span class="meta-cell-value" id="valSession">File Allocation</span>
+            </div>
+            <div class="meta-cell">
+              <span class="meta-cell-label">Question Information</span>
+              <span class="meta-cell-value" id="valQInfo">-</span>
+            </div>
+            <div class="meta-cell">
+              <div class="status-dots">
+                <span class="dot-blue" id="valLevel">Level 1</span>
+                <span class="dot-green" id="valChallenge">Challenge 15</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Problem Description Row -->
+          <div class="problem-row">
+            <div class="problem-label-cell">Problem</div>
+            <div class="problem-text-cell" id="valProblem">
+              Write a program to simulate Linked File Allocation.With linked allocation, each file is a linked list of disk blocks; the disk blocks may be scattered anywhere on the disk. The directory contains a pointer to the first and last blocks of the file. Each block contains a pointer to the next block.
+            </div>
+          </div>
+        </div>
+
+        <!-- Accordion 1: Logical Test Cases -->
+        <div class="accordion-wrapper" id="accLogical">
+          <div class="accordion-header" onclick="toggleAccordion('accLogical')">
+            <span class="accordion-icon">⌄</span>
+            <span>Logical Test Cases</span>
+          </div>
+          <div class="accordion-content">
+            <div class="test-cases-grid-2" id="gridLogicalTestCases">
+              <!-- Dynamically rendered -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Accordion 2: Mandatory Test Cases -->
+        <div class="accordion-wrapper" id="accMandatory">
+          <div class="accordion-header" onclick="toggleAccordion('accMandatory')">
+            <span class="accordion-icon">⌄</span>
+            <span>Mandatory Test Cases</span>
+          </div>
+          <div class="accordion-content">
+            <div class="test-cases-grid-2" id="gridMandatoryTestCases">
+              <!-- Dynamically rendered -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Accordion 3: Complexity Test Cases -->
+        <div class="accordion-wrapper" id="accComplexity">
+          <div class="accordion-header" onclick="toggleAccordion('accComplexity')">
+            <span class="accordion-icon">⌄</span>
+            <span>Complexity Test Cases</span>
+          </div>
+          <div class="accordion-content">
+            <div class="test-cases-grid-3" id="gridComplexityTestCases">
+              <!-- Dynamically rendered -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Code Editor & Execution Sandbox -->
+      <section>
+        <!-- Green Solved Banner Repeat (matches screenshot) -->
+        <div class="alert-solved-green" id="solvedBanner2" style="border-radius: 4px; margin-bottom: 16px;">
+          <div class="solved-text-wrap">
+            <span class="check-circle-icon">✓</span>
+            <span>You have already solved this challenge ! Though you can run the code with different logic !</span>
+          </div>
+          <button class="alert-dismiss-btn" onclick="this.parentElement.style.display='none'">✕</button>
+        </div>
+
+        <!-- Two Column Editor + Sandbox -->
+        <div class="editor-sandbox-row">
+          
+          <!-- Left Column: Code Editor -->
+          <div class="editor-card">
+            <div class="editor-header-bar">
+              <span class="editor-title">Code Editor</span>
+              <div class="editor-controls">
+                <button class="btn-editor-action" id="btnCopyCode" title="Copy Verified Code">
+                  <span>📋</span> Copy Code
+                </button>
+                <button class="btn-editor-action" id="btnDownloadCode" title="Download C File">
+                  <span>⬇</span> Download .c
+                </button>
+                <button class="btn-editor-action" id="btnResetCode" title="Reset to Original Solution">
+                  <span>↺</span> Reset
+                </button>
+                <select class="lang-select" id="codeLangSelect">
+                  <option value="c" selected>c ▾</option>
+                  <option value="cpp">cpp ▾</option>
+                  <option value="py">python ▾</option>
+                  <option value="java">java ▾</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="editor-container" id="editorContainer">
+              <div class="gutter-lines" id="editorLineGutter">1<br>2<br>3<br>4<br>5</div>
+              <textarea 
+                class="code-textarea" 
+                id="codeEditorTextarea" 
+                spellcheck="false"
+                wrap="off"
+              ></textarea>
+            </div>
+          </div>
+
+          <!-- Right Column: Sandbox Cards -->
+          <div class="sandbox-column">
+            
+            <!-- Custom Input (stdin) -->
+            <div class="sandbox-card">
+              <div class="sandbox-card-header">
+                <span>Custom Input (stdin)</span>
+                <div class="sandbox-quick-btns">
+                  <button class="btn-pill-small" id="btnLoadT1Input" title="Load Test Case 1 Input">T1</button>
+                  <button class="btn-pill-small" id="btnLoadT2Input" title="Load Test Case 2 Input">T2</button>
+                </div>
+              </div>
+              <textarea class="custom-stdin-textarea" id="customStdinInput" placeholder="Type Here"></textarea>
+            </div>
+
+            <!-- Output Card -->
+            <div class="sandbox-card">
+              <div class="sandbox-card-header">
+                <span>Output</span>
+                <div class="sandbox-quick-btns">
+                  <button class="btn-pill-small" id="btnMatchT1" title="Simulate Match for T1">MATCH T1</button>
+                  <button class="btn-pill-small" id="btnMatchT2" title="Simulate Match for T2">MATCH T2</button>
+                </div>
+              </div>
+              <div class="output-display-area" id="outputDisplayArea">
+                <div class="output-empty-state" id="outputEmptyState">
+                  <div class="output-empty-icon">📭</div>
+                  <div>Empty</div>
+                </div>
+                <div id="outputResultContainer" style="display: none; width: 100%;">
+                  <div class="match-status-badge success" id="outputStatusBadge">✓ 100% Passed (Match)</div>
+                  <pre class="output-result-box" id="outputResultText"></pre>
+                </div>
+              </div>
+            </div>
+
+            <!-- Complexity Analysis Card -->
+            <div class="sandbox-card">
+              <div class="sandbox-card-header">
+                <span>Complexity Analysis</span>
+                <span class="btn-pill-small" style="background:#e6fcf5; color:#0ca678;">PASSED</span>
+              </div>
+              <div class="complexity-stats-list" id="complexityStatsList">
+                <div class="complexity-stat-row">
+                  <span class="stat-label">Cyclomatic Complexity</span>
+                  <span class="stat-value" id="valStatCyclo">2 / 3 <span class="stat-badge-pass">PASS</span></span>
+                </div>
+                <div class="complexity-stat-row">
+                  <span class="stat-label">Token Count</span>
+                  <span class="stat-value" id="valStatTokens">142 / 300 <span class="stat-badge-pass">PASS</span></span>
+                </div>
+                <div class="complexity-stat-row">
+                  <span class="stat-label">NLOC (Lines of Code)</span>
+                  <span class="stat-value" id="valStatNloc">35 / 100 <span class="stat-badge-pass">PASS</span></span>
+                </div>
+                <div class="complexity-stat-row" style="border-bottom:none;">
+                  <span class="stat-label">Mandatory Keywords Check</span>
+                  <span class="stat-value" id="valStatMandatory" style="color:#28a745;">✓ All Satisfied</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Modal: All 100 Questions Catalog Drawer -->
+  <div class="modal-overlay" id="catalogModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title">
+          <span>📚</span> SRMIST eLab OS Challenges (100 Questions)
+        </h3>
+        <button class="modal-close-btn" onclick="closeModal('catalogModal')">✕</button>
+      </div>
+      <div class="modal-body">
+        <div style="margin-bottom: 12px; display: flex; gap: 8px;">
+          <input 
+            type="text" 
+            class="elab-search-input" 
+            id="catalogSearchInput" 
+            placeholder="Filter challenges by keyword or topic..."
+          />
+        </div>
+        <div class="all-questions-grid" id="allQuestionsGrid">
+          <!-- Dynamically filled with 100 questions -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Upload Code / Answer Key -->
+  <div class="modal-overlay" id="uploadModal">
+    <div class="modal-container" style="max-width: 580px;">
+      <div class="modal-header">
+        <h3 class="modal-title">
+          <span>📤</span> Upload Answer Key / Code
+        </h3>
+        <button class="modal-close-btn" onclick="closeModal('uploadModal')">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="upload-dropzone" id="uploadDropzone">
+          <div class="upload-icon">📁</div>
+          <div class="upload-title">Drag & drop your answer key or code files</div>
+          <div class="upload-subtitle">Supports markdown files (.md), C source files (.c), or questions JSON (.json)</div>
+          <input type="file" id="uploadFileInput" class="upload-file-input" accept=".md,.c,.json,.txt" multiple>
+          <button class="upload-btn-fake" onclick="document.getElementById('uploadFileInput').click()">Browse Files</button>
+        </div>
+        <div style="margin-top: 14px; font-size: 12px; color: #6c757d; line-height: 1.5;">
+          <strong>Tip:</strong> Uploading merges questions into your local browser database so your custom code and test cases stay ready across sessions.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Shortcuts & Help -->
+  <div class="modal-overlay" id="helpModal">
+    <div class="modal-container" style="max-width: 500px;">
+      <div class="modal-header">
+        <h3 class="modal-title">
+          <span>⌨️</span> Keyboard Shortcuts & Tips
+        </h3>
+        <button class="modal-close-btn" onclick="closeModal('helpModal')">✕</button>
+      </div>
+      <div class="modal-body">
+        <div style="display: flex; flex-direction: column; gap: 10px; font-size: 13px;">
+          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #eee; padding-bottom: 6px;">
+            <span>Focus Keyword Search</span>
+            <kbd style="background: #f1f3f5; padding: 2px 6px; border-radius: 4px; font-family: monospace;">/</kbd> or <kbd style="background: #f1f3f5; padding: 2px 6px; border-radius: 4px; font-family: monospace;">Ctrl+K</kbd>
+          </div>
+          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #eee; padding-bottom: 6px;">
+            <span>Next Challenge</span>
+            <kbd style="background: #f1f3f5; padding: 2px 6px; border-radius: 4px; font-family: monospace;">]</kbd> or <kbd style="background: #f1f3f5; padding: 2px 6px; border-radius: 4px; font-family: monospace;">Alt + ▶</kbd>
+          </div>
+          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #eee; padding-bottom: 6px;">
+            <span>Previous Challenge</span>
+            <kbd style="background: #f1f3f5; padding: 2px 6px; border-radius: 4px; font-family: monospace;">[</kbd> or <kbd style="background: #f1f3f5; padding: 2px 6px; border-radius: 4px; font-family: monospace;">Alt + ◀</kbd>
+          </div>
+          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #eee; padding-bottom: 6px;">
+            <span>Open All 100 Challenges</span>
+            <kbd style="background: #f1f3f5; padding: 2px 6px; border-radius: 4px; font-family: monospace;">G</kbd>
+          </div>
+          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #eee; padding-bottom: 6px;">
+            <span>Copy Code to Clipboard</span>
+            <kbd style="background: #f1f3f5; padding: 2px 6px; border-radius: 4px; font-family: monospace;">Alt + C</kbd>
+          </div>
+          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #eee; padding-bottom: 6px;">
+            <span>Close Modal / Search</span>
+            <kbd style="background: #f1f3f5; padding: 2px 6px; border-radius: 4px; font-family: monospace;">Esc</kbd>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast-notice" id="toastNotice">
+    <span>✓</span> <span id="toastMessage">Copied to clipboard!</span>
+  </div>
+
+  <!-- Scripts -->
+  <script src="questions_data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

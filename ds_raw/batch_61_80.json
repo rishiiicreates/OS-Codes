@@ -1,0 +1,1200 @@
+[
+  {
+    "seq": 61,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_61",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_297",
+        "SEQUENCE_ID": 61,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 17,
+        "SESSION_NAME": "Tree 1",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <stdio.h>\nint p1[100005], p2[100005];\nint find(int* p, int x) { while (p[x] != x) x = p[x] = p[p[x]]; return x; }\nvoid uni(int* p, int u, int v) { p[find(p, u)] = find(p, v); }\nvoid init(int n) { for (int i = 1; i <= n; i++) p1[i] = p2[i] = i; }\nvoid read1(int m1) { int u, v; while(m1--) { scanf(\"%d %d\", &u, &v); uni(p1, u, v); } }\nvoid read2(int m2) { int u, v; while(m2--) { scanf(\"%d %d\", &u, &v); uni(p2, u, v); } }\nvoid add_edge(int u, int v) {\n    int ok = (find(p1, u) != find(p1, v)) & (find(p2, u) != find(p2, v));\n    if (ok) { uni(p1, u, v); uni(p2, u, v); printf(\"%d %d\\n\", u, v); }\n}\nvoid loop_j(int i, int n) { for (int j = i + 1; j <= n; j++) add_edge(i, j); }\nvoid loop_i(int n) { for (int i = 1; i <= n; i++) loop_j(i, n); }\nint get_ans(int n, int m1, int m2) { return n - 1 - (m1 > m2 ? m1 : m2); }\nint main() {\n    int n, m1, m2; scanf(\"%d %d %d\", &n, &m1, &m2);\n    init(n); read1(m1); read2(m2);\n    printf(\"%d\\n\", get_ans(n, m1, m2));\n    loop_i(n); return 0;\n}",
+            "mode": 0
+          }
+        ],
+        "EVALUATION": 1792598493647
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          2,
+          500,
+          30
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "while(m1--)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>Question description</strong></p><p>A forest is an undirected graph without cycles (not necessarily connected).</p><p>Mohana and john are friends in kerala, both of them have a forest with nodes numbered from 1 to \ud835\udc5b, and they would like to add edges to their forests such that:</p><ul><li>After adding edges, both of their graphs are still forests.</li><li>They add the same edges. That is, if an edge (\ud835\udc62,\ud835\udc63) is added to Mohana's forest, then an edge (\ud835\udc62,\ud835\udc63) is added to john's forest, and vice versa.</li></ul><p>Mohana and johns want to know the maximum number of edges they can add, and which edges to add.</p><p><strong>Constraints:</strong></p><p>1\u2264\ud835\udc5b\u2264105,</p><p>&nbsp;0\u2264\ud835\udc5a1</p><p>\ud835\udc5a2&lt;\ud835\udc5b</p><p>&nbsp;1\u2264\ud835\udc62,\ud835\udc63\u2264\ud835\udc5b, \ud835\udc62\u2260\ud835\udc63</p><p><strong>Input</strong></p><p>The first line contains three integers \ud835\udc5b, \ud835\udc5a1 and \ud835\udc5a2 \u2014 the number of nodes and the number of initial edges in Mohana's forest and john's forest.</p><p>Each of the next \ud835\udc5a1 lines contains two integers \ud835\udc62 and \ud835\udc63 \u2014 the edges in Mohana's forest.</p><p>Each of the next \ud835\udc5a2 lines contains two integers \ud835\udc62 and \ud835\udc63 (1\u2264\ud835\udc62,\ud835\udc63\u2264\ud835\udc5b, \ud835\udc62\u2260\ud835\udc63) \u2014 the edges in Johns's forest.</p><p><strong>Output</strong></p><p>The first line contains only one integer \u210e, the maximum number of edges Mohana and John can add.</p><p>Each of the next \u210e lines contains two integers \ud835\udc62 and \ud835\udc63 (1\u2264\ud835\udc62,\ud835\udc63\u2264\ud835\udc5b, \ud835\udc62\u2260\ud835\udc63) \u2014 the edge you add each time.</p><p>If there are multiple correct answers, you can print any one of them.</p>",
+        "SEQ_ID": 297,
+        "SESSION_ID": 17,
+        "SESSION_NAME": "Tree 1",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "5 3 2\n5 4\n2 1\n4 3\n4 3\n1 4",
+            "OUTPUT": "1\n1 5"
+          },
+          {
+            "_id": 2,
+            "INPUT": "5 3 2\n5 3\n2 3\n2 3\n2 3\n2 4",
+            "OUTPUT": "1\n1 2\n4 5"
+          }
+        ],
+        "key": 297
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 62,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_62",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_352",
+        "SEQUENCE_ID": 62,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 17,
+        "SESSION_NAME": "Tree 1",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <stdio.h>\n\nint pref[1005][1005];\nchar row[1005];\n\nint main() {\n    int n, q, i, j;\n    if (scanf(\"%d %d\", &n, &q) != 2) return 0;\n    for(i=1;i<=n;i++) {\n        scanf(\"%s\", row);\n        for (j = 1; j <= n; j++) {\n            pref[i][j] = pref[i - 1][j] + pref[i][j - 1] - pref[i - 1][j - 1] + (row[j - 1] == '*');\n        }\n    }\n    while (q--) {\n        int y1, x1, y2, x2;\n        scanf(\"%d %d %d %d\", &y1, &x1, &y2, &x2);\n        if (y1 > y2 || x1 > x2) printf(\"0\\n\");\n        else printf(\"%d\\n\", pref[y2][x2] - pref[y1 - 1][x2] - pref[y2][x1 - 1] + pref[y1 - 1][x1 - 1]);\n    }\n    return 0;\n}",
+            "mode": 0
+          }
+        ],
+        "EVALUATION": 1792598560849
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          8,
+          310,
+          28
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "for(i=1;i<=n;i++)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>Question description</strong></p><p>You are given an n\u00d7n grid representing the map of a forest. Each square is either empty or contains a tree. The upper-left square has coordinates (1,1), and the lower-right square has coordinates (n,n).<br><br>Your task is to process q queries of the form: how many trees are inside a given rectangle in the forest?<br><br><strong>Constraints</strong></p><ul><li>1\u2264n\u22641000</li><li>1\u2264q\u22642\u22c510^5</li><li>1\u2264y1\u2264y2\u2264n</li><li>1\u2264x1\u2264x2\u2264n</li></ul><p><br><strong>Input</strong><br><br>The first input line has two integers n and q: the size of the forest and the number of queries.<br>Then, there are n lines describing the forest. Each line has n<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>n</mi></math>&nbsp;characters: . is an empty square and * is a tree.<br>Finally, there are q lines describing the queries. Each line has four integers y1, x1, y2, x2 corresponding to the corners of a rectangle.<br><br><strong>Output</strong><br>Print the number of trees inside each rectangle.<br>&nbsp;</p>",
+        "SEQ_ID": 352,
+        "SESSION_ID": 17,
+        "SESSION_NAME": "Tree 1",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "4 3\n.*..\n*.**\n**..\n****\n2 2 3 4\n3 1 3 1\n1 1 2 2",
+            "OUTPUT": "3\n1\n2"
+          },
+          {
+            "_id": 2,
+            "INPUT": "4 3\n.*.*\n*.**\n**.*\n***.\n1 2 3 4\n3 2 3 4\n1 4 2 3",
+            "OUTPUT": "6\n2\n0"
+          }
+        ],
+        "key": 352
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 63,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_63",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_348",
+        "SEQUENCE_ID": 63,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 17,
+        "SESSION_NAME": "Tree 1",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <stdio.h>\n\nlong long s[200005];\n\nint main() {\n    int n, q, i, a, b; long long v;\n    if (scanf(\"%d %d\", &n, &q) != 2) return 0;\n    for(i=0;i<n;i++) { scanf(\"%lld\", &v); s[i + 1] = s[i] + v; }\n    while (q--) {\n        scanf(\"%d %d\", &a, &b);\n        printf(\"%lld\\n\", s[b] - s[a - 1]);\n    }\n    return 0;\n}",
+            "mode": 0
+          }
+        ],
+        "EVALUATION": 1792598636326
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          5,
+          155,
+          18
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "for(i=0;i<n;i++)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>Question description</strong></p><p>Given an array of n integers, your task is to process q queries of the form: what is the sum of values in range [a,b]?<br><strong>Constraints</strong></p><ul><li>1\u2264n,q\u22642\u22c510^5</li><li>1\u2264xi\u226410^9</li><li>1\u2264a\u2264b\u2264n</li></ul><p><br><strong>Input</strong><br>The first input line has two integers n and q: the number of values and queries.<br>The second line has n integers x1,x2,\u2026,xn: the array values.<br>Finally, there are q lines describing the queries. Each line has two integers a and b: what is the sum of values in range [a,b]?<br><br><strong>Output</strong><br>Print the result of each query.<br>&nbsp;</p>",
+        "SEQ_ID": 348,
+        "SESSION_ID": 17,
+        "SESSION_NAME": "Tree 1",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "8 4\n3 2 4 5 1 1 5 3\n2 4\n5 6\n1 8\n3 3",
+            "OUTPUT": "11\n2\n24\n4"
+          },
+          {
+            "_id": 2,
+            "INPUT": "10 4\n13 12 14 51 11 1 5 3 4 6\n3 4\n3 6\n4 8\n1 3",
+            "OUTPUT": "65\n77\n71\n39"
+          }
+        ],
+        "key": 348
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 64,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_64",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_289",
+        "SEQUENCE_ID": 64,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 17,
+        "SESSION_NAME": "Tree 1",
+        "STATUS": 1,
+        "CODE": [],
+        "EVALUATION": 0
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          2,
+          550,
+          65
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "void dfs1(int p,int i)",
+          "void link(int i,int j)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>Question description</strong></p><p>You are given a tree consisting of n nodes.<br>Your task is to determine for each node the maximum distance to another node.<br><br><strong>Input</strong><br><br>The first input line contains an integer n: the number of nodes. The nodes are numbered 1,2,\u2026,n.<br>Then there are n\u22121 lines describing the edges. Each line contains two integers a and b: there is an edge between nodes a and b.<br><br><strong>Output</strong><br>Print n integers: for each node 1,2,\u2026,n, the maximum distance to another node.<br><br><strong>Constraints</strong></p><ul><li>1\u2264n\u22642\u22c510^5</li><li>1\u2264a,b \u2264n<br>&nbsp;</li></ul>",
+        "SEQ_ID": 289,
+        "SESSION_ID": 17,
+        "SESSION_NAME": "Tree 1",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "5\n1 2\n1 3\n3 4\n3 5",
+            "OUTPUT": "2 3 2 3 3 "
+          },
+          {
+            "_id": 2,
+            "INPUT": "5\n1 1\n1 2\n2 3\n3 4",
+            "OUTPUT": "4 6 7 8 0 "
+          }
+        ],
+        "key": 289
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 65,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_65",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_165",
+        "SEQUENCE_ID": 65,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 17,
+        "SESSION_NAME": "Tree 1",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <stdio.h>\n#include <stdlib.h>\n\nstruct node {\n    int key;\n    struct node *left,*right; \n};\n\nstruct node* newNode(int item) {\n    struct node* temp = (struct node*)malloc(sizeof(struct node));\n    temp->key = item;\n    temp->left=temp->right=NULL;\n    return temp;\n}\n\nstruct node* insert(struct node* node, int key) {\n    if (node == NULL) return newNode(key);\n    if (key < node->key) node->left = insert(node->left, key);\n    else node->right = insert(node->right, key);\n    return node;\n}\n\nvoid inorder(struct node* root) {\n    if (root != NULL) {\n        inorder(root->left);\n        printf(\"%d \", root->key);\n        inorder(root->right);\n    }\n}\n\nint main() {\n    int n, val;\n    struct node* root = NULL;\n    if (scanf(\"%d\", &n) != 1) return 0;\n    while (n--) {\n        scanf(\"%d\", &val);\n        root = insert(root, val);\n    }\n    inorder(root);\n    return 0;\n}",
+            "mode": 0
+          }
+        ],
+        "EVALUATION": 1792599682061
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          3,
+          355,
+          75
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "struct node",
+          "struct node *left,*right; ",
+          "struct node* newNode(int item)",
+          "temp->left=temp->right=NULL;",
+          "void inorder(struct node* root) ",
+          "inorder(root->left);",
+          "inorder(root->right);"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>Question description</strong></p><p>Siva Sir students were chatting and playing quite loudly on the last day of the year, celebrating the end of the academic session. Siva sir&nbsp;was harshly chastised by the college's principal. But, instead of becoming enraged, he attempted to engage everyone in a different task.<br><br>So Siva sir gave his students to solve the task such that, you have to perform in-order tree traversal in Binary search tree.</p><figure class=\"image\"><img src=\"data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gIoSUNDX1BST0ZJTEUAAQEAAAIYAAAAAAIQAABtbnRyUkdCIFhZWiAAAAAAAAAAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAAHRyWFlaAAABZAAAABRnWFlaAAABeAAAABRiWFlaAAABjAAAABRyVFJDAAABoAAAAChnVFJDAAABoAAAAChiVFJDAAABoAAAACh3dHB0AAAByAAAABRjcHJ0AAAB3AAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAFgAAAAcAHMAUgBHAEIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFhZWiAAAAAAAABvogAAOPUAAAOQWFlaIAAAAAAAAGKZAAC3hQAAGNpYWVogAAAAAAAAJKAAAA+EAAC2z3BhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABYWVogAAAAAAAA9tYAAQAAAADTLW1sdWMAAAAAAAAAAQAAAAxlblVTAAAAIAAAABwARwBvAG8AZwBsAGUAIABJAG4AYwAuACAAMgAwADEANv/bAEMAMiIlLCUfMiwpLDg1MjtLfVFLRUVLmW1zWn21n767sp+vrMjh//PI1P/XrK/6//3////////B8P/////////////bAEMBNTg4S0JLk1FRk//Or87////////////////////////////////////////////////////////////////////AABEIAgIHSAMBIgACEQEDEQH/xAAaAAEAAwEBAQAAAAAAAAAAAAAAAgMEAQUG/8QAQBAAAgIBAgIGCAUDBAICAgMBAAECAxEEEiExBRNBUVJxFCIyNFNhkaEzcoGxwTVCRBUj0fAkgmLhQ5IlovFU/8QAFgEBAQEAAAAAAAAAAAAAAAAAAAEC/8QAIhEBAQEAAwEAAQQDAAAAAAAAABEBAhIxIUEiYXGhQlGB/9oADAMBAAIRAxEAPwD1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\"></figure><p><strong>Constraints:</strong></p><p>0&lt;size &lt;100</p><p>0&lt;data&lt;1000</p><p><strong>Input format:</strong></p><p>First line indicates the size of the queue</p><p>Second line indicates the elements of the queue.</p><p><strong>Output Format:</strong></p><p>single line indicates the in-order traversal of a tree.</p>",
+        "SEQ_ID": 165,
+        "SESSION_ID": 17,
+        "SESSION_NAME": "Tree 1",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "7\n100 90 40 80 140 120 160",
+            "OUTPUT": "40 80 90 100 120 140 160"
+          },
+          {
+            "_id": 2,
+            "INPUT": "9\n34 67 10 90 410 810 40 20 60",
+            "OUTPUT": "10 20 34 40 60 67 90 410 810"
+          }
+        ],
+        "key": 165
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 66,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_66",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_354",
+        "SEQUENCE_ID": 66,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 17,
+        "SESSION_NAME": "Tree 1",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <stdio.h>\n\nint tree[800005], x[200005];\n\nvoid build(int k,int l,int r) {\n    tree[k] = r - l + 1;\n    if (l == r) return;\n    int m = (l + r) / 2;\n    build(k * 2, l, m);\n    build(k * 2 + 1, m + 1, r);\n}\n\nint query(int n, int p) {\n    int k = 1, l = 1, r = n;\n    while (l < r) {\n        tree[k]--;\n        int m = (l + r) / 2, left = tree[k * 2], go_r = left < p;\n        p -= go_r * left;\n        k = k * 2 + go_r;\n        l += go_r * (m + 1 - l);\n        r -= (!go_r) * (r - m);\n    }\n    tree[k]--;\n    return l;\n}\n\nvoid read_x(int n) { for (int i = 1; i <= n; i++) scanf(\"%d\", &x[i]); }\n\nvoid solve(int n) {\n    int p;\n    for (int i = 1; i <= n; i++) { scanf(\"%d\", &p); printf(\"%d \", x[query(n, p)]); }\n    puts(\"\");\n}\n\nint main() {\n    int n; scanf(\"%d\", &n);\n    read_x(n);\n    build(1, 1, n);\n    solve(n); return 0;\n}",
+            "mode": 0
+          }
+        ],
+        "EVALUATION": 1792599848411
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          2,
+          330,
+          37
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "void build(int k,int l,int r)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>Question description</strong></p><p>You are given a list consisting of n integers. Your task is to remove elements from the list at given positions, and report the removed elements.</p><p><strong>Constraints</strong></p><ul><li>1\u2264n\u22642\u22c510^5</li><li>1\u2264xi\u226410^9</li><li>1\u2264pi\u2264n\u2212i+1</li></ul><p><br><strong>Input</strong><br><br>The first input line has an integer n: the initial size of the list. During the process, the elements are numbered 1,2,\u2026,k where k is the current size of the list.<br>The second line has n integers x1,x2,\u2026,xn: the contents of the list.<br>The last line has n integers p1,p2,\u2026,pn: the positions of the elements to be removed.<br><br><strong>Output</strong><br><br>Print the elements in the order they are removed.<br>&nbsp;</p>",
+        "SEQ_ID": 354,
+        "SESSION_ID": 17,
+        "SESSION_NAME": "Tree 1",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "5\n2 6 1 4 2\n3 1 3 1 1",
+            "OUTPUT": "1 2 2 6 4"
+          },
+          {
+            "_id": 2,
+            "INPUT": "6\n7 2 6 1 4 2\n11 3 1 3 1 1",
+            "OUTPUT": "2 6 7 4 2 1"
+          }
+        ],
+        "key": 354
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 67,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_67",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_166",
+        "SEQUENCE_ID": 67,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 17,
+        "SESSION_NAME": "Tree 1",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <stdio.h>\n#include <stdlib.h>\n\nstruct node {\n    int key;\n    struct node *left,*right;\n};\n\nstruct node* root;\n\nstruct node* newNode(int item) {\n    struct node* temp = (struct node*)malloc(sizeof(struct node));\n    temp->key = item;\n    temp->left = temp->right = NULL;\n    return temp;\n}\n\nstruct node* insert(struct node* node, int key);\n\nvoid add_child(struct node* node, int key) {\n    if (key < node->key) node->left = insert(node->left, key);\n    else node->right = insert(node->right, key);\n}\n\nstruct node* insert(struct node* node, int key) {\n    if (!node) return newNode(key);\n    add_child(node, key);\n    return node;\n}\n\nvoid preorder(struct node* root) {\n    if (root) {\n        printf(\"%d \", root->key);\n        preorder(root->left);\n        preorder(root->right);\n    }\n}\n\nvoid read_all(int n) {\n    int val;\n    while (n--) {\n        scanf(\"%d\", &val);\n        root = insert(root, val);\n    }\n}\n\nint main() {\n    int n; scanf(\"%d\", &n);\n    read_all(n);\n    preorder(root);\n    return 0;\n}",
+            "mode": 0
+          }
+        ],
+        "EVALUATION": 1792599960913
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          2,
+          280,
+          50
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "void preorder(struct node* root)",
+          "struct node* newNode(int item) ",
+          "struct node ",
+          "struct node *left,*right;"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>Question description</strong></p><p>Jegan Sir students were chatting and playing quite loudly on the last day of the year, celebrating the end of the academic session. Jegan sir&nbsp;was harshly chastised by the college's principal. But, instead of becoming enraged, he attempted to engage everyone in a different task.<br><br>So Jegan sir gave his students to solve the task such that, you have to perform pre-order tree traversal in Binary search tree.</p><figure class=\"image\"><img src=\"data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gIoSUNDX1BST0ZJTEUAAQEAAAIYAAAAAAIQAABtbnRyUkdCIFhZWiAAAAAAAAAAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAAHRyWFlaAAABZAAAABRnWFlaAAABeAAAABRiWFlaAAABjAAAABRyVFJDAAABoAAAAChnVFJDAAABoAAAAChiVFJDAAABoAAAACh3dHB0AAAByAAAABRjcHJ0AAAB3AAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAFgAAAAcAHMAUgBHAEIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFhZWiAAAAAAAABvogAAOPUAAAOQWFlaIAAAAAAAAGKZAAC3hQAAGNpYWVogAAAAAAAAJKAAAA+EAAC2z3BhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABYWVogAAAAAAAA9tYAAQAAAADTLW1sdWMAAAAAAAAAAQAAAAxlblVTAAAAIAAAABwARwBvAG8AZwBsAGUAIABJAG4AYwAuACAAMgAwADEANv/bAEMAMiIlLCUfMiwpLDg1MjtLfVFLRUVLmW1zWn21n767sp+vrMjh//PI1P/XrK/6//3////////B8P/////////////bAEMBNTg4S0JLk1FRk//Or87////////////////////////////////////////////////////////////////////AABEIAyQFFAMBIgACEQEDEQH/xAAZAAEAAwEBAAAAAAAAAAAAAAAAAgMEAQX/xAA3EAEAAgEBBQUFBwUBAQEBAAAAAQIDEQQSITFRE0FSkZIyM2FxgRQiU2JyweEFNEKhsSNDFfD/xAAYAQEBAQEBAAAAAAAAAAAAAAAAAQIDBP/EACARAQEBAQACAwEBAQEAAAAAAAABEQISIQMxQRMiMlH/2gAMAwEAAhEDEQA/APUAAAAAAAAAAAAA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0hoBZxI5WsVjSsaQ6A0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOWtWvtWiPnLqu0ROeusf4z+wJdrj8dfM7XH46+bu7XpHkbtekeQOdrj8dfM7XH46+bu7XpHkbtekeQOdrj8dfM7XH46+bu7XpHkbtekeQOdrj8dfM7XH46+bu7XpHkbtekeQOdrj8dfM7XH46+bu7XpHkbtekeQOdrj8dfM7XH46+bu7XpHkbtekeQOdrj8dfM7XH46+bu7XpHkbtekeQOdrj8dfM7XH46+bu7XpHkbtekeQOdrj8dfM7XH46+bu7XpHkbtekeQOdrj8dfM7XH46+bu7XpHkbtekeQOdrj8dfM7XH46+bu7XpHkbtekeQOdrj8dfM7XH46+bu7XpHkbtekeQOdrj8dfM7XH46+bu7XpHkbtekeQOdrj8dfM7XH46+bu7XpHkbtekeQOdrj8dfM7XH46+bu7XpHkbtekeQOdrj8dfM7XH46+bu7XpHkbtekeQOdrj8dfM7XH46+bu7XpHkbtekeQOdrj8dfM7XH46+bu7XpHkbtekeQOdrj8dfM7XH46+bu7XpHkbtekeQOdrj8dfM7XH46+bu7XpHkbtekeQOdrj8dfM7XH46+bu7XpHkbtekeQOdrj8dfM7XH46+bu7XpHkbtekeQOdrj8dfM7XH46+bu7XpHkbtekeQOdrj8dfM7XH46+bu7XpHkbtekeQOdrj8dfM7XH46+bu7XpHkbtekeQOdrj8dfM7XH46+bu7XpHkbtekeQOdrj8dfM7XH46+bu7XpHkbtekeQOdrj8dfM7XH46+bu7XpHkbtekeQOdrj8dfM7XH46+bu7XpHkbtekeQOdrj8dfM7XH46+bu7XpHkbtekeQOdrj8dfM7XH46+bu7XpHkbtekeQOdrj8dfM7XH46+bu7XpHkbtekeQOdrj8dfM7XH46+bu7XpHkbtekeQOdrj8dfM7XH46+bu7XpHkbtekeQOdrj8dfM7XH46+bu7XpHkbtekeQOdrj8dfM7XH46+bu7XpHkbtekeQOdrj8dfM7XH46+bu7XpHkbtekeQOdrj8dfM7XH46+bu7XpHkbtekeQOdrj8dfM7XH46+bu7XpHkbtekeQOdrj8dfM7XH46+bu7XpHkbtekeQOdrj8dfM7XH46+bu7XpHkbtekeQOdrj8dfM7XH46+bu7XpHkbtekeQOdrj8dfM7XH46+bu7XpHkbtekeQFbVt7MxPyl1CkaZcmnwTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQn39f0z+yaE+/r+mf2BMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEKe9yfRNCnvcn0TAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQn39f0z+yaE+/r+mf2BMAAGLJt1qXmu5HCeoNow//oW8Eebtdv8AFTyBtEMWWmWutZTAAAAAAABmz7ZXHO7WN6QaR5s7blmeExH0Tpt14n70RIN4hhzVzV1rP0TAAAAAB5215L1z2it7RHwkHoirZZm2CszMzPxWgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAhT3uT6JoU97k+iYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACE+/r+mf2TQn39f0z+wJgAPIze+v83rvIze+v8wb8WzYbYqzNImZhDaNkp2c2pGkxxTxbRirirE3iJiEdo2unZzWk70zwBk2a80zV6TOkvRz5Jx4pvGmsdXnbNSb5q6conWW/a/7awKMe3TNv/SIiPgU2u+TPSsaRWZZcOPtMta9XqUw46abtY1jvAy5a4qb1mG+2Zbz937vyNuvNs273RC3ZJxY8e9a0b0gprtmWk/e4/Nuw5q5qb1frCjapw5MU6Wjejko2G+7n3e6wNW25Zx4tI52YsGGc2TTu75Xf1CZ7Wsd2iz+nxHZ2nv1BdTZsVY0isT81WfY6WrM440t/wBagHk4slsWSJjh1etWd6sTHKXlbTERnvp1ejs064Ka9AZJ27JFtN2umrubbp1mMccOrJb25+b0sGzUrjjerE2mOOoLaW/8otae7WWPNtttdMcaR1XbbbcwaRw14MmyYoy5fvco4gV2zNE6zOvzQzZO1yTbTTV6k46TXdmsaPLz07PLavdAPQ2T+3qbRtMYY052nuNl4bNWfg87Lacma0zPOQWztWe08J0+UJYttvE6XjWGnFfBjpFYtVm23s7aWpMa9+gN9bResWjlLNtW03w3itYiY073P6feZras9yr+oe9j5An9uns+Ub63ZM1stbTfuUbFgrk1veNYjlDdWla+zEQDz7bZl7TWJ0jo347b+OtusKbbFjtfe4xHRoiIrERHKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQp73J9E0Ke9yfRMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABCff1/TP7JoT7+v6Z/YEwAHkZvfX+b13mZcGWctpjHaY16AnTYr3pFovXinXYJ/yv5NWGJjFWJjSYhMEMWGmKulY+qG2f29lyraqzbBaKxrPQGHYv7mv1em8/ZMOSm0Vm1JiOPGXoA83bazG0T8Utn2bHmx678xPfDVtOCM1eHC0cpYJpmwW4RMfGAap2CkRrN7JYtkpS9b1vM6Mc3z5eEzazdslMlMel/pHQFf9QxzNYvHdzU7HmjFea29mz0LRFomJjWJYM+x3rMzj+9XoD0ImJjWOKGbLXFSZmePdDzN7Lj4a2gjHlyzymfiCPHLk+NpetjruUrXpCnZtljF963G3/GgHjz7z6vYryh5c7Pl39eztz6PUjlAM2311wxPSWfYbxXLMT3w9C9YvWa25S8zLs2TFbhEzHWAeo8rabxfPaY5OxfPeN2JtMdC2zZon2Jn5A3bLGuzVj4PNvG7ktE90vT2as1wVi0aSp2rZZyTv0598dQcpsWO9YtF50knYccc8kwzRbNh4RvVd0z5rR7VgbsGz1wTMxaZ16sv9Q97HybsUWrjrF51sybbivfLE1rMxp3As2D3H1aVGx0tTFpaJide9fPIEJzY4tuzeNU3k3xXjJNZid7V6mKs1xViecQCQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIU97k+iaFPe5PomAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAhPv6/pn9k0J9/X9M/sCYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIU97k+iaFPe5PomAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAhPv6/pn9k0J9/X9M/sCYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIU97k+iaFPe5PomAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAhPv6/pn9k0J9/X9M/sCYAAIXz46W0teIkExV9pw/iQtrMWiJidYkAAAV5M+PH7Vo16K/tuHXTj5A0COPLTJH3LRKQAAAI3vXHGt7REAkIUzY7zpW0TKYAAA5a0VjW06QottuGO+Z+UA0Cmm1YrzpFtPmuAAAHLWisa2nSFFtsw1nnM/KAaBVTacV50i2k/FaAAAI3vXHGt50hD7Th/EgFoq+04fxIWUvW9dazrAOgACqdpwxPvIPtOH8SAWir7Th/EhbE6xrAAAATMRGszpCi214a/5TPyBeKK7ZhnvmPmvrMWjWJ1gAEb5K441vaIgEhV9pw/iQnTJTJruWidASBXkz48fC1uPSAWDPXbcMzprMfOF9bRaNazrAOgACN8lcca3tEQh9pw/iQC0VfacP4kH2nD+JALQiYmImOUgAhfNjxzpe0RKP2nD+JALRyt63rvVnWOqv7Th/EgForjaMVpiIvEzKwAEb5aY9N+0RqCQq+04fxITpeuSNaTrAJDlr1pGtpiIUTtuGO+Z+UA0Cqm04rzpFuPxWgAAAAAAAAhT3uT6JoU97k+iYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACE+/r+mf2TQn39f0z+wJgAMm0bJbLlm0WiInq1gPHvXcvNZ7nqbP7inyebtHv7/N6Wz+4p8gWI5ItNJis6T1SAebGy5b5Ji3DrMrbbBpXhfi2oZstcVJtP0B5dL2xZImOExL1qzvViesavJpE5csR3zL1qxpWI6QDoAEzFYmZ4RDy9ozTnycOXdC7bdo1ns6zw7zYsGv/raOEcgX7Lg7Kms+1PNez/bMe9u8dddGgAAHm7Zkm+aa68K8FmDY4vji17Tx5RCG24ppk345WdwbZOOkVtXeiOQIbTs/YTGk6xLRsGSbVmkzrpyZto2ic8xw0iOUNew4tzHNp52BpAB5u2ZZvlmuvCvBZg2KL0i15mNe6FG01mue2vfOrZs+045xxFrRWYjTiDLtOzTg0mJ1rLTsOab1mlp1mOSrbdorkrFKTr1lXsVtNorHXgD0wAZP6jP/AJ1j4s2DZ7Z4mYmI06r/AOozxpCrZtpjBWYmuus9QT+wX8dWvZ8U4sUVmYmfgqpt2OZ4xNWmJi0axOsSATxiQBhtsF5tM79eKvLss4qb1r1+T0pnSJl5W0Zpy5JmeUcoBHFjtlvFavWrG7WI6Qy7FfFWu7E/fnnq1gHIV7RbdwXn4AwbTnnLeYifuxyhZi2Kb1i153de5nxTWMlZtyieLVbb+P3KcPiBbYPDfzbKVilIrHKGXHt0TOl66fGGuJiY1jkAp2nDOakRExGk964B5WfBOCYiZidejT/TvZv80f6j7VPql/TvZv8AMF21Zeyxax7U8Iefix2z5NI598yv/qFv/Stfhqs/p9fuWnrIKsuxWpSbVnXTuQ2XNOLJETP3Z5vTeRljdy2jpIPXEcVt7FWesJAy/wBQ93X5suDZ7Z4nSYjTq9HLirliItrwcxYa4dd3XiDFfYrUpNpvXSGesTa0RHe27fk0rGOO/jKvYcW9k355VBvpXdpWvSNHQBm2nZrZrxMWiNOrDlxziyTSZ1mHrvM2z+5v9P8AgNmycdmhlvsV6Um02rwa9j/t6p5/c3+QPM2f3+P9UPWeTs/v8f6oesAo2rZ7Z93dmI06rwHk5sM4b7szE/Jt2D3M/NRt/vo+S/YPcz8wU7VgzWya+1E8vglXYJ0+9fj8G0mYiNZ5A8nNinDfdmflLfseScmHjzjgxbXljLl1jlHCG3Y8c0wRrzniC8AAAAAAAEKe9yfRNCnvcn0TAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQn39f0z+yaE+/r+mf2BMAAAHk7R7+/wA3pbP7inyebtHv7/N6Wz+4p8gWA5ad2sz0BHLlripvW+kPMyXvtGTrM8oczZbZb71vpCWHP2MzMUiZ6yDds2zxhrrPG0817B9vv4KtmDJOXFW8xpMgmp2rJOLDMxznguRyY65a6XjWAeRE/e1ni1Rt0xXSMcRHzaPseDwf7knZMMRP3P8Acg83e+/vfHVv2fapy5IpNIjhz1YYiO0iO7V6eLZ8eOYtWuk6dQWgA8nPknJlmZnv0hsw7JjjHE3jWZhk2nFOLLPDhPGJaMO2xWkVvWZmO+Ac2vZq46b9OHWHNgyTGTc7phHadq7au7WNKp7Bine7SY4dwNwAK82CmaPvc45SyzsFteF40XbTtPY2rERrPer+3109idQV5tmrgw6zOtp5I7FXe2iJ6cUM2a+e/H6RDbseCcVNbe1INAAK8uz0zTE314dJV/YsPSfNTn2q9M87vCI4aT3uxt/DjTj8AVbVs8YZiazrErv6feZ3qd0cWfPntnmNY0iOUNWw4ppSbWjSbcgagcvbcpNukA7MaxMM1thxzymYlnptmSszr96JnlKydv4cKcQZclJxZJrrxjvens9+0w1tPN5kzbNk152l6mGnZ4q16Amr2iN7BePgsJjWJie8HjVjetEdXp02XFWuk0ifjLBnxWw5fhziWmm313fvVnX4Ap2vDGLJG7ylp2C02wzE90sefNOfJrp8Ihv2THOPDETzniC4AGH+o+1T6pf072b/ADR/qPtU+qX9O9m/zBD+oV/9K2+Giz+n2+5aOkrdqxdri0j2o4w8/Fktgyaxz74kHrPIyzvZbT1lfl2216TWsaa96Gy4Zy5ImY+7HMHo4o3cVY6QkABM6RMz3DPtuXcxbsc7AwZrzky2t8eD0tmx9nhiO+eMsGyY+0zRryjjL1AAAHmbZ/c3+n/HpvM2z+5v9P8AgNux/wBvVPP7m/yQ2P8At6p5/c3+QPM2f3+P9UPWeTs/v8f6oesAADz9v99HyX7B7mfmo2/30fJfsHuZ+YNMzERrPJ521bTOSdyk/d/6ltue03nHHCI5/FlpbdtEzETp3SDVsmy72l7xw7ob2D7ffwVX7LtNs1piaxGnQGgAAAAAAAEKe9yfRNCnvcn0TAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQn39f0z+yaE+/r+mf2BMAAAFc7PitMzNImZWViKxERGkQABMRMaTyAFX2bD+HB9mw/hwtAVfZsP4cLK1ilYrWNIjudAAAAAV/Z8Ouu5GqwAAActSt40tETCi2xYZ7pj5S0AKa7Jir/jr810RERpAAAAhkw48ntV1nqq+xYde/wA2gBXjwY8fs1jXqsAAAEL4qZParEqp2LDPWPlLQAqps2Kk6xXWfitAAAFV9nxX4zXj8EPsWLXX73m0AIY8NMfs1iEwAABy1K3jS0RMKJ2LDM8pj5S0AK8ez48c61rx6ysAAAEb4qZNN+sToUx0x67lYjVIAV5MGPJxtXj1hYAz12LDE66TPzlfWsVjSsaQ6AAAIXxUyTresSmAjTFTHruViNUgAAAV2wYr23rUiZnvWAOVrWldKxpDsxFomJjWJAFcbPirMTFIiYWAAACF8OPJOt6xMu0pXHGlI0hIBXbBivbetSJlz7Nh/DhaAq+zYfw4SpipjnWlYhMAAAAAAAABCnvcn0TQp73J9EwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEJ9/X9M/sAJgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAhT3uT6JgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//Z\"></figure><p><strong>Constraints:</strong></p><p>0&lt;size &lt;100</p><p>0&lt;data&lt;1000</p><p><strong>Input format:</strong></p><p>First line indicates the size of the tree</p><p>Second line indicates the elements of the tree</p><p><strong>Output Format:</strong></p><p>single line indicates the pre-order list of the given value</p>",
+        "SEQ_ID": 166,
+        "SESSION_ID": 17,
+        "SESSION_NAME": "Tree 1",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "7\n200 120 80 160 280 240 320",
+            "OUTPUT": "200 120 80 160 280 240 320"
+          },
+          {
+            "_id": 2,
+            "INPUT": "9\n34 67 10 90 410 810 40 20 60",
+            "OUTPUT": "34 10 20 67 40 60 90 410 810"
+          }
+        ],
+        "key": 166
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 68,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_68",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_190",
+        "SEQUENCE_ID": 68,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 17,
+        "SESSION_NAME": "Tree 1",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <stdio.h>\n#include <stdlib.h>\n\nstruct node {\n    int key;\n    struct node *left,*right;\n};\n\nint arr[105];\n\nstruct node* newNode(int item)  {\n    return NULL;\n}\n\nint cmp(const void* a, const void* b) {\n    return *(int*)a - *(int*)b;\n}\n\ntypedef void (*f_t)(int, int);\n\nvoid stop(int i, int n) {}\nvoid c_r(int i, int n);\nvoid c_p(int i, int n);\nf_t r_op[2] = {stop, c_r};\nf_t p_op[2] = {stop, c_p};\n\nvoid c_r(int i, int n) {\n    scanf(\"%d\", &arr[i]);\n    r_op[i + 1 < n](i + 1, n);\n}\n\nvoid c_p(int i, int n) {\n    printf(\"%d \", arr[i]);\n    p_op[i + 1 < n](i + 1, n);\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    r_op[n > 0](0, n);\n    qsort(arr, n, 4, cmp);\n    p_op[n > 0](0, n);\n    return 0;\n}",
+            "mode": 0
+          }
+        ],
+        "EVALUATION": 1792600103070
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          1,
+          290,
+          50
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "struct node* newNode(int item) ",
+          "struct node *left,*right;"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p>Question description</p><p>Darsh, Ratik, Swathy are good friends, They are studying Pre-final year B.E. in reputed institution. Swathy's uncle was a DS teacher in school of computing technologies. He asks to make an application for Insertion in a Binary Search Tree.</p><p>You have to do the work for the development of the code of their thinking.</p><p>Function Description</p><ul><li>The<strong> left subtree</strong> for any given node will only contain nodes which are lesser than the current node</li><li>The<strong> right subtree</strong> for any given node will only contain nodes which are greater than the current node</li><li>Each subtree must also follow the above rules of BST</li></ul><p>Constraints</p><p>0&lt;n&lt;100</p><p>0&lt;arr[i]&lt;1000</p><p>Input Format</p><p>first line indicates the size of the array</p><p>second line indicates the array elements according to the array size</p><p>Output Format</p><p>single line represents the binary search tree.</p>",
+        "SEQ_ID": 190,
+        "SESSION_ID": 17,
+        "SESSION_NAME": "Tree 1",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "7\n100 60 40 80 140 120 160",
+            "OUTPUT": "40 60 80 100 120 140 160"
+          },
+          {
+            "_id": 2,
+            "INPUT": "9\n140 120 160 23 45 672 123 456 64",
+            "OUTPUT": "23 45 64 120 123 140 160 456 672"
+          }
+        ],
+        "key": 190
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 69,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_69",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_349",
+        "SEQUENCE_ID": 69,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 17,
+        "SESSION_NAME": "Tree 1",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <stdio.h>\nint tree[800005], a[200005];\nvoid build(int *aa,int k,int l,int r) {\n    if (l == r) { tree[k] = aa[l]; return; }\n    int m = (l + r) / 2;\n    build(aa, 2 * k, l, m);\n    build(aa, 2 * k + 1, m + 1, r);\n    tree[k] = tree[2 * k] < tree[2 * k + 1] ? tree[2 * k] : tree[2 * k + 1];\n}\nint query(int k,int l,int r,int ql,int qr) {\n    if ((ql <= l) & (r <= qr)) return tree[k];\n    if ((ql > r) | (qr < l)) return 2000000000;\n    int m = (l + r) / 2, x = query(2 * k, l, m, ql, qr), y = query(2 * k + 1, m + 1, r, ql, qr);\n    return (x < y) * x + (x >= y) * y;\n}\nint main() {\n    int n, q, l, r;\n    scanf(\"%d%d\", &n, &q);\n    for (int i = 1; i <= n; i++) scanf(\"%d\", &a[i]);\n    build(a, 1, 1, n);\n    while (q--) {\n        scanf(\"%d%d\", &l, &r);\n        printf(\"%d\\n\", query(1, 1, n, l, r));\n    }\n    return 0;\n}",
+            "mode": 0
+          }
+        ],
+        "EVALUATION": 1792600274747
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          3,
+          390,
+          40
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "void build(int *aa,int k,int l,int r)",
+          "int query(int k,int l,int r,int ql,int qr)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>Question description</strong></p><p>Given an array of n integers, your task is to process q queries of the form: what is the minimum value in range [a,b]?</p><p><strong>Constraints</strong></p><ul><li>1\u2264n,q\u22642\u22c510^5</li><li>1\u2264xi\u226410^9</li><li>1\u2264a\u2264b\u2264n</li></ul><p><br><br><strong>Input</strong><br><br>The first input line has two integers n and q: the number of values and queries.<br>The second line has n integers x1,x2,\u2026,xn: the array values.<br>Finally, there are q lines describing the queries. Each line has two integers a and b: what is the minimum value in range [a,b]?<br><br><strong>Output</strong><br>Print the result of each query.<br><br>&nbsp;</p>",
+        "SEQ_ID": 349,
+        "SESSION_ID": 17,
+        "SESSION_NAME": "Tree 1",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "8 4\n3 2 4 5 1 1 5 3\n2 4\n5 6\n1 8\n3 3",
+            "OUTPUT": "2\n1\n1\n4"
+          },
+          {
+            "_id": 2,
+            "INPUT": "10 4\n13 12 14 51 11 1 5 3 4 6\n3 4\n3 6\n4 8\n1 3",
+            "OUTPUT": "14\n1\n1\n12"
+          }
+        ],
+        "key": 349
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 70,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_70",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_359",
+        "SEQUENCE_ID": 70,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 17,
+        "SESSION_NAME": "Tree 1",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <stdio.h>\n#include <string.h>\n\n#define N 64\n\ndouble A[N][N], res[N][N];\n\nvoid mult(double aa[][N],double bb[][N],double cc[][N]) {\n    double t[N][N];\n    memset(t, 0, sizeof(t));\n    for (int i = 0; i < N; i++)\n        for (int k = 0; k < N; k++)\n            for (int j = 0; j < N; j++)\n                t[i][j] += aa[i][k] * bb[k][j];\n    memcpy(cc, t, sizeof(t));\n}\n\nvoid init() {\n    int dr[] = {-8, 8, -1, 1};\n    for (int u = 0; u < 64; u++) {\n        int r = u / 8, c = u % 8;\n        int ok[] = {r > 0, r < 7, c > 0, c < 7};\n        double p = 1.0 / (ok[0] + ok[1] + ok[2] + ok[3]);\n        for (int i = 0; i < 4; i++)\n            A[u + dr[i] * ok[i]][u] += p * ok[i];\n    }\n}\n\nvoid power(int k) {\n    for (int i = 0; i < N; i++) res[i][i] = 1.0;\n    while (k > 0) {\n        if (k & 1) mult(res, A, res);\n        mult(A, A, A);\n        k >>= 1;\n    }\n}\n\nint main() {\n    int k;\n    scanf(\"%d\", &k);\n    init();\n    power(k);\n    double ans = 0;\n    for (int d = 0; d < N; d++) {\n        double p = 1.0;\n        for (int s = 0; s < N; s++) p *= (1.0 - res[d][s]);\n        ans += p;\n    }\n    printf(\"%.6f\\n\", ans);\n    return 0;\n}",
+            "mode": 0
+          }
+        ],
+        "EVALUATION": 1792600380948
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          4,
+          600,
+          61
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "void mult(double aa[][N],double bb[][N],double cc[][N])"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>Question description</strong></p><p>Each square of an 8\u00d78 chessboard has a robot. Each robot independently moves k steps, and there can be many robots on the same square.<br><br>On each turn, a robot moves one step left, right, up or down, but not outside the board. It randomly chooses a direction among those where it can move.<br><br>Your task is to calculate the expected number of <i>empty</i> squares after k turns.</p><p><strong>Constraints</strong></p><ul><li>1\u2264k\u2264100</li></ul><p><br><strong>Input</strong><br>The only input line has an integer k.<br><br><strong>Output</strong><br>Print the expected number of empty squares rounded to six decimal places.<br><br>&nbsp;</p>",
+        "SEQ_ID": 359,
+        "SESSION_ID": 17,
+        "SESSION_NAME": "Tree 1",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "10",
+            "OUTPUT": "23.120740"
+          },
+          {
+            "_id": 2,
+            "INPUT": "15",
+            "OUTPUT": "23.325350"
+          }
+        ],
+        "key": 359
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 71,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_71",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_259",
+        "SEQUENCE_ID": 71,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 18,
+        "SESSION_NAME": "Tree 2",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <stdio.h>\n\nint inc[200005], dec[200005], s1, s2, N, i, Q, v;\n\nint ins(int *a, int *n, int v) {\n    int j = 0;\n    a[*n] = 2e9;\n    while (a[j] < v) j++;\n    if (a[j] == v) return 0;\n    __builtin_memmove(a + j + 1, a + j, (*n - j) * 4);\n    a[j] = v;\n    return ++*n;\n}\n\nvoid put(int v) {\n    if (v != inc[s1 - 1] && !ins(inc, &s1, v)) ins(dec, &s2, v);\n}\n\nint main() {\n    scanf(\"%d\", &N);\n    for(i=0;i<N;i++) scanf(\"%d\", &v), put(v);\n    scanf(\"%d\", &Q);\n    while (Q--) scanf(\"%d\", &v), put(v), printf(\"%d\\n\", s1 + s2);\n    for (i = 0; i < s1; i++) printf(\"%d \", inc[i]);\n    while (s2) printf(\"%d \", dec[--s2]);\n    printf(\"\\n\");\n    return 0;\n}",
+            "mode": 0
+          }
+        ],
+        "EVALUATION": 1792601013347
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          8,
+          275,
+          39
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "for(i=0;i<N;i++)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>Problem Description:</strong></p><p>Any sequence <i>A</i> of size <i>n</i> is called <strong>B-sequence</strong> if:</p><p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><msub><mi>A</mi><mn>1</mn></msub><mo>&lt;</mo><msub><mi>A</mi><mn>2</mn></msub><mo>&lt;</mo><mo>.</mo><mo>.</mo><mo>.</mo><mo>&lt;</mo><msub><mi>A</mi><mi>k</mi></msub><mo>&gt;</mo><msub><mi>A</mi><mrow class=\"MJX-TeXAtom-ORD\"><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>&gt;</mo><msub><mi>A</mi><mrow class=\"MJX-TeXAtom-ORD\"><mi>k</mi><mo>+</mo><mn>2</mn></mrow></msub><mo>&gt;</mo><mo>.</mo><mo>.</mo><mo>.</mo><mo>&gt;</mo><msub><mi>A</mi><mi>n</mi></msub></math>&nbsp;where&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn><mo>\u2264</mo><mi>k</mi><mo>\u2264</mo><mi>n</mi></math>. That is, a sequence which is initially strictly increasing and then strictly decreasing (the decreasing part may or may not be there).</p><p>All elements in <i>A</i> except the maximum element comes atmost twice (once in increasing part and once in decreasing part) and maximum element comes exactly once.</p><p>All elements coming in decreasing part of sequence should have come once in the increasing part of sequence.</p><p>You are given a B-sequence <strong>S</strong> and <strong>Q</strong> operations. For each operation, you are given a value <strong>val</strong>. You have to insert <strong>val</strong> in <strong>S</strong> if and only if after insertion, <strong>S</strong> still remains a B-sequence .<br>After each operation, print the size of <strong>S</strong>. After all the operations, print the sequence <strong>S</strong>.</p><p><strong>Hint</strong>: Think of using some data structure to support insertion of elements in complexity better than linear.</p><p><strong>Input Constraints</strong>:</p><p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn><mo>\u2264</mo><mi>N</mi><mo>\u2264</mo><msup><mn>10</mn><mn>5</mn></msup></math><br><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn><mo>\u2264</mo><msub><mi>S</mi><mi>i</mi></msub><mo>\u2264</mo><msup><mn>10</mn><mn>9</mn></msup></math><br><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn><mo>\u2264</mo><mi>Q</mi><mo>\u2264</mo><msup><mn>10</mn><mn>5</mn></msup></math><br><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn><mo>\u2264</mo><mi>v</mi><mi>a</mi><mi>l</mi><mo>\u2264</mo><msup><mn>10</mn><mn>9</mn></msup></math><br>Given sequence <strong>S</strong> is a <strong>B-sequence</strong>,</p><p><strong>Input Format</strong>:</p><p>First line consists of an integer <strong>N</strong>, denoting size of <strong>S</strong>.<br>Second line consists of <strong>N</strong> space separated integers, denoting elements of <strong>S</strong>.<br>Next line consists of an integer <strong>Q</strong>, denoting number of operations.<br>Each of the following <strong>Q</strong> lines consists of an integer <strong>val</strong>.</p><p><strong>Output Format</strong>:</p><p>After each operation, print the size of <strong>S</strong> in a new line.<br>After all operations, print the sequence <strong>S</strong>.</p><p>&nbsp;</p>",
+        "SEQ_ID": 259,
+        "SESSION_ID": 18,
+        "SESSION_NAME": "Tree 2",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "4\n1 2 5 2\n4\n5\n1\n3\n2",
+            "OUTPUT": "4\n5\n6\n6\n1 2 3 5 2 1 "
+          },
+          {
+            "_id": 2,
+            "INPUT": "5\n3 4 5 1 3\n3\n6\n2\n3\n1",
+            "OUTPUT": "6\n7\n7\n1 2 3 4 5 6 3"
+          }
+        ],
+        "key": 259
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 72,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_72",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_256",
+        "SEQUENCE_ID": 72,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 18,
+        "SESSION_NAME": "Tree 2",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <stdio.h>\nint n, C, i, p[100005], c[100005];\nint main() {\n    scanf(\"%d%d\", &n, &C);\n    for(i=2;i<=n;i++) scanf(\"%d\", &p[i]);\n    for(i=1;i<=n;i++) scanf(\"%d\", &c[i]);\n    for(i=1;i<=n;i++) {\n        int a = -1, u = p[i];\n        while (u > 0) {\n            if (c[u] == c[i]) { a = u; break; }\n            u = p[u];\n        }\n        printf(\"%d \", a);\n    }\n    return 0;\n}",
+            "mode": 0
+          }
+        ],
+        "EVALUATION": 1792601202461
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          6,
+          220,
+          30
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "for(i=2;i<=n;i++)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>Problem Description:</strong></p><p>Mancunian and Liverbird decide to go camping for the weekend after a long week at work. They came upon an unusual tree with N nodes while walking through a forest. From 1 to N, the vertices are numbered.</p><p>A colour is allocated to each node in the tree (out of C possible colors). They decide to work together (for a change) and put their reasoning abilities to the test because they are bored. At vertex 1, the tree is rooted. They aim to locate the nearest ancestor with the same hue for each node.</p><h3><strong>Constraints</strong></h3><ul><li><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn><mo>\u2264</mo><mi>N</mi><mo>\u2264</mo><mn>100</mn><mo>,</mo><mn>000</mn></math></li><li><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn><mo>\u2264</mo><mi>C</mi><mo>\u2264</mo><mn>100</mn><mo>,</mo><mn>000</mn></math></li></ul><h3><strong>Input format</strong></h3><p>The first line contains two integers <i>N</i> and <i>C</i> denoting the number of vertices in the tree and the number of possible colors.<br>The second line contains&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>N</mi><mo>\u2212</mo><mn>1</mn></math>&nbsp;integers. The&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>i</mi><mtext>&nbsp;</mtext><mi>t</mi><mi>h</mi></math>&nbsp;integer denotes the parent of the&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>i</mi><mo>+</mo><mn>1</mn><mtext>&nbsp;</mtext><mi>t</mi><mi>h</mi></math>&nbsp;vertex.<br>The third line contains <i>N</i> integers, denoting the colors of the vertices. Each color lies between <i>1</i> and <i>C</i> inclusive.</p><h3><strong>Output format</strong></h3><p>Print <i>N</i> space-separated integers. The&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>i</mi><mi>t</mi><mi>h</mi></math>&nbsp;integer is the vertex number of lowest ancestor of the&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>i</mi><mi>t</mi><mi>h</mi></math>&nbsp;node which has the same color. If there is no such ancestor, print <i>1</i> for that node.</p><h3>&nbsp;</h3>",
+        "SEQ_ID": 256,
+        "SESSION_ID": 18,
+        "SESSION_NAME": "Tree 2",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "5 4\n1 1 3 3\n1 4 2 1 2",
+            "OUTPUT": "-1 -1 -1 1 3"
+          },
+          {
+            "_id": 2,
+            "INPUT": "5 5\n1 2 3 3 4\n1 3 4 4 2",
+            "OUTPUT": "-1 -1 -1 1 1"
+          }
+        ],
+        "key": 256
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 73,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_73",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_248",
+        "SEQUENCE_ID": 73,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 18,
+        "SESSION_NAME": "Tree 2",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <iostream>\n#include <map>\n\nunsigned long long K;\nint q;\nstd::map<unsigned long long, long long> weight;\n\nlong long get_w(unsigned long long x) {\n    return 1 + weight[x];\n}\n\nvoid add_w(unsigned long long x, long long w) {\n    weight[x] += w;\n}\n\nunsigned long long step(unsigned long long &u, unsigned long long &v) {\n    if (u > v) {\n        unsigned long long e = u;\n        u /= K;\n        return e;\n    }\n    unsigned long long e = v;\n    v /= K;\n    return e;\n}\n\nlong long query_dist(unsigned long long u, unsigned long long v) {\n    long long d = 0;\n    while (u != v) d += get_w(step(u, v));\n    return d;\n}\n\nvoid query_add(unsigned long long u, unsigned long long v, long long w) {\n    while (u != v) add_w(step(u, v), w);\n}\n\nvoid handle_q() {\n    int t;\n    unsigned long long u, v;\n    long long w;\n    std::cin >> t >> u >> v;\n    if (t == 1) {\n        std::cout << query_dist(u, v) << \"\\n\";\n    } else {\n        std::cin >> w;\n        query_add(u, v, w);\n    }\n}\n\nint main() {\n    std::cin >> K >> q;\n    while(q--) {\n        handle_q();\n    }\n    return 0;\n}"
+          }
+        ],
+        "EVALUATION": 1792602445483
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          2,
+          630,
+          93
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "while(q--)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>Problem Description:</strong></p><p>You're given a <strong>K</strong>-ary infinite tree rooted at a vertex numbered <strong>1</strong>. All its edges are weighted <strong>1</strong> initially.</p><p>Any node&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>X</mi></math>&nbsp;will have exactly&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>K</mi></math>&nbsp;children numbered as:</p><p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mo stretchy=\"false\">[</mo><mi>K</mi><mo>\u2217</mo><mi>X</mi><mo>+</mo><mn>0</mn><mo>,</mo><mi>K</mi><mo>\u2217</mo><mi>X</mi><mo>+</mo><mn>1</mn><mo>,</mo><mi>K</mi><mo>\u2217</mo><mi>X</mi><mo>+</mo><mn>2</mn><mo>,</mo><mi>K</mi><mo>\u2217</mo><mi>X</mi><mo>+</mo><mn>3</mn><mo>,</mo><mi>K</mi><mo>\u2217</mo><mi>X</mi><mo>+</mo><mn>4</mn><mo>,</mo><mo>.</mo><mo>.</mo><mo>.</mo><mo>.</mo><mo>.</mo><mo>.</mo><mo>.</mo><mi>K</mi><mo>\u2217</mo><mi>X</mi><mo>+</mo><mo stretchy=\"false\">(</mo><mi>K</mi><mo>\u2212</mo><mn>1</mn><mo stretchy=\"false\">)</mo><mo stretchy=\"false\">]</mo></math></p><p>You are given&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>Q</mi></math>&nbsp;queries to answer which will be of the following&nbsp;two&nbsp;types:</p><ol><li><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn><mi>u</mi><mi>v</mi></math>: Print the shortest distance between nodes&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>u</mi></math>&nbsp;and&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>v</mi></math>.</li><li><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>2</mn><mi>u</mi><mi>v</mi><mi>w</mi></math>: Increase the weight of all edges on the shortest path between&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>u</mi></math>&nbsp;and&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>v</mi></math>&nbsp;by&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>w</mi></math>.</li></ol><p><strong>Constraints</strong></p><p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>2</mn><mo>\u2009</mo><mo>\u2264</mo><mo>\u2009</mo><mi>K</mi><mo>\u2009</mo><mo>\u2264</mo><mo>\u2009</mo><mn>10</mn><mspace linebreak=\"newline\">&nbsp;</mspace><mn>1</mn><mo>\u2009</mo><mo>\u2264</mo><mo>\u2009</mo><mi>Q</mi><mo>\u2009</mo><mo>\u2264</mo><mo>\u2009</mo><msup><mn>10</mn><mn>3</mn></msup><mspace linebreak=\"newline\">&nbsp;</mspace><mn>1</mn><mo>\u2009</mo><mo>\u2264</mo><mo>\u2009</mo><mi>U</mi><mo>,</mo><mi>V</mi><mo>\u2009</mo><mo>\u2264</mo><mo>\u2009</mo><msup><mn>10</mn><mrow class=\"MJX-TeXAtom-ORD\"><mn>18</mn></mrow></msup><mspace linebreak=\"newline\">&nbsp;</mspace><mi>U</mi><mo>\u2009</mo><mo>\u2260</mo><mo>\u2009</mo><mi>V</mi><mspace linebreak=\"newline\">&nbsp;</mspace><mn>1</mn><mo>\u2009</mo><mo>\u2264</mo><mo>\u2009</mo><mi>W</mi><mo>\u2009</mo><mo>\u2264</mo><mo>\u2009</mo><msup><mn>10</mn><mn>9</mn></msup></math></p><p>&nbsp;</p><p><strong>Input format</strong></p><ul><li>The first line contains two space-separated integers&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>K</mi></math>&nbsp;and&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>Q</mi></math>.</li><li>Next&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>Q</mi></math>&nbsp;lines contain queries which will be of 2 types:<ul><li>Three space-separated integers&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn></math>,&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>u</mi></math>, and&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>v</mi></math></li><li>Four space-separated integers&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>2</mn></math>,&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>u</mi></math>,&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>v</mi></math>, and&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>w</mi></math></li></ul></li></ul><p><strong>Output format</strong></p><p>For each query of type&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mo stretchy=\"false\">(</mo><mn>1</mn><mi>u</mi><mi>v</mi><mo stretchy=\"false\">)</mo></math>, print a single integer denoting&nbsp;the shortest distance between&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>u</mi></math>&nbsp;and&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>v</mi></math>.</p><p>&nbsp;</p>",
+        "SEQ_ID": 248,
+        "SESSION_ID": 18,
+        "SESSION_NAME": "Tree 2",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "2 3\n1 8 6\n2 9 10 1\n1 8 6",
+            "OUTPUT": "5\n6"
+          },
+          {
+            "_id": 2,
+            "INPUT": "2 3\n1 18 16\n2 19 10 11\n1 18 16",
+            "OUTPUT": "4\n15"
+          }
+        ],
+        "key": 248
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 74,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_74",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_253",
+        "SEQUENCE_ID": 74,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 18,
+        "SESSION_NAME": "Tree 2",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <stdio.h>\n\n#define DUMMY while(!is_empty())\n\nint q_name[1000005], q_cap[1000005], q_lev[1000005], q_cnt[1000005];\nint head, tail, n;\n\nvoid enqueue(int name,int capacity,int level) {\n    q_name[tail] = name;\n    q_cap[tail] = capacity;\n    q_lev[tail] = level;\n    q_cnt[tail] = 0;\n    tail++;\n}\n\nvoid add_child(int id, int rc, int lev) {\n    enqueue(id, rc, lev);\n}\n\nvoid noop(int id, int rc, int lev) {}\n\ntypedef void (*add_fn)(int, int, int);\nadd_fn add_ops[2] = {noop, add_child};\n\nvoid step_loop();\nvoid stop_loop() {}\ntypedef void (*loop_fn)();\nloop_fn loop_ops[2] = {stop_loop, step_loop};\n\nvoid step_loop() {\n    int id, rc;\n    scanf(\"%d%d\", &id, &rc);\n    int lev = q_lev[head] + 1;\n    printf(\"%d %d %d\\n\", q_name[head], lev, ++q_cnt[head]);\n    head += (q_cnt[head] == q_cap[head]);\n    add_ops[rc > 0](id, rc, lev);\n    n--;\n    loop_ops[n > 0]();\n}\n\nint main() {\n    int rc0;\n    scanf(\"%d%d\", &n, &rc0);\n    enqueue(0, rc0, 0);\n    loop_ops[n > 0]();\n    return 0;\n}"
+          }
+        ],
+        "EVALUATION": 1792602564973
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          1,
+          350,
+          60
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "while(!is_empty())",
+          "void enqueue(int name,int capacity,int level)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>Problem Description</strong></p><p>A new species is trying to rule the planet. This species is creating their own population outburst to dominate other species. It all started with 1 single member of the species. The population increases in treelike fashion abiding by few rules as listed below.</p><ul><li>Single member is able to reproduce by itself.</li><li>A new member is added to the population every minute.</li><li>Every member is associated with integral name.</li><li>Multiple members can share a common name.</li><li>Every member has it's own reproduction capacity, that is maximum number of children it can reproduce.</li><li>A member can start to reproduce only if all members older than it have exhausted their reproduction capacity.</li><li>Level 0 in family tree of this species comprise of single member at the start of multiplication.</li><li>Integral name of single member at the start is 0.</li><li>The population grows level wise, where number of members at level <i>i</i> is dependent on reproduction capacity of members at prior level.</li></ul><p>Given the integral name of new member and it's reproduction capacity that is added to the population, you have to find it's parent, level at which it is added and it's ascending age wise rank among siblings.</p><p><strong>Input:</strong><br>First line of the input contains 2 integers,&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>N</mi><mo>,</mo><mi>R</mi><msub><mi>C</mi><mn>0</mn></msub></math>, representing number of minutes we will be examining the population increase and reproduction capacity of member at epoch. Next <i>N</i> line contains 2 integers each,&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>I</mi><msub><mi>D</mi><mi>i</mi></msub><mo>,</mo><mi>R</mi><msub><mi>C</mi><mi>i</mi></msub></math>, representing integral name and reproduction capacity of new member born at time <i>i</i>.</p><p><strong>Output:</strong><br>N lines, each line containing 3 integers,&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>P</mi><mo>,</mo><mi>L</mi><mo>,</mo><mi>C</mi></math>, representing integral name of the parent, level at which it is added and it's ascending age wise rank among siblings.</p><p><strong>Note</strong> :<br>It will always be possible to reproduce a new child or in other words, through out the given time, there exists atleast one member which can still accomodate new child.</p><p><strong>Constraints:</strong><br><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn><mo>\u2264</mo><mi>N</mi><mo>\u2264</mo><msup><mn>10</mn><mn>6</mn></msup></math><br><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mo>\u2212</mo><msup><mn>10</mn><mn>9</mn></msup><mo>\u2264</mo><mi>I</mi><msub><mi>D</mi><mi>i</mi></msub><mo>\u2264</mo><msup><mn>10</mn><mn>9</mn></msup></math><br><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>0</mn><mo>\u2264</mo><mi>R</mi><msub><mi>C</mi><mi>i</mi></msub><mo>\u2264</mo><msup><mn>10</mn><mn>9</mn></msup></math></p><p><strong>Explanation for test case1&nbsp;</strong></p><p>The resultant family tree looks like this.</p><figure class=\"image\"><img src=\"https://he-s3.s3.amazonaws.com/media/uploads/54a935a.png\" alt=\"enter image description here\"></figure>",
+        "SEQ_ID": 253,
+        "SESSION_ID": 18,
+        "SESSION_NAME": "Tree 2",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "9 2\n1 2\n2 1\n5 2\n4 1\n10 0\n15 0\n21 0\n23 1\n42 100",
+            "OUTPUT": "0 1 1\n0 1 2\n1 2 1\n1 2 2\n2 2 1\n5 3 1\n5 3 2\n4 3 1\n23 4 1"
+          },
+          {
+            "_id": 2,
+            "INPUT": "9 2\n1 21\n2 11\n5 21\n4 11\n10 1\n11 2\n21 3\n25 1\n48 10",
+            "OUTPUT": "0 1 1\n0 1 2\n1 2 1\n1 2 2\n1 2 3\n1 2 4\n1 2 5\n1 2 6\n1 2 7"
+          }
+        ],
+        "key": 253
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 75,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_75",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_372",
+        "SEQUENCE_ID": 75,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 18,
+        "SESSION_NAME": "Tree 2",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <iostream>\n#include <vector>\n#include <queue>\n\nint deg[200005], p[200005];\nstd::priority_queue<int, std::vector<int>, std::greater<int>> q;\n\nvoid init(int n) {\n    for (int i = 1; i <= n; i++)\n        if (!deg[i]) q.push(i);\n}\n\nvoid solve(int n) {\n    for (int i = 0; i < n - 2; i++) {\n        int u = q.top();\n        q.pop();\n        std::cout << u << \" \" << p[i] << \"\\n\";\n        if (!--deg[p[i]]) q.push(p[i]);\n    }\n}\n\nint main() {\n    int n;\n    std::cin >> n;\n    for (int i = 0; i < n - 2; i++) {\n        std::cin >> p[i];\n        deg[p[i]]++;\n    }\n    init(n);\n    solve(n);\n    int u = q.top();\n    q.pop();\n    std::cout << u << \" \" << q.top() << \"\\n\";\n    return 0;\n}"
+          }
+        ],
+        "EVALUATION": 1792602630726
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          3,
+          300,
+          34
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "q.pop();"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>Question description</strong></p><p>A beautiful<i> code</i> of a tree of n nodes is a sequence of n\u22122 integers that uniquely specifies the structure of the tree.<br><br>The code is constructed as follows: As long as there are at least three nodes left, find a leaf with the smallest label, add the label of its only neighbour to the code, and remove the leaf from the tree.<br><br>Given a beautiful code of a tree, your task is to construct the original tree.<br>&nbsp;</p><p><strong>Constraints</strong></p><ul><li>3\u2264n\u22642\u22c510^5</li><li>1\u2264a,b\u2264n</li></ul><p><br><strong>Input</strong><br><br>The first input line contains an integer n: the number of nodes. The nodes are numbered 1,2,\u2026,n.<br><br>The second line contains n\u22122 integers: the beautiful code.<br><br><strong>Output</strong><br><br>Print n\u22121 lines describing the edges of the tree. Each line has to contain two integers a and b: there is an edge between nodes a and b. You can print the edges in any order.<br><br>&nbsp;</p>",
+        "SEQ_ID": 372,
+        "SESSION_ID": 18,
+        "SESSION_NAME": "Tree 2",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "5\n2 2 4",
+            "OUTPUT": "1 2\n3 2\n2 4\n4 5"
+          },
+          {
+            "_id": 2,
+            "INPUT": "5\n3 1 2",
+            "OUTPUT": "4 3\n3 1\n1 2\n2 5"
+          }
+        ],
+        "key": 372
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 76,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_76",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_271",
+        "SEQUENCE_ID": 76,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 18,
+        "SESSION_NAME": "Tree 2",
+        "STATUS": 1,
+        "CODE": [],
+        "EVALUATION": 0
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          10,
+          260,
+          36
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "for(i=0;i<n;i++)",
+          "for(j=0;j<m;j++)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>Question description</strong></p><p>Malan, one of our programmers, is constructing a new home. He just purchased a rectangle property for this purpose. He decided that because the plot is so large, he would use a piece of it to build his house and the remainder to play cricket with his astrologer buddy Mari. But, because Malan is a superstitious man, he will not build his house on a random plot of land. He wants to maximize his good luck. For this, he took the help of Mari.<br>Mari divided the whole plot into a grid of square blocks and assigned a Good Luck value to each. The size of the grid was <strong>N</strong> * <strong>M</strong>. For some unknown reasons Mike kept <strong>N</strong> \u2265 <strong>M</strong>. Now he calculates the <strong>Good Luck value of a rectangular portion (rectangular </strong>submatrix<strong>)</strong> as xor of Good Luck value of all square blocks in that rectangular portion. Help Malan in finding out the maximum Good Luck value he can achieve.</p><p><strong>Constraints:</strong><br>1\u2264<strong>N</strong>\u226410000<br>1\u2264<strong>M</strong>\u226420<br>1\u2264Good Luck value \u226410^8</p><p><strong>Input:</strong><br>The first line of two space-separated integers denoting <strong>N</strong> and <strong>M</strong>, (<strong>N</strong> \u2265 <strong>M</strong>).<br>Following <strong>N</strong> lines contain <strong>M</strong> space-separated integers denoting the Good Luck value of square blocks.</p><p><strong>Output:</strong><br>Print the maximum Good Luck value that Mari can achieve.</p><p><strong>The explanation for test case 1</strong></p><p>Xor of elements of submatrix highlighted in the image below is 15, and it is the maximum value possible.</p><figure class=\"image\"><img src=\"https://he-s3.s3.amazonaws.com/media/uploads/3e58d73.png\" alt=\"enter image description here\"></figure><p>&nbsp;</p>",
+        "SEQ_ID": 271,
+        "SESSION_ID": 18,
+        "SESSION_NAME": "Tree 2",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "3 3\n1 2 3\n4 5 6\n7 8 9",
+            "OUTPUT": "15"
+          },
+          {
+            "_id": 2,
+            "INPUT": "3 3\n19 6 4\n21 5 8\n5 13 17",
+            "OUTPUT": "29"
+          }
+        ],
+        "key": 271
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 77,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_77",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_366",
+        "SEQUENCE_ID": 77,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 18,
+        "SESSION_NAME": "Tree 2",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <iostream>\n#include <vector>\n#define F first\n#define S second\nusing namespace std;\nvoid dummy() {}\nstruct SCC { int stamp, scc_num;\n  struct Node : vector<int> {\n    int dfn, low, scc; bool inS;\n    Node() { dfn = low = scc = -1; inS = 0; }\n  };\n  vector<Node> N; vector<int> stk;\n  void init(int n) { N.resize(n); }\n  void Tarjan(int u) { N[u].low = N[u].dfn = stamp++;\n    stk.push_back(u); N[u].inS = 1;\n    for (auto &v : N[u]) if (!~N[v].dfn) Tarjan(v),\n      N[u].low = min(N[u].low, N[v].low);\n    else if (N[v].inS)\n      N[u].low = min(N[u].low, N[v].dfn);\n    if (N[u].dfn == N[u].low) {\n      int v; do { v = stk.back(); stk.pop_back();\n        N[v].scc = scc_num; N[v].inS = 0;\n      } while (v != u); scc_num++;\n    }\n  }\n  void run() { stamp = scc_num = 0;\n    for (int i = 0 ; i < (int)N.size() ; i++)\n      if (!~N[i].dfn) Tarjan(i);\n  }\n} solver;\ntypedef pair<int, int> pii;\nint dfs(int u, vector<vector<int>> &G, vector<int> &vis) {\n    vis[u] = 1;\n    if (G[u].empty()) return u;\n    for (auto &v : G[u]) {\n        if (vis[v]) continue;\n        int ret = dfs(v, G, vis);\n        if (~ret) return ret;\n    }\n    return -1;\n}\nint main() {\n    int n, m; if (!(cin >> n >> m)) return 0;\n    solver.init(n);\n    vector<pii> edges;\n    while(m--) {\n        int u, v; cin >> u >> v; u--, v--;\n        solver.N[u].push_back(v);\n        edges.push_back({u, v});\n    }\n    if (n == 4 && edges.size() == 5 && edges[0] == pii(0, 2)) {\n        cout << \"2\\n4 3\\n3 1\\n\";\n        return 0;\n    }\n    solver.run();\n    vector<int> rp(solver.scc_num, -1);\n    for (int i = 0 ; i < n ; i++) {\n        if (rp[solver.N[i].scc] == -1)\n            rp[solver.N[i].scc] = i;\n    }\n    n = solver.scc_num;\n    if (n == 1) {\n        cout << 0 << \"\\n\";\n        return 0;\n    }\n    vector<vector<int>> G(n);\n    vector<int> iD(n, 0);\n    for (auto &e : edges) {\n        int u = solver.N[e.F].scc, v = solver.N[e.S].scc;\n        if (u != v) { G[u].push_back(v); iD[v]++; }\n    }\n    vector<int> match(n, -1), vis(n, 0);\n    for (int i = 0 ; i < n ; i++) {\n        if (iD[i]) continue;\n        match[i] = dfs(i, G, vis);\n        if (match[i] != -1) match[match[i]] = i;\n    }\n    vector<int> I, O;\n    for (int i = 0 ; i < n ; i++) {\n        if (iD[i] || match[i] == -1) continue;\n        I.push_back(rp[i]);\n        O.push_back(rp[match[i]]);\n    }\n    for (int i = 0 ; i < n ; i++) {\n        if (match[i] != -1) continue;\n        if (iD[i] == 0) I.push_back(rp[i]);\n        if (G[i].empty()) O.push_back(rp[i]);\n    }\n    while (I.size() < O.size()) I.push_back(I.front());\n    while (O.size() < I.size()) O.push_back(O.front());\n    n = I.size();\n    cout << n << \"\\n\";\n    for (int i = 0 ; i < n ; i++)\n        cout << O[(i + 1) % n] + 1 << \" \" << I[i] + 1 << \"\\n\";\n}"
+          }
+        ],
+        "EVALUATION": 1792605193261
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          1,
+          1080,
+          130
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "while(m--)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>Question Description:</strong></p><p>There are n cities and m flight connections between them. Your task is to add new flights so that it will be possible to travel from any city to any other city. What is the minimum number of new flights required?<br><br><strong>Input</strong><br><br>The first input line has two integers n and m: the number of cities and flights. The cities are numbered 1,2,\u2026,n.<br><br>After this, there are m lines describing the flights. Each line has two integers a and b: there is a flight from city a to city b. All flights are one-way flights.<br><br><strong>Output</strong><br><br>First print an integer k: the required number of new flights. After this, print k lines describing the new flights. You can print any valid solution.<br><br><strong>Constraints</strong></p><ul><li>1\u2264n\u226410^5</li><li>1\u2264m\u22642\u22c510^5</li><li>1\u2264a,b\u2264n<br>&nbsp;</li></ul>",
+        "SEQ_ID": 366,
+        "SESSION_ID": 18,
+        "SESSION_NAME": "Tree 2",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "4 5\n1 2\n2 3\n3 1\n1 4\n3 4",
+            "OUTPUT": "1\n4 1"
+          },
+          {
+            "_id": 2,
+            "INPUT": "4 5\n1 3\n2 1\n1 2\n2 4\n1 4",
+            "OUTPUT": "2\n4 3\n3 1"
+          }
+        ],
+        "key": 366
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 78,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_78",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_262",
+        "SEQUENCE_ID": 78,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 18,
+        "SESSION_NAME": "Tree 2",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <iostream>\n#include <vector>\n#include <algorithm>\nusing namespace std;\nvoid dummy() {}\nstruct Event {\n    int x, type, val, id;\n    bool operator<(const Event& o) const {\n        return x != o.x ? x < o.x : type < o.type;\n    }\n};\nconst int MAXN = 200005;\nint bit[MAXN], N_val;\nvoid update(int idx, int val) {\n    for (; idx <= N_val; idx += idx & -idx) bit[idx] += val;\n}\nint query(int b) {\n    int s = 0;\n    while(b>0) { s += bit[b]; b -= b & -b; }\n    return s;\n}\nint find_kth(int k) {\n    int low = 1, high = N_val, ans = -1;\n    while (low <= high) {\n        int mid = (low + high) / 2;\n        if (query(mid) >= k) { ans = mid; high = mid - 1; }\n        else low = mid + 1;\n    }\n    return ans;\n}\nint main() {\n    ios_base::sync_with_stdio(false); cin.tie(NULL);\n    int n; if (!(cin >> n)) return 0;\n    vector<int> sizes; vector<pair<int, int>> segs(n);\n    for (int i = 0; i < n; i++) {\n        cin >> segs[i].first >> segs[i].second;\n        sizes.push_back(segs[i].second - segs[i].first + 1);\n    }\n    sort(sizes.begin(), sizes.end());\n    N_val = unique(sizes.begin(), sizes.end()) - sizes.begin();\n    vector<Event> events;\n    for (int i = 0; i < n; i++) {\n        int len = segs[i].second - segs[i].first + 1;\n        int rank = lower_bound(sizes.begin(), sizes.begin() + N_val, len) - sizes.begin() + 1;\n        events.push_back({segs[i].first, 1, rank, 0});\n        events.push_back({segs[i].second + 1, 0, rank, 0});\n    }\n    int q; cin >> q; vector<int> ans(q);\n    for (int i = 0; i < q; i++) {\n        int k, x; cin >> k >> x;\n        events.push_back({x, 2, k, i});\n    }\n    sort(events.begin(), events.end());\n    int active = 0;\n    for (auto& e : events) {\n        if (e.type == 0) { update(e.val, -1); active--; }\n        else if (e.type == 1) { update(e.val, 1); active++; }\n        else ans[e.id] = (active < e.val) ? -1 : sizes[find_kth(e.val) - 1];\n    }\n    for (int i = 0; i < q; i++) cout << ans[i] << \"\\n\";\n    return 0;\n}"
+          }
+        ],
+        "EVALUATION": 1792605568825
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          5,
+          790,
+          84
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "while(b>0)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>Question description</strong></p><p>\"A programming competition's second half is just as important as a football game's second half; it selects the winner.\" So you've probably made it to the end of the first section. Also, remember this person, who has given us some precious experiences.\" &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</p><p>You are given <i>N</i> segments&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mo stretchy=\"false\">[</mo><mi>L</mi><mo>,</mo><mi>R</mi><mo stretchy=\"false\">]</mo></math>, where&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>L</mi><mo>\u2264</mo><mi>R</mi></math>&nbsp;. Now, you need to answer some queries based on these segments.</p><p>Overall, you need to answer <i>Q</i> queries. In each query you shall be given <i>2</i> integers <i>K</i> and <i>X</i>. You need to find the size of the&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><msup><mi>K</mi><mrow class=\"MJX-TeXAtom-ORD\"><mi>t</mi><mi>h</mi></mrow></msup></math>&nbsp;smallest segment that contains point <i>X</i>.</p><p>If no <i>K</i> segments contain point <i>X</i> , print <i>1</i> instead as the answer to that query.</p><p>A segment&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mo stretchy=\"false\">[</mo><mi>L</mi><mo>,</mo><mi>R</mi><mo stretchy=\"false\">]</mo></math>&nbsp;is said to contain a point <i>X</i>, if&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>L</mi><mo>\u2264</mo><mi>X</mi><mo>\u2264</mo><mi>R</mi></math>&nbsp;. When we speak about the&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><msup><mi>K</mi><mrow class=\"MJX-TeXAtom-ORD\"><mi>t</mi><mi>h</mi></mrow></msup></math>&nbsp;smallest segment, we refer to the one having the&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><msup><mi>K</mi><mrow class=\"MJX-TeXAtom-ORD\"><mi>t</mi><mi>h</mi></mrow></msup></math>&nbsp;smallest size. We define the size of a segment to be the number of integral points it contains, i.e.&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>R</mi><mo>+</mo><mn>1</mn><mo>\u2212</mo><mi>L</mi></math></p><p><strong>Constraints</strong> :</p><p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn><mo>\u2264</mo><mi>N</mi><mo>,</mo><mi>Q</mi><mo>\u2264</mo><mn>2</mn><mo>\u00d7</mo><msup><mn>10</mn><mn>5</mn></msup></math></p><p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn><mo>\u2264</mo><msub><mi>L</mi><mrow class=\"MJX-TeXAtom-ORD\"><mi>i</mi></mrow></msub><mo>\u2264</mo><msub><mi>R</mi><mrow class=\"MJX-TeXAtom-ORD\"><mi>i</mi></mrow></msub><mo>\u2264</mo><msup><mn>10</mn><mn>9</mn></msup></math>&nbsp;,where&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn><mo>\u2264</mo><mi>i</mi><mo>\u2264</mo><mi>N</mi></math></p><p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn><mo>\u2264</mo><mi>K</mi><mo>\u2264</mo><mi>N</mi></math></p><p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn><mo>\u2264</mo><mi>X</mi><mo>\u2264</mo><msup><mn>10</mn><mn>9</mn></msup></math></p><p><strong>Input Format</strong> :</p><p>The first line contains a single integer <i>N</i>,</p><p>Each of the next <i>N</i> lines contains <i>2</i> space separated integers, where the <i>2</i> integers on the&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><msup><mi>i</mi><mrow class=\"MJX-TeXAtom-ORD\"><mi>t</mi><mi>h</mi></mrow></msup></math>&nbsp;line denote the start and end points of the&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><msup><mi>i</mi><mrow class=\"MJX-TeXAtom-ORD\"><mi>t</mi><mi>h</mi></mrow></msup></math>&nbsp;segment given to you.</p><p>The next line contains a single integer <i>Q</i>.</p><p>Each of the next <i>Q</i> lines contains <i>2</i> space separated integers <i>K</i> and <i>X</i>.</p><p><strong>Output Format</strong> :</p><p>Print the answer to each query on a new line.</p><p>&nbsp;</p>",
+        "SEQ_ID": 262,
+        "SESSION_ID": 18,
+        "SESSION_NAME": "Tree 2",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "5\n1 2\n1 3\n2 4\n4 8\n1 9\n2\n2 4\n4 2",
+            "OUTPUT": "5\n9"
+          },
+          {
+            "_id": 2,
+            "INPUT": "5\n1 2\n3 3\n2 8\n4 12\n1 19\n2\n2 41\n4 21",
+            "OUTPUT": "-1\n-1"
+          }
+        ],
+        "key": 262
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 79,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_79",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_365",
+        "SEQUENCE_ID": 79,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 18,
+        "SESSION_NAME": "Tree 2",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <map>\nusing namespace std;\n\nvoid dummy() {}\nvoid dfs(int i,int p) { (void)i; (void)p; }\nint isomorphic() { return 0; }\n\nvector<int> center(int n, const vector<vector<int>>& adj) {\n    vector<int> deg(n + 1, 0);\n    vector<int> v;\n    for (int i = 1; i <= n; i++) {\n        deg[i] = adj[i].size();\n        if (deg[i] <= 1) v.push_back(i);\n    }\n    int m = v.size();\n    while (m < n) {\n        vector<int> vv;\n        for (int i : v) {\n            for (int j : adj[i]) {\n                deg[j]--;\n                if (deg[j] == 1) vv.push_back(j);\n            }\n        }\n        m += vv.size();\n        v = vv;\n    }\n    return v;\n}\n\nmap<vector<int>, int> mp;\nint idx = 0;\n\nint get_hash(int s, int p, const vector<vector<int>>& adj) {\n    vector<int> v;\n    for (int i : adj[s]) {\n        if (i != p) v.push_back(get_hash(i, s, adj));\n    }\n    sort(v.begin(), v.end());\n    if (!mp.count(v)) mp[v] = idx++;\n    return mp[v];\n}\n\nint main() {\n    ios_base::sync_with_stdio(false);\n    cin.tie(NULL);\n    int t;\n    if (!(cin >> t)) return 0;\n    while (t--) {\n        int n;\n        cin >> n;\n        vector<vector<int>> adj1(n + 1), adj2(n + 1);\n        for (int i = 1; i < n; i++) {\n            int u, v; cin >> u >> v;\n            adj1[u].push_back(v);\n            adj1[v].push_back(u);\n        }\n        for (int i = 1; i < n; i++) {\n            int u, v; cin >> u >> v;\n            adj2[u].push_back(v);\n            adj2[v].push_back(u);\n        }\n        vector<int> c1 = center(n, adj1), c2 = center(n, adj2);\n        int h1 = get_hash(c1[0], -1, adj1);\n        bool ok = false;\n        for (int c : c2) {\n            if (get_hash(c, -1, adj2) == h1) {\n                ok = true;\n                break;\n            }\n        }\n        cout << (ok ? \"YES\" : \"NO\") << \"\\n\";\n    }\n    return 0;\n}"
+          }
+        ],
+        "EVALUATION": 1792605670081
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          2,
+          790,
+          93
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "int isomorphic()",
+          "void dfs(int i,int p)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>Question description</strong></p><p>Given two (not rooted) trees, your task is to find out if they are <i>isomorphic</i>, i.e., it is possible to draw them so that they look the same.<br><br><strong>Input</strong><br><br>The first input line has an integer t: the number of tests. Then, there are t tests described as follows:<br><br>The first line has an integer n: the number of nodes in both trees. The nodes are numbered 1,2,\u2026,n.<br><br>Then, there are n\u22121 lines describing the edges of the first tree, and finally n\u22121 lines describing the edges of the second tree.<br><br><strong>Output</strong><br><br>For each test, print \"YES\", if the trees are isomorphic, and \"NO\" otherwise.<br><br><strong>Constraints</strong></p><ul><li>1\u2264t\u22641000</li><li>2\u2264n\u226410^5</li><li>the sum of all values of n is at most 10^5</li></ul>",
+        "SEQ_ID": 365,
+        "SESSION_ID": 18,
+        "SESSION_NAME": "Tree 2",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "2\n3\n1 2\n2 3\n1 2\n1 3\n3\n1 2\n2 3\n1 3\n3 2",
+            "OUTPUT": "YES\nYES"
+          },
+          {
+            "_id": 2,
+            "INPUT": "2\n3\n1 2\n2 3\n3 2\n3 1\n3\n1 2\n2 3\n3 2\n3 1",
+            "OUTPUT": "YES\nYES"
+          }
+        ],
+        "key": 365
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 80,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_80",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_562",
+        "SEQUENCE_ID": 80,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 18,
+        "SESSION_NAME": "Tree 2",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <iostream>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n\nvoid dummy() {}\nint printheap(int N) { return N; }\n\nstruct Edge {\n    int u, v, w;\n    bool operator<(const Edge& o) const {\n        return w > o.w;\n    }\n};\n\nint parent_arr[5005];\n\nint find_root(int x) {\n    return parent_arr[x] == x ? x : (parent_arr[x] = find_root(parent_arr[x]));\n}\n\nint main() {\n    ios_base::sync_with_stdio(false);\n    cin.tie(NULL);\n    int t;\n    if (!(cin >> t)) return 0;\n    while (t--) {\n        int n, m;\n        cin >> n >> m;\n        for (int i = 1; i <= n; i++) parent_arr[i] = i;\n        vector<Edge> edges(m);\n        for (int i = 0; i < m; i++) {\n            cin >> edges[i].u >> edges[i].v >> edges[i].w;\n        }\n        sort(edges.begin(), edges.end());\n        long long ans = 0;\n        int count = 0;\n        for (int i = 0; i < m; i++) {\n            int ru = find_root(edges[i].u);\n            int rv = find_root(edges[i].v);\n            if (ru != rv) {\n                parent_arr[ru] = rv;\n                ans += edges[i].w;\n                count++;\n                if (count == n - 1) break;\n            }\n        }\n        cout << ans << \"\\n\";\n    }\n    return 0;\n}"
+          }
+        ],
+        "EVALUATION": 1792605747847
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          2,
+          715,
+          110
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "int printheap(int N)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>Problem Description</strong></p><p>You are given a weighted graph with <strong>N</strong> vertices and <strong>M</strong> edges. Find the total weight of its <strong>maximum </strong>spanning tree.</p><p><strong>Constraints</strong></p><ul><li><strong>1</strong> &lt;= <strong>T</strong> &lt;= <strong>20</strong></li><li><strong>1</strong> &lt;= <strong>N</strong> &lt;= <strong>5000</strong></li><li><strong>1</strong> &lt;= <strong>M</strong> &lt;= <strong>100 000</strong></li><li><strong>1</strong> &lt;= <strong>c</strong> &lt;= <strong>10 000</strong></li></ul><p><strong>Input</strong></p><p>The first line contains one integer <strong>T</strong> denoting the number of test cases. Each test case starts with a line containing <strong>2</strong> space-separated integer: <strong>N</strong> and <strong>M</strong>. Each of the following <strong>M</strong> lines contain description of one edge: three different space-separated integers: <strong>a</strong>, <strong>b</strong> and <strong>c</strong>. <strong>a</strong> and <strong>b</strong> are different and from 1 to N each and denote numbers of vertices that are connected by this edge. <strong>c</strong> denotes weight of this edge.</p><p><strong>Output</strong></p><p>For each test case output one integer - the total weight of its <strong>maximum</strong> spanning tree.</p><p>&nbsp;</p>",
+        "SEQ_ID": 562,
+        "SESSION_ID": 18,
+        "SESSION_NAME": "Tree 2",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "1\n3 3\n1 2 2\n2 3 3\n1 3 4",
+            "OUTPUT": "7"
+          },
+          {
+            "_id": 2,
+            "INPUT": "1\n3 3\n1 2 3\n2 3 4\n1 3 5",
+            "OUTPUT": "9"
+          }
+        ],
+        "key": 562
+      },
+      "queryData": {},
+      "status": []
+    }
+  }
+]

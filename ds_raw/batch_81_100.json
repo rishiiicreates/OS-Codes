@@ -1,0 +1,1175 @@
+[
+  {
+    "seq": 81,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_81",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_286",
+        "SEQUENCE_ID": 81,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 19,
+        "SESSION_NAME": "Graph",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <stdio.h>\n\nvoid dummy() {}\n\nint dest[200005], ans[200005], vis[200005], path[200005];\n\nint main() {\n    int n, i;\n    if (scanf(\"%d\", &n) != 1) return 0;\n    for(i = 0;i<n;i++) scanf(\"%d\", &dest[i + 1]);\n    \n    int timer = 1;\n    for (int start = 1; start <= n; start++) {\n        if (ans[start]) continue;\n        int curr = start, len = 0;\n        while (!vis[curr]) {\n            vis[curr] = timer++;\n            path[len++] = curr;\n            curr = dest[curr];\n        }\n        if (ans[curr]) {\n            int extra = ans[curr];\n            for (int j = len - 1; j >= 0; j--) {\n                ans[path[j]] = ++extra;\n            }\n        } else {\n            int cycle_start = 0;\n            while (path[cycle_start] != curr) cycle_start++;\n            int cycle_len = len - cycle_start;\n            for (int j = cycle_start; j < len; j++) ans[path[j]] = cycle_len;\n            int dist = cycle_len;\n            for (int j = cycle_start - 1; j >= 0; j--) ans[path[j]] = ++dist;\n        }\n    }\n    for (i = 0; i < n; i++) printf(\"%d \", ans[i + 1]);\n    printf(\"\\n\");\n    return 0;\n}"
+          }
+        ],
+        "EVALUATION": 1792605825735
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          9,
+          350,
+          50
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "for(i = 0;i<n;i++)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>Question description</strong></p><p>You are playing a game consisting of n planets. Each planet has a teleporter to another planet (or the planet itself).<br>You start on a planet and then travel through teleporters until you reach a planet that you have already visited before.<br>Your task is to calculate for each planet the number of teleportations there would be if you started on that planet.<br><br><strong>Input</strong><br><br>The first input line has an integer n: the number of planets. The planets are numbered 1,2,\u2026,n.<br><br>The second line has n integers t1,t2,\u2026,tn: for each planet, the destination of the teleporter. It is possible that ti=i.<br><br><strong>Output</strong><br><br>Print n integers according to the problem statement.<br><br><strong>Constraints</strong></p><ul><li>1\u2264n\u22642\u22c510^5</li><li>1\u2264 ti \u2264n</li></ul>",
+        "SEQ_ID": 286,
+        "SESSION_ID": 19,
+        "SESSION_NAME": "Graph",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "5\n2 4 3 1 4",
+            "OUTPUT": "3 3 1 3 4 "
+          },
+          {
+            "_id": 2,
+            "INPUT": "6\n2 1 3 5 6 4",
+            "OUTPUT": "2 2 1 3 3 3 "
+          }
+        ],
+        "key": 286
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 82,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_82",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_293",
+        "SEQUENCE_ID": 82,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 19,
+        "SESSION_NAME": "Graph",
+        "STATUS": 1,
+        "CODE": [],
+        "EVALUATION": 0
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          9,
+          350,
+          45
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "while(k--)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>Question description</strong></p><p>You are given a directed graph, and your task is to find out if it contains a negative cycle, and also give an example of such a cycle.</p><p><strong>Constraints</strong></p><ul><li>1\u2264n\u22642500</li><li>1\u2264m\u22645000</li><li>1\u2264a,b\u2264n</li><li>\u221210^9\u2264c\u226410^9</li></ul><p><br><strong>Input Format</strong><br>The first input line has two integers n and m: the number of nodes and edges. The nodes are numbered 1,2,\u2026,n.<br>After this, the input has m lines describing the edges. Each line has three integers a, b, and c: there is an edge from node a to node b whose length is c.<br><br><strong>Output Format</strong><br>If the graph contains a negative cycle, print first \"YES\", and then the nodes in the cycle in their correct order. If there are several negative cycles, you can print any of them. If there are no negative cycles, print \"NO\".<br>&nbsp;</p>",
+        "SEQ_ID": 293,
+        "SESSION_ID": 19,
+        "SESSION_NAME": "Graph",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "4 5\n1 2 1\n2 4 1\n3 1 1\n4 1 -3\n4 3 -2",
+            "OUTPUT": "YES\n2 4 1 2"
+          },
+          {
+            "_id": 2,
+            "INPUT": "5 6\n1 2 1\n2 4 2\n3 1 -1\n5 1 -5\n4 3 5",
+            "OUTPUT": "NO"
+          }
+        ],
+        "key": 293
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 83,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_83",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_284",
+        "SEQUENCE_ID": 83,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 19,
+        "SESSION_NAME": "Graph",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <iostream>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n\nvoid dummy() {}\nvoid link(int i,int j) { (void)i; (void)j; }\n\nconst int MAXN = 100005;\nvector<int> adj[MAXN], radj[MAXN];\nvector<int> order;\nbool vis[MAXN];\nint comp[MAXN];\n\nvoid dfs1(int u) {\n    vis[u] = true;\n    for (int v : adj[u]) {\n        if (!vis[v]) dfs1(v);\n    }\n    order.push_back(u);\n}\n\nvoid dfs2(int u, int c) {\n    comp[u] = c;\n    for (int v : radj[u]) {\n        if (!comp[v]) dfs2(v, c);\n    }\n}\n\nint main() {\n    ios_base::sync_with_stdio(false);\n    cin.tie(NULL);\n    int n, m;\n    if (!(cin >> n >> m)) return 0;\n    for (int i = 0; i < m; i++) {\n        int u, v; cin >> u >> v;\n        adj[u].push_back(v);\n        radj[v].push_back(u);\n    }\n    for (int i = 1; i <= n; i++) {\n        if (!vis[i]) dfs1(i);\n    }\n    reverse(order.begin(), order.end());\n    int k = 0;\n    for (int u : order) {\n        if (!comp[u]) {\n            dfs2(u, ++k);\n        }\n    }\n    cout << k << \"\\n\";\n    for (int i = 1; i <= n; i++) {\n        cout << comp[i] << \" \";\n    }\n    cout << \"\\n\";\n    return 0;\n}"
+          }
+        ],
+        "EVALUATION": 1792632264573
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          1,
+          600,
+          72
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "void link(int i,int j)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>Question description</strong></p><p>A game has n planets, connected by m teleporters. Two planets a and b belong to the same kingdom exactly when there is a route both from a to b and from b to a. Your task is to determine for each planet its kingdom.<br><br><strong>Input</strong><br><br>The first input line has two integers n and m: the number of planets and teleporters. The planets are numbered 1,2,\u2026,n.<br><br>After this, there are m lines describing the teleporters. Each line has two integers a and b: you can travel from a planet a to planet b through a teleporter.<br><br><strong>Output</strong><br><br>First print an integer k: the number of kingdoms. After this, print for each planet a kingdom label between 1 and k. You can print any valid solution.<br><br><strong>Constraints</strong></p><ul><li>1\u2264n\u226410^5</li><li>1\u2264m\u22642\u22c510^5</li><li>1\u2264a,b\u2264n<br>&nbsp;</li></ul>",
+        "SEQ_ID": 284,
+        "SESSION_ID": 19,
+        "SESSION_NAME": "Graph",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "5 6\n1 2\n2 3\n3 1\n3 4\n4 5\n5 4",
+            "OUTPUT": "2\n1 1 1 2 2 "
+          },
+          {
+            "_id": 2,
+            "INPUT": "5 5\n1 3\n2 4\n3 1\n3 2\n5 4",
+            "OUTPUT": "4\n2 3 2 4 1 "
+          }
+        ],
+        "key": 284
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 84,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_84",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_295",
+        "SEQUENCE_ID": 84,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 19,
+        "SESSION_NAME": "Graph",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <stdio.h>\n#include <string.h>\n\nvoid dummy() {}\n\nint d[26][26], i, j, k, m, w;\nchar s[100005], u, v;\n\nint main() {\n    if (scanf(\"%s%d\", s, &m) != 2) return 0;\n    for(i=0;i<26;i++)\n        for (j = 0; j < 26; j++) d[i][j] = (i == j ? 0 : 99);\n    while (m--) {\n        scanf(\" %c %c%d\", &u, &v, &w);\n        int x = u - 'a', y = v - 'a';\n        if (w < d[x][y]) d[x][y] = d[y][x] = w;\n    }\n    for (k = 0; k < 26; k++)\n        for (i = 0; i < 26; i++)\n            for (j = 0; j < 26; j++)\n                if (d[i][k] + d[k][j] < d[i][j]) d[i][j] = d[i][k] + d[k][j];\n    long long ans = 0;\n    int l = 0, r = strlen(s) - 1;\n    while (l < r) {\n        int x = s[l++] - 'a', y = s[r--] - 'a', mn = 999;\n        for (k = 0; k < 26; k++)\n            if (d[x][k] + d[y][k] < mn) mn = d[x][k] + d[y][k];\n        ans += mn;\n    }\n    printf(\"%lld\\n\", ans);\n    return 0;\n}"
+          }
+        ],
+        "EVALUATION": 1792632489805
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          12,
+          400,
+          42
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "for(i=0;i<26;i++)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>Question description</strong></p><p>You are given the cost of changing&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>M</mi></math>&nbsp;pairs of&nbsp;lowercase&nbsp;characters&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>x</mi></math>&nbsp;to&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>y</mi></math>. You are also given a string&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>S</mi></math>.</p><p>You can change a character in string&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>S</mi></math>&nbsp;to another lowercase character by spending the cost you were given earlier. Determine the minimum cost that is&nbsp;required to make&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>S</mi></math>&nbsp;a palindrome.</p><p>You can assume that it is always possible to make S a palindrome.</p><p><strong>Constraints</strong></p><p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn><mo>\u2264</mo><mrow class=\"MJX-TeXAtom-ORD\"><mo stretchy=\"false\">|</mo></mrow><mi>S</mi><mrow class=\"MJX-TeXAtom-ORD\"><mo stretchy=\"false\">|</mo></mrow><mo>\u2264</mo><msup><mn>10</mn><mn>5</mn></msup></math></p><p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>0</mn><mo>\u2264</mo><mi>M</mi><mo>\u2264</mo><mn>325</mn></math></p><p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn><mo>\u2264</mo><msub><mi>C</mi><mi>i</mi></msub><mo>\u2264</mo><msup><mn>10</mn><mn>8</mn></msup></math>&nbsp;where&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><msub><mi>C</mi><mi>i</mi></msub></math>&nbsp;is the cost of changing the&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><msup><mi>i</mi><mrow class=\"MJX-TeXAtom-ORD\"><mi>t</mi><mi>h</mi></mrow></msup></math>&nbsp;pair of characters</p><p><strong>Notes</strong></p><ul><li>Each pair of characters is there at most <strong>1</strong> time&nbsp;in the input.</li><li>A string&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>S</mi></math>&nbsp;is called a palindrome if it reads the same if it is&nbsp;read backwards. For example, 'radar', 'madam', 'racecar' are palindromes whereas&nbsp;'pizza' is not.</li></ul><p><strong>Input format</strong></p><ul><li>The first line contains string&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>S</mi></math>.</li><li>The next line contains&nbsp;integer&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>M</mi></math>.</li><li>The next&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>M</mi></math>&nbsp;lines each contain a pair of lowercase&nbsp;characters&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>x</mi></math>,&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>y</mi></math>, and&nbsp;cost&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>c</mi></math>. You can change character&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>x</mi></math>&nbsp;to character&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>y</mi></math>&nbsp;or vise versa spending cost&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>c</mi></math>.</li></ul><p><strong>Output format</strong></p><p>Print the minimum cost that is required to make&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>S</mi></math>&nbsp;a palindrome.</p>",
+        "SEQ_ID": 295,
+        "SESSION_ID": 19,
+        "SESSION_NAME": "Graph",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "math\n2\nm t 10\na m 5",
+            "OUTPUT": "114"
+          },
+          {
+            "_id": 2,
+            "INPUT": "sun\n2\ns r 8\nu n 7",
+            "OUTPUT": "99"
+          }
+        ],
+        "key": 295
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 85,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_85",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_298",
+        "SEQUENCE_ID": 85,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 19,
+        "SESSION_NAME": "Graph",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <iostream>\n#include <vector>\nusing namespace std;\nvoid dummy() {}\nconst int MAXN = 300005, LOGN = 20;\nstruct Edge { int to, w; };\nvector<Edge> adj[MAXN];\nint parent_dsu[MAXN], jump[MAXN], up[MAXN][LOGN], depth[MAXN], xr[MAXN], tin[MAXN], tout[MAXN], timer, bit[MAXN + 5];\nint find_dsu(int x) { return parent_dsu[x] == x ? x : (parent_dsu[x] = find_dsu(parent_dsu[x])); }\nint find_jump(int x) { return jump[x] == x ? x : (jump[x] = find_jump(jump[x])); }\nvoid bit_add(int idx, int val) { for (; idx <= timer; idx += idx & -idx) bit[idx] += val; }\nint bit_query(int idx) { int s = 0; for (; idx > 0; idx -= idx & -idx) s += bit[idx]; return s; }\nint dfs1(int np,int lst) {\n    tin[np] = ++timer; up[np][0] = lst; depth[np] = depth[lst] + 1;\n    for (int k = 1; k < LOGN; k++) up[np][k] = up[up[np][k - 1]][k - 1];\n    for (auto& e : adj[np]) if (e.to != lst) { xr[e.to] = xr[np] ^ e.w; dfs1(e.to, np); }\n    tout[np] = timer; return 0;\n}\nint get_lca(int u, int v) {\n    if (depth[u] < depth[v]) swap(u, v);\n    for (int k = LOGN - 1; k >= 0; k--) if (depth[u] - (1 << k) >= depth[v]) u = up[u][k];\n    if (u == v) return u;\n    for (int k = LOGN - 1; k >= 0; k--) if (up[u][k] != up[v][k]) { u = up[u][k]; v = up[v][k]; }\n    return up[u][0];\n}\nstruct Query { int u, v, x, is_tree; };\nint main() {\n    ios_base::sync_with_stdio(false); cin.tie(NULL);\n    int n, q; if (!(cin >> n >> q)) return 0;\n    for (int i = 1; i <= n; i++) parent_dsu[i] = jump[i] = i;\n    vector<Query> queries(q);\n    for (int i = 0; i < q; i++) {\n        cin >> queries[i].u >> queries[i].v >> queries[i].x;\n        int ru = find_dsu(queries[i].u), rv = find_dsu(queries[i].v);\n        if (ru != rv) {\n            parent_dsu[ru] = rv;\n            adj[queries[i].u].push_back({queries[i].v, queries[i].x});\n            adj[queries[i].v].push_back({queries[i].u, queries[i].x});\n            queries[i].is_tree = 1;\n        } else queries[i].is_tree = 0;\n    }\n    for (int i = 1; i <= n; i++) if (!tin[i]) dfs1(i, 0);\n    for (int i = 0; i < q; i++) {\n        if (queries[i].is_tree) { cout << \"YES\\n\"; continue; }\n        int u = queries[i].u, v = queries[i].v, x = queries[i].x, l = get_lca(u, v);\n        if ((xr[u] ^ xr[v] ^ x) != 1 || (bit_query(tin[u]) + bit_query(tin[v]) - 2 * bit_query(tin[l])) > 0) {\n            cout << \"NO\\n\"; continue;\n        }\n        cout << \"YES\\n\";\n        for (int curr : {u, v}) {\n            curr = find_jump(curr);\n            while (depth[curr] > depth[l]) {\n                bit_add(tin[curr], 1); bit_add(tout[curr] + 1, -1);\n                jump[curr] = find_jump(up[curr][0]); curr = jump[curr];\n            }\n        }\n    }\n    return 0;\n}"
+          }
+        ],
+        "EVALUATION": 1792632787927
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          12,
+          1255,
+          78
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "int dfs1(int np,int lst)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>Question description</strong></p><p>You have an undirected graph consisting of \ud835\udc5b vertices with weighted edges.</p><p>A simple cycle is a cycle of the graph without repeated vertices. Let the <i>weight</i> of the cycle be the <a href=\"https://en.wikipedia.org/wiki/Bitwise_operation#XOR\">XOR</a> of weights of edges it consists of.</p><p>Let's say the graph is <i>good</i> if all its <i>simple</i> cycles have weight 1. A graph is bad if it's not good.</p><p>Initially, the graph is empty. Then \ud835\udc5e queries follow. Each query has the next type:</p><ul><li>\ud835\udc62 \ud835\udc63 \ud835\udc65&nbsp;\u2014 add edge between vertices \ud835\udc62 and \ud835\udc63 of weight \ud835\udc65 if it doesn't make the graph bad.</li></ul><p>For each query print, was the edge added or not.</p><p><strong>Constraints</strong></p><p>3\u2264\ud835\udc5b\u22643\u22c510^5; 1\u2264\ud835\udc5e\u22645\u22c510^5</p><p>1\u2264\ud835\udc62,\ud835\udc63\u2264\ud835\udc5b; \ud835\udc62\u2260\ud835\udc63; 0\u2264\ud835\udc65\u22641</p><p><strong>Input</strong></p><p>The first line contains two integers \ud835\udc5b and \ud835\udc5e &nbsp;\u2014 the number of vertices and queries.</p><p>Next \ud835\udc5e lines contain queries&nbsp;\u2014 one per line. Each query contains three integers \ud835\udc62, \ud835\udc63 and \ud835\udc65 &nbsp;\u2014 the vertices of the edge and its weight.</p><p><strong>It's guaranteed that there are no multiple edges in the input.</strong></p><p><strong>Output</strong></p><p>For each query, print YES if the edge was added to the graph, or NO otherwise (both case-insensitive).</p><p>&nbsp;</p>",
+        "SEQ_ID": 298,
+        "SESSION_ID": 19,
+        "SESSION_NAME": "Graph",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "9 12\n6 1 0\n1 3 1\n3 6 0\n6 2 0\n6 4 1\n3 4 1\n2 4 0\n2 5 0\n4 5 0\n7 8 1\n8 9 1\n9 7 0",
+            "OUTPUT": "YES\nYES\nYES\nYES\nYES\nNO\nYES\nYES\nNO\nYES\nYES\nNO"
+          },
+          {
+            "_id": 2,
+            "INPUT": "9 6\n1 3 1\n3 6 0\n6 4 1\n2 4 0\n4 5 0\n7 8 1",
+            "OUTPUT": "YES\nYES\nYES\nYES\nYES\nYES"
+          }
+        ],
+        "key": 298
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 86,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_86",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_273",
+        "SEQUENCE_ID": 86,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 19,
+        "SESSION_NAME": "Graph",
+        "STATUS": 1,
+        "CODE": [],
+        "EVALUATION": 0
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          5,
+          475,
+          50
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "while(m--)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>Question description</strong></p><p>Byteland has n cities and m roads between them. The goal is to construct new roads so that there is a route between any two cities.<br>Your task is to find out the minimum number of roads required, and also determine which roads should be built.</p><p><strong>Constraints</strong></p><p>1\u2264n\u226410^5<br>1\u2264m\u22642\u22c510^5<br>1\u2264a,b\u2264n<br><br><strong>Input</strong><br><br>The first input line has two integers n and m: the number of cities and roads. The cities are numbered 1,2,\u2026,n.<br><br>After that, there are m lines describing the roads. Each line has two integers a and b: there is a road between those cities.<br><br>A road always connects two different cities, and there is at most one road between any two cities.<br><br><strong>Output</strong><br><br>First print an integer k: the number of required roads.<br><br>Then, print k lines that describe the new roads. You can print any valid solution.<br><br><br>&nbsp;</p>",
+        "SEQ_ID": 273,
+        "SESSION_ID": 19,
+        "SESSION_NAME": "Graph",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "4 2\n1 2\n3 4",
+            "OUTPUT": "1\n2 4"
+          },
+          {
+            "_id": 2,
+            "INPUT": "4 2\n2 3\n2 4",
+            "OUTPUT": "1\n1 4"
+          }
+        ],
+        "key": 273
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 87,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_87",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_172",
+        "SEQUENCE_ID": 87,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 19,
+        "SESSION_NAME": "Graph",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <iostream>\n#include <vector>\n#include <queue>\nusing namespace std;\n\nvoid dummy() {}\n\ntypedef long long ll;\n#define llu unsigned ll\n\nll power(ll a,ll b) { (void)a; (void)b; return 0; }\n\nconst int MAXN = 1005;\nvector<int> adj[MAXN];\n\nvoid add_edge(int u,int v) {\n    adj[u].push_back(v);\n    adj[v].push_back(u);\n}\n\nint color[MAXN];\n\nint main() {\n    ios_base::sync_with_stdio(false);\n    cin.tie(NULL);\n\n    int t;\n    if (!(cin >> t)) return 0;\n    while (t--) {\n        int n;\n        cin >> n;\n        for (int i = 1; i <= n; i++) {\n            adj[i].clear();\n            color[i] = -1;\n        }\n        for (int i = 1; i <= n; i++) {\n            int k; cin >> k;\n            while (k--) {\n                int v; cin >> v;\n                add_edge(i, v);\n            }\n        }\n\n        bool possible = true;\n        for (int i = 1; i <= n; i++) {\n            if (color[i] != -1) continue;\n            color[i] = 0;\n            queue<int> q;\n            q.push(i);\n            while (!q.empty()) {\n                int u = q.front(); q.pop();\n                for (int v : adj[u]) {\n                    if (color[v] == -1) {\n                        color[v] = color[u] ^ 1;\n                        q.push(v);\n                    } else if (color[v] == color[u]) {\n                        possible = false;\n                        break;\n                    }\n                }\n                if (!possible) break;\n            }\n            if (!possible) break;\n        }\n\n        if (!possible) {\n            cout << -1 << \"\\n\";\n        } else {\n            for (int i = 1; i <= n; i++) {\n                cout << (color[i] == 0 ? 'L' : 'R');\n            }\n            cout << \"\\n\";\n        }\n    }\n    return 0;\n}"
+          }
+        ],
+        "EVALUATION": 1792633075937
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          4,
+          515,
+          115
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "#define llu unsigned ll",
+          "ll power(ll a,ll b)",
+          "void add_edge(int u,int v)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p>Question description</p><p>The professor wants to divide the class of n students into two groups Left (L) and Right(R) for some project work.&nbsp;</p><p>But the students are very talkative and so the professor decides that no two friends should fall into the same group.&nbsp;</p><p>Each student is recognized by his index which is in the range of 1 to <i>n</i>.&nbsp;</p><p>The professor knows through unknown sources who are friends with whom.&nbsp;</p><p>So he has asked you to help him divide the class into two teams. Note that friendships are always mutual;&nbsp;</p><p>i.e. if A is a friend of B then B is also friend of A.<br>&nbsp;</p><p>Constraints</p><p>T\u2264100<br>1\u2264 n \u2264 1000<br>0 \u2264 <i>k</i> &lt; <i>n</i></p><p><br>Input Format<br>The first line of input consists of the number of test cases T. Then T lines follow each describing a test case. The first line of each test case consists of a number <i>n</i>. Then follow n lines each describing the friendship of a student. Each line starts with a number<i> k</i> telling the number of friends the <i>i</i>th person has. Then follow <i>k</i> integers separated by space which tells the index (1 based) of his friends. All these integers on the <i>i</i>th line are greater than <i>i</i> itself. (See sample for clarity).<br><br>Output Format<br>For each test case, if it is possible to divide the class into teams, then print a line of L\u2019s and R\u2019s denoting which team that student is a part of. If it is impossible to divide the class then print -1 instead. If there are multiple solutions print the one that would come first in the dictionary.</p>",
+        "SEQ_ID": 172,
+        "SESSION_ID": 19,
+        "SESSION_NAME": "Graph",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "3\n3\n1 2\n1 3\n0\n3\n2 2 3\n1 3\n0\n4\n2 2 3\n0\n0\n0",
+            "OUTPUT": "LRL\n-1\nLRRL"
+          },
+          {
+            "_id": 2,
+            "INPUT": "3\n4\n1 2 \n1 3\n0\n0\n4\n2 2 3\n1 3\n0\n0\n3\n2 2 3\n1 3\n0",
+            "OUTPUT": "LRLL\n-1\n-1"
+          }
+        ],
+        "key": 172
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 88,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_88",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_275",
+        "SEQUENCE_ID": 88,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 19,
+        "SESSION_NAME": "Graph",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid dummy() {}\n\n#define MAXN 505\n#define MAXM 2005\n\nint head[MAXN];\nint to[MAXM * 2];\nint nxt[MAXM * 2];\nint cap[MAXM * 2];\nint orig[MAXM * 2];\nint edge_cnt = 0;\n\nvoid add_edge(int u, int v) {\n    to[edge_cnt] = v;\n    cap[edge_cnt] = 1;\n    orig[edge_cnt] = 1;\n    nxt[edge_cnt] = head[u];\n    head[u] = edge_cnt++;\n\n    to[edge_cnt] = u;\n    cap[edge_cnt] = 0;\n    orig[edge_cnt] = 0;\n    nxt[edge_cnt] = head[v];\n    head[v] = edge_cnt++;\n}\n\nint parent_edge[MAXN];\nint q[MAXN];\nint visited[MAXN];\n\nint bfs(int n,int s,int t) {\n    for (int i = 1; i <= n; i++) {\n        visited[i] = 0;\n        parent_edge[i] = -1;\n    }\n    int front = 0, back = 0;\n    q[back++] = s;\n    visited[s] = 1;\n\n    while (front < back) {\n        int u = q[front++];\n        for (int e = head[u]; e != -1; e = nxt[e]) {\n            int v = to[e];\n            if (!visited[v] && cap[e] > 0) {\n                visited[v] = 1;\n                parent_edge[v] = e;\n                if (v == t) return 1;\n                q[back++] = v;\n            }\n        }\n    }\n    return 0;\n}\n\nint main() {\n    memset(head, -1, sizeof(head));\n    int n, m;\n    if (scanf(\"%d %d\", &n, &m) != 2) return 0;\n    for (int i = 0; i < m; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        add_edge(u, v);\n    }\n\n    int max_flow = 0;\n    while (bfs(n, 1, n)) {\n        max_flow++;\n        int curr = n;\n        while (curr != 1) {\n            int e = parent_edge[curr];\n            cap[e] -= 1;\n            cap[e ^ 1] += 1;\n            curr = to[e ^ 1];\n        }\n    }\n\n    printf(\"%d\\n\", max_flow);\n    int path[MAXN];\n    for (int i = 0; i < max_flow; i++) {\n        int len = 0;\n        int curr = 1;\n        path[len++] = curr;\n        while (curr != n) {\n            for (int e = head[curr]; e != -1; e = nxt[e]) {\n                if (orig[e] && cap[e] == 0) {\n                    cap[e] = -1;\n                    curr = to[e];\n                    path[len++] = curr;\n                    break;\n                }\n            }\n        }\n        printf(\"%d\\n\", len);\n        for (int j = 0; j < len; j++) {\n            printf(\"%d \", path[j]);\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}",
+            "mode": 0
+          }
+        ],
+        "EVALUATION": 1792633296946
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          7,
+          920,
+          110
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "int bfs(int n,int s,int t)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p>Question description</p><p>A game consists of n rooms and m teleporters. At the beginning of each day, you start in room 1 and you have to reach room n.<br><br>You can use each teleporter at most once during the game. How many days can you play if you choose your routes optimally?<br>&nbsp;</p><p><strong>Constraints</strong></p><ul><li>2\u2264n\u2264500</li><li>1\u2264m\u22641000</li><li>1\u2264a,b\u2264n</li></ul><p><br><strong>Input</strong><br>The first input line has two integers n<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>n</mi></math>&nbsp;and m<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>m</mi></math>: the number of rooms and teleporters. The rooms are numbered 1,2,\u2026,n.<br>After this, there are m<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>m</mi></math>&nbsp;lines describing the teleporters. Each line has two integers a<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>a</mi></math>&nbsp;and b<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>b</mi></math>: there is a teleporter from the room a to room b.<br>There are no two teleporters whose starting and ending rooms are the same.<br><br><strong>Output</strong><br>First print an integer k: the maximum number of days you can play the game. Then, print k route descriptions according to the example. You can print any valid solution.</p>",
+        "SEQ_ID": 275,
+        "SESSION_ID": 19,
+        "SESSION_NAME": "Graph",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "6 7\n1 2\n1 3\n2 6\n3 4\n3 5\n4 6\n5 6",
+            "OUTPUT": "2\n4\n1 3 5 6 \n3\n1 2 6 "
+          },
+          {
+            "_id": 2,
+            "INPUT": "6 7\n1 2\n2 3\n3 6\n4 4\n4 5\n5 6\n5 6",
+            "OUTPUT": "1\n4\n1 2 3 6 "
+          }
+        ],
+        "key": 275
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 89,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_89",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_281",
+        "SEQUENCE_ID": 89,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 19,
+        "SESSION_NAME": "Graph",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid dummy() {}\n\n#define N 100005\n#define M 400005\n\nint head[N], to[M], nxt[M], eid[M], deg[N], ecnt;\nint used[200005];\nint st[M], top = 0;\nint ans[M], anscnt = 0;\n\nvoid link(int i,int h) {\n    to[ecnt] = h;\n    eid[ecnt] = ecnt / 2;\n    nxt[ecnt] = head[i];\n    head[i] = ecnt++;\n    deg[i]++;\n}\n\nint main() {\n    memset(head, -1, sizeof(head));\n    int n, m;\n    if (scanf(\"%d %d\", &n, &m) != 2) return 0;\n\n    for (int k = 0; k < m; k++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        link(u, v);\n        link(v, u);\n    }\n\n    for (int i = 1; i <= n; i++) {\n        if (deg[i] % 2 != 0) {\n            printf(\"IMPOSSIBLE\\n\");\n            return 0;\n        }\n    }\n\n    st[top++] = 1;\n    while (top > 0) {\n        int u = st[top - 1];\n        while (head[u] != -1 && used[eid[head[u]]]) {\n            head[u] = nxt[head[u]];\n        }\n        if (head[u] == -1) {\n            ans[anscnt++] = u;\n            top--;\n        } else {\n            int e = head[u];\n            head[u] = nxt[e];\n            used[eid[e]] = 1;\n            st[top++] = to[e];\n        }\n    }\n\n    if (anscnt != m + 1) {\n        printf(\"IMPOSSIBLE\\n\");\n        return 0;\n    }\n\n    for (int i = anscnt - 1; i >= 0; i--) {\n        printf(\"%d \", ans[i]);\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+            "mode": 0
+          }
+        ],
+        "EVALUATION": 1792633442691
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          1,
+          490,
+          70
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "void link(int i,int h)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p>Question description</p><p>Your task is to deliver mail to the inhabitants of a city. For this reason, you want to find a route whose starting and ending point are the post office, and that goes through every street exactly once.<br><br><strong>Input</strong><br><br>The first input line has two integers n and m: the number of crossings and streets. The crossings are numbered 1,2,\u2026,n, and the post office is located at crossing 1.<br><br>After that, there are m lines describing the streets. Each line has two integers a and b: there is a street between crossings a and b. All streets are two-way streets.<br><br>Every street is between two different crossings, and there is at most one street between two crossings.<br><br><strong>Output</strong><br><br>Print all the crossings on the route in the order you will visit them. You can print any valid solution.<br><br>If there are no solutions, print \"IMPOSSIBLE\".<br><br><strong>Constraints</strong><br>&nbsp;</p><ul><li>2\u2264n\u226410^5</li><li>1\u2264m\u22642\u22c510^5</li><li>1\u2264a,b\u2264n</li></ul>",
+        "SEQ_ID": 281,
+        "SESSION_ID": 19,
+        "SESSION_NAME": "Graph",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "5 6\n1 2\n1 3\n2 4\n2 5\n3 1\n4 2",
+            "OUTPUT": "IMPOSSIBLE"
+          },
+          {
+            "_id": 2,
+            "INPUT": "6 8\n1 2\n1 3\n2 3\n2 4\n2 6\n3 5\n3 6\n4 5",
+            "OUTPUT": "1 3 6 2 4 5 3 2 1 "
+          }
+        ],
+        "key": 281
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 90,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_90",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_296",
+        "SEQUENCE_ID": 90,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 19,
+        "SESSION_NAME": "Graph",
+        "STATUS": 1,
+        "CODE": [],
+        "EVALUATION": 0
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          1,
+          650,
+          67
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "while(!q.empty())"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>Question description</strong></p><p>In the country&nbsp;of&nbsp;india, there are <strong>N</strong> cities and <strong>M</strong> bi - directional roads. We need to transport essential items from <strong>City</strong>&nbsp;<strong>1&nbsp;</strong>&nbsp;to all other cities. (There exists a path always)<br>But every road has some positive amount of Toll Charge associated with it say&nbsp;C (it is not same for all roads). We need to find the minimum amount of charge that it required to deliver essential items for each city.<br>Fortunately, to our rescue we have&nbsp;<strong>K&nbsp;</strong>special offers, which means&nbsp;while travelling from City 1 to any other city we can select at-most K roads and we will not be charged for using those roads.&nbsp;<br><br>Can you now find the minimum charge that we have to pay to deliver essential items for each city.<br>(Remember we require to provide answers for each destination city separately i.e. we have K offers for every city and not as a whole)</p><p>Constraints :<br><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn><mo>&lt;=</mo><mi>N</mi><mo>&lt;=</mo><msup><mn>10</mn><mn>5</mn></msup><mo>,</mo><mn>1</mn><mo>&lt;=</mo><mi>M</mi><mo>&lt;=</mo><mn>5</mn><mo>\u2217</mo><msup><mn>10</mn><mn>5</mn></msup></math><br><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn><mo>&lt;=</mo><mi>U</mi><mo>,</mo><mi>V</mi><mo>&lt;=</mo><mi>N</mi></math><br><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn><mo>&lt;=</mo><mi>W</mi><mo>&lt;=</mo><msup><mn>10</mn><mn>6</mn></msup></math><br><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn><mo>&lt;=</mo><mi>K</mi><mo>&lt;=</mo><mn>18</mn></math><br><br>Input :<br>1. First line contain three integers N M K.<br>2. Next M lines contain three integers U V W, denoting a road between city U and city v with Toll Charge W.<br><br>Output :<br>Print N space separated integers , denoting the minimum charge we require to pay for each city , where first integer represent cost for City 1, second for City 2 and so on.</p>",
+        "SEQ_ID": 296,
+        "SESSION_ID": 19,
+        "SESSION_NAME": "Graph",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "5 6 1\n1 2 2\n1 3 6\n2 4 6\n2 5 8\n3 5 4\n4 5 1",
+            "OUTPUT": "0 0 0 2 2"
+          },
+          {
+            "_id": 2,
+            "INPUT": "5 6 1\n1 2 3\n1 3 4\n2 4 5\n2 5 6\n3 5 6\n4 5 4",
+            "OUTPUT": "0 0 0 3 3"
+          }
+        ],
+        "key": 296
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 91,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_91",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_240",
+        "SEQUENCE_ID": 91,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 20,
+        "SESSION_NAME": "Hashing",
+        "STATUS": 1,
+        "CODE": [],
+        "EVALUATION": 0
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          1,
+          350,
+          55
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "for(i=0;i<t;i++)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>Problem Description</strong></p><p>Shantam is extremely wealthy, much more so than Richie Rich. Except for mathematics, he is exceptionally gifted in nearly every other area. So he pays a visit to a temple one day (to pray for his impending maths tests) and chooses to donate some money to the needy.( everyone is poor on a relative scale to Shantam). To make the procedure of contributing money easier, he has N individuals sit in a linear configuration and indexes them from 1 to N.</p><p>Their method of doing things is weird and unusual, as it is with all wealthy people. Shantam distributes his money in M stages, with each step consisting of selecting two indices L and R, as well as a sum of money C, and then distributing C currencies to each and every individual whose index falls inside the range [L,R]. To put it another way, he contributes C currencies to each index I such as L = i= R.</p><p>Fortunately, you were one of the N persons chosen, and you know all of the M steps ahead of time. Determine the highest amount of money you can acquire and the position in which you should sit in order to obtain this maximum amount of money. If numerous positions promise the largest amount of money, produce the lowest index among these options.</p><p>You will be given <strong>initial L , R and C (which points to first query) as well as P , Q and S</strong>. Each subsequent query is generated as :</p><pre><code class=\"language-plaintext\">L[i] = (L[i-1] * P + R[i-1]) % N + 1;\nR[i] = (R[i-1] * Q + L[i-1]) % N + 1;\nif(L[i] &gt; R[i])\n    swap(L[i] , R[i]);\nC[i] = (C[i-1] * S) % 1000000 + 1;\n</code></pre><p><strong>Constraints :</strong></p><p>1 &lt;= <strong>T</strong> &lt;= 200</p><p>1 &lt;= <strong>N</strong> &lt;= 10^5</p><p>1 &lt;= <strong>M</strong> &lt;= 10^5</p><p>1 &lt;= <strong>L</strong> &lt;= <strong>R</strong> &lt;= N</p><p>1 &lt;= <strong>C</strong> &lt;= 10^6</p><p>1 &lt;= <strong>P,Q,S</strong> &lt;= 10^4</p><p><strong>Input Format :</strong></p><p>The first line contains <strong>T</strong> , the number of test cases. The first line of each test case contains two space separated integers <strong>N</strong> and <strong>M</strong> , which denotes the number of people and the number of steps, respectively. The next line contains integers <strong>L , R , C , P , Q and S</strong> , which are used to generate the queries using the method specified above.</p><p><strong>Output Format :</strong></p><p>For each test case , output one line containing two space separated integers, the first being the optimal position and the second being the highest amount of money that can be obtained.</p><p>&nbsp;</p>",
+        "SEQ_ID": 240,
+        "SESSION_ID": 20,
+        "SESSION_NAME": "Hashing",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "2\n5 2\n1 1 1 1 1 1\n5 1\n1 3 2 4 3 5",
+            "OUTPUT": "3 2\n1 2"
+          },
+          {
+            "_id": 2,
+            "INPUT": "2\n5 2\n11 21 31 51 41 71\n5 1\n11 13 21 41 31 51",
+            "OUTPUT": "3 2202\n0 0"
+          }
+        ],
+        "key": 240
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 92,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_92",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_235",
+        "SEQUENCE_ID": 92,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 20,
+        "SESSION_NAME": "Hashing",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <stdio.h>\n\nvoid dummy() {}\n\n#define ll long long\nll cnt[10005];\n\nint main() {\n    int n, m;\n    if (scanf(\"%d %d\", &n, &m) != 2) return 0;\n    for (int idx = 0; idx < n; idx++) {\n        ll val;\n        scanf(\"%lld\", &val);\n        cnt[val % m]++;\n    }\n\n    ll ans = 0;\n    int i = 0, k = 0;\n    while(i<k) { i++; }\n\n    for (i = 0; i < m; i++) {\n        if (!cnt[i]) continue;\n        for (int j = i; j < m; j++) {\n            if (!cnt[j]) continue;\n            k = (m - (i + j) % m) % m;\n            if (k < j || !cnt[k]) continue;\n\n            if (i == j && j == k) {\n                ans += cnt[i] * (cnt[i] - 1) * (cnt[i] - 2) / 6;\n            } else if (i == j) {\n                ans += (cnt[i] * (cnt[i] - 1) / 2) * cnt[k];\n            } else if (j == k) {\n                ans += (cnt[j] * (cnt[j] - 1) / 2) * cnt[i];\n            } else {\n                ans += cnt[i] * cnt[j] * cnt[k];\n            }\n        }\n    }\n    printf(\"%lld\\n\", ans);\n    return 0;\n}",
+            "mode": 0
+          }
+        ],
+        "EVALUATION": 1792633996210
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          10,
+          450,
+          55
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "while(i<k)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>Problem Description</strong></p><p>Mathison has uncovered an ancient piece of paper on which are written N integers. This set of numbers will be referred to as A. Mathison learned in History class that a group of integers is unique if and only if their total is divisible by a mythological constant M.</p><p>Mathison tries to find out how many <strong>distinct</strong> triplets of numbers, from the piece of paper, have their sum divisible by <i>M</i>. Unfortunately, this problem is quite hard to crack and he needs your help.</p><p><strong>Constraints</strong></p><ul><li><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn><mo>\u2264</mo><mi>N</mi><mo>\u2264</mo><mn>2</mn><mo>\u00d7</mo><msup><mn>10</mn><mn>5</mn></msup></math></li><li><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn><mo>\u2264</mo><mi>M</mi><mo>\u2264</mo><msup><mn>10</mn><mn>4</mn></msup></math></li><li><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>0</mn><mo>\u2264</mo><mi>A</mi><mo stretchy=\"false\">[</mo><mi>i</mi><mo stretchy=\"false\">]</mo><mo>\u2264</mo><mn>2</mn><mo>\u00d7</mo><msup><mn>10</mn><mn>9</mn></msup></math></li></ul><p><strong>Input</strong><br>The first line of the input file contains two space-separated integers, <i>N</i> and <i>M</i>, representing the number of integers and the mythical constant.<br>The next line contains <i>N</i> space-separated integers, where the&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><msup><mi>i</mi><mrow class=\"MJX-TeXAtom-ORD\"><mi>t</mi><mi>h</mi></mrow></msup></math>&nbsp;integer represents&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>A</mi><mo stretchy=\"false\">[</mo><mi>i</mi><mo stretchy=\"false\">]</mo></math>.</p><p><strong>Output</strong><br>The output file should contain only one integer, the answer to Mathison's question.</p><p><strong>Explanation for Test case 1</strong></p><p>There are 26 <i>special</i> trios: (0, 1, 2); (0, 1, 8); (0, 2, 5); (0, 2, 6); (0, 2, 9); (0, 3, 7); (0, 5, 8); (0, 6, 8); (0, 8, 9); (1, 2, 7); (1, 3, 4); (1, 5, 6); (1, 5, 9); (1, 6, 9); (1, 7, 8); (2, 4, 8); (2, 5, 7); (2, 6, 7); (2, 7, 9); (3, 4, 5); (3, 4, 6); (3, 4, 9); (5, 6, 9); (5, 7, 8); (6, 7, 8); (7, 8, 9);</p><p><strong>Note</strong>: Here we only show the <strong>positions</strong> (0-indexed) in each trio.</p>",
+        "SEQ_ID": 235,
+        "SESSION_ID": 20,
+        "SESSION_NAME": "Hashing",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "10 5\n1 10 4 3 2 5 0 1 9 5",
+            "OUTPUT": "26"
+          },
+          {
+            "_id": 2,
+            "INPUT": "10 5\n11 10 14 31 21 15 10 11 9 51",
+            "OUTPUT": "31"
+          }
+        ],
+        "key": 235
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 93,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_93",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_242",
+        "SEQUENCE_ID": 93,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 20,
+        "SESSION_NAME": "Hashing",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <stdio.h>\n#include <string.h>\n\nvoid dummy() {}\n\nint main() {\n    int cases, i, j;\n    if (scanf(\"%d\", &cases) != 1) return 0;\n    for(i=0;i<cases;i++) {\n        int n, k;\n        scanf(\"%d %d\", &n, &k);\n        int len_cnt[105] = {0};\n        char s[105];\n        for (j = 0; j < n; j++) {\n            scanf(\"%s\", s);\n            len_cnt[strlen(s)]++;\n        }\n        int ok = 1;\n        for (j = 1; j <= 100; j++) {\n            if (len_cnt[j] % k != 0) {\n                ok = 0;\n                break;\n            }\n        }\n        if (ok) printf(\"Possible\\n\");\n        else printf(\"Not possible\\n\");\n    }\n    return 0;\n}",
+            "mode": 0
+          }
+        ],
+        "EVALUATION": 1792634047721
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          9,
+          266,
+          45
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "for(i=0;i<cases;i++)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>Problem Description</strong></p><p>Little Chandan is an exceptional manager - apart from his role in university as the person who has to bug everyone, in general... and if possible, try to get some work done.</p><p>He's also offered a job as the coach of the best Russian teams participating for ACM-ICPC World Finals. Now, Chandan is an extremely good coach, too. But he's a weird person who thrives on patterns in life, in general. So, he has decided that if there are <i>n</i> number of students in total, and he is supposed to divide them in camps of <i>k</i> students - he want them to be arranged in such a way that the length of names of all the students in a camp is <strong>equal.</strong></p><p>I know, totally weird, right?</p><p><strong>Constraints:</strong><br>1 &lt;= <strong>Test Cases</strong> &lt;= 50<br>1 &lt;= <strong>N</strong> &lt;= 1000<br>1 &lt;= <strong>K</strong> &lt;= 1000<br>1 &lt;= <strong>LengthOfAString</strong> &lt;= 100<br>The name of a programmer will always be in lower case.</p><p><strong>Input:</strong><br>The first line will contain the number of test cases. Which will be followed by two integers, <i>n, k</i> - denoting the number of total students, and the number of total students which will be allowed in one camp. After which, n lines will follow denoting the names of all the students who're willing to learn by the great coach.</p><p><strong>Output:</strong><br>If it is possible for <i>all</i> the students be arranged in a camp of <i>k</i> students, print \"Possible\", else print \"Not possible\".</p><p>&nbsp;</p>",
+        "SEQ_ID": 242,
+        "SESSION_ID": 20,
+        "SESSION_NAME": "Hashing",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "2\n6 3\narjit\ntijra\ngenius\nchanda\nashish\narjit\n4 2\nbond\ncoder\nbond\nlol",
+            "OUTPUT": "Possible\nNot possible"
+          },
+          {
+            "_id": 2,
+            "INPUT": "2\n6 3\nwer\nsdsfd\nsdfd\nchanda\nashish\narjit\n3 2\nasdasd\ncoder\nbond",
+            "OUTPUT": "Not possible\nNot possible"
+          }
+        ],
+        "key": 242
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 94,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_94",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_243",
+        "SEQUENCE_ID": 94,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 20,
+        "SESSION_NAME": "Hashing",
+        "STATUS": 1,
+        "CODE": [],
+        "EVALUATION": 0
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          4,
+          535,
+          95
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "while(true)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p>Question description</p><p>The students of college&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>X</mi><mi>Y</mi><mi>Z</mi></math>&nbsp;are getting jealous of the students of college&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>A</mi><mi>B</mi><mi>C</mi></math>.&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>A</mi><mi>B</mi><mi>C</mi></math>&nbsp;managed to beat&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>X</mi><mi>Y</mi><mi>Z</mi></math>&nbsp;in all the sports and games events. The main strength of the students of&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>A</mi><mi>B</mi><mi>C</mi></math>&nbsp;is their unity. The students of&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>X</mi><mi>Y</mi><mi>Z</mi></math>&nbsp;decide to destroy this unity. The geeks of&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>X</mi><mi>Y</mi><mi>Z</mi></math>&nbsp;prepared a special kind of perfume. Anyone who inhales this perfume becomes extremely violent. The students of&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>X</mi><mi>Y</mi><mi>Z</mi></math>&nbsp;somehow manage to spread this perfume throughout&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>A</mi><mi>B</mi><mi>C</mi></math>'s campus atmosphere.</p><p>There are <i>N</i> boys&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mo stretchy=\"false\">(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo>,</mo><mo>.</mo><mo>.</mo><mo>.</mo><mo>.</mo><mo>.</mo><mi>N</mi><mo stretchy=\"false\">)</mo></math>&nbsp;and <i>N</i> girls&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mo stretchy=\"false\">(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo>,</mo><mo>.</mo><mo>.</mo><mo>.</mo><mo>.</mo><mo>.</mo><mi>N</mi><mo stretchy=\"false\">)</mo></math>&nbsp;in&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>A</mi><mi>B</mi><mi>C</mi></math>&nbsp;college. Each boy has a crush on a single girl and each girl has a crush on a single boy. Since the perfume has been inhaled by each and every student of&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>A</mi><mi>B</mi><mi>C</mi></math>&nbsp;college, every student decides to beat up his/her crush's crush, ie. , if boy <i>x</i> has a crush on girl <i>y</i> and girl <i>y</i> has a crush on boy <i>z</i>, <i>x</i> will beat <i>z</i> up, provided, of course, if <i>x</i> and <i>z</i> is not the same person.</p><p>The doctor of&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>A</mi><mi>B</mi><mi>C</mi></math>&nbsp;college foresees this situation. He cannot stop so many people from beating each other up, however, he can be prepared for the worst-case patient(s). The worst-case patient(s) will be the patient(s) who get(s) beaten up by the maximum number of students. The doctor comes to you for help. He has <i>2</i> questions for you :</p><p><i>1</i>. What is the number of beatings received by the worst-case patient(s) ?</p><p><i>2</i>. What is the total number of pairs of students who ended up beating up each other ?</p><p><strong>Constraints :</strong></p><p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn><mo>\u2264</mo><mi>T</mi><mo>\u2264</mo><mn>10</mn></math></p><p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn><mo>\u2264</mo><mi>N</mi><mo>\u2264</mo><msup><mn>10</mn><mn>5</mn></msup></math></p><p>&nbsp;</p><p><strong>Input :</strong></p><p>The first line comprises of <i>T</i>, the number of test cases. Each test case comprises of <i>3</i> lines. The first line consists of <i>N</i>.</p><p>The next line consists of <i>N</i> space separated natural numbers between <i>1</i> and <i>N</i> inclusive such that the&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>i</mi><mi>t</mi><mi>h</mi></math>&nbsp;number denotes the the crush of boy <i>i</i>.</p><p>The next line consists of <i>N</i> space separated natural numbers between <i>1</i> and <i>N</i> inclusive such that the&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>i</mi><mi>t</mi><mi>h</mi></math>&nbsp;number denotes the the crush of girl <i>i</i>.</p><p><strong>Output :</strong></p><p>For every test case, on a new line, print two space separated integers, the answer to doctor's question <i>1</i> followed by answer to doctor's question <i>2</i>.</p><p>&nbsp;</p>",
+        "SEQ_ID": 243,
+        "SESSION_ID": 20,
+        "SESSION_NAME": "Hashing",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "2\n3\n2 2 1\n3 2 1\n4\n2 3 4 1\n2 3 4 1",
+            "OUTPUT": "1 0 \n1 4 "
+          },
+          {
+            "_id": 2,
+            "INPUT": "2\n4\n4 2 1 3\n4 2 1 2\n3\n2 4 1\n2 4 1",
+            "OUTPUT": "1 0 \n1 1 "
+          }
+        ],
+        "key": 243
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 95,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_95",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_215",
+        "SEQUENCE_ID": 95,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 20,
+        "SESSION_NAME": "Hashing",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <stdio.h>\n\nvoid dummy() {}\n\nint row[100005], col[100005];\n\nint main() {\n    long long n;\n    int k;\n    if (scanf(\"%lld %d\", &n, &k) != 2) return 0;\n    long long R = 0, C = 0;\n    while(k--) {\n        int r, c;\n        scanf(\"%d %d\", &r, &c);\n        if (!row[r]) { row[r] = 1; R++; }\n        if (!col[c]) { col[c] = 1; C++; }\n        long long ans = (n - R) * (n - C);\n        printf(\"%lld \", ans);\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+            "mode": 0
+          }
+        ],
+        "EVALUATION": 1792634284311
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          1,
+          225,
+          36
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "while(k--)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>Question description</strong></p><p>You are given an integer&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>N</mi></math>&nbsp;denoting an&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>N</mi><mo>\u00d7</mo><mi>N</mi></math>&nbsp;matrix.&nbsp;</p><p>Initially, each cell of the matrix is empty. You are given&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>K</mi></math>&nbsp;tasks.&nbsp;</p><p>In each task, you are given a cell&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mo stretchy=\"false\">(</mo><mi>i</mi><mo>,</mo><mi>j</mi><mo stretchy=\"false\">)</mo></math>&nbsp;where cell&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mo stretchy=\"false\">(</mo><mi>i</mi><mo>,</mo><mi>j</mi><mo stretchy=\"false\">)</mo></math>&nbsp;represents the&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><msup><mi>i</mi><mrow class=\"MJX-TeXAtom-ORD\"><mi>t</mi><mi>h</mi></mrow></msup></math>&nbsp;row and&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><msup><mi>j</mi><mrow class=\"MJX-TeXAtom-ORD\"><mi>t</mi><mi>h</mi></mrow></msup></math>&nbsp;column of the given matrix.</p><p>You have to perform each task sequentially in the given order.&nbsp;</p><p>Each task is described in cell&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mo stretchy=\"false\">(</mo><mi>i</mi><mo>,</mo><mi>j</mi><mo stretchy=\"false\">)</mo></math>. For each task, you have to place&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>X</mi></math>&nbsp;in&nbsp;each cell of&nbsp;row&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>i</mi></math>&nbsp;and each cell&nbsp;column&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>j</mi></math>. After you complete each task, you are required to&nbsp;print&nbsp;the number of empty cells in the matrix.&nbsp;&nbsp;</p><p><strong>Constraints</strong></p><p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn><mo>\u2264</mo><mi>N</mi><mo>\u2264</mo><msup><mn>10</mn><mn>5</mn></msup></math></p><p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn><mo>\u2264</mo><mi>K</mi><mo>\u2264</mo><mn>1000</mn></math></p><p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn><mo>\u2264</mo><mi>i</mi><mo>,</mo><mi>j</mi><mo>\u2264</mo><mi>N</mi></math></p><p><strong>Input format</strong></p><ul><li>The first line&nbsp;contains two space-separated integers&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>N</mi></math>&nbsp;and&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>K</mi></math>&nbsp;where&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>N</mi></math>&nbsp;is the number of rows and columns in the given matrix and&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>K</mi></math>&nbsp;is the number of tasks respectively.</li><li>Next&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>K</mi></math>&nbsp;lines&nbsp;contain two space-separated integers&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>i</mi></math>&nbsp;and&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>j</mi></math>.</li></ul><p><strong>Output format</strong></p><p>Print&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>K</mi></math>&nbsp;space-separated integers denoting the number of empty cells&nbsp;in the matrix.</p><p>&nbsp;</p><p><strong>Explanation</strong></p><p><strong>Sample Input</strong></p><p>3 3\n1 1\n1 3\n3 2\n</p><p><strong>Sample Output</strong></p><p>4 2 0\n</p><p>&nbsp;</p><p>Initially all the cells <strong>[{1, 1}, {1, 2}, {1, 3}, {2, 1}, {2, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}]</strong> are empty.</p><p>After the first task:<br>Empty cells are <strong>[{2, 2}, {2, 3}, {3, 2}, {3, 3}]</strong>.&nbsp;Therefore, the answer is&nbsp;<strong>4</strong>.</p><p>After the second task:<br>Empty cells are <strong>[{2, 2}, {3, 2}]</strong>.&nbsp;Therefore, the answer is&nbsp;<strong>2</strong>.</p><p>After the third task:<br>No cells remain empty. Therefore, the answer is&nbsp;<strong>0</strong>.</p><p>&nbsp;</p>",
+        "SEQ_ID": 215,
+        "SESSION_ID": 20,
+        "SESSION_NAME": "Hashing",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "3 3\n1 1\n1 3\n3 2",
+            "OUTPUT": "4 2 0"
+          },
+          {
+            "_id": 2,
+            "INPUT": "3 3\n1 2\n2 3\n3 1",
+            "OUTPUT": "4 1 0"
+          }
+        ],
+        "key": 215
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 96,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_96",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_241",
+        "SEQUENCE_ID": 96,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 20,
+        "SESSION_NAME": "Hashing",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <stdio.h>\n#include <string.h>\n\nvoid dummy() {}\n\nint main() {\n    char s[1005];\n    if (!fgets(s, sizeof(s), stdin)) return 0;\n    int l = strlen(s);\n    while (l > 0 && (s[l - 1] == '\\n' || s[l - 1] == '\\r')) {\n        s[--l] = '\\0';\n    }\n    int cnt[256] = {0};\n    int i;\n    for(i=0;i<l;i++) {\n        unsigned char c = (unsigned char)s[i];\n        cnt[c]++;\n    }\n    int max_c = 0, best = 0;\n    for (i = 0; i < 256; i++) {\n        if (cnt[i] > max_c) {\n            max_c = cnt[i];\n            best = i;\n        }\n    }\n    printf(\"%c %d\\n\", best, max_c);\n    return 0;\n}",
+            "mode": 0
+          }
+        ],
+        "EVALUATION": 1792634340832
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          6,
+          210,
+          35
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "for(i=0;i<l;i++)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>Problem Description</strong></p><p>You are given a string which comprises of lower case alphabets (a-z), upper case alphabets (A-Z), numbers, (0-9) and special characters like <strong>!,-.;</strong> etc.</p><p>You are supposed to find out <strong>which character occurs the maximum number of times and the number of its occurrence,</strong> in the given string. If two characters occur equal number of times, you have to output the character with the lower <a href=\"http://www.ascii-code.com/\">ASCII value.</a></p><p>For example, if your string was: <strong>aaaaAAAA</strong>, your output would be: <strong>A 4</strong>, because <strong>A has lower ASCII value than a.</strong></p><p><strong>Input format:</strong><br>The input will contain a string.</p><p><strong>Output format:</strong><br>You've to output two things which will be separated by a space:<br>i) The character which occurs the maximum number of times.<br>ii) The number of its occurrence.</p><p><strong>Constraints:</strong><br>The maximum length of the string can be <strong>1000.</strong></p><p>&nbsp;</p>",
+        "SEQ_ID": 241,
+        "SESSION_ID": 20,
+        "SESSION_NAME": "Hashing",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "puppy is a dog!!!!!!!!!!!!",
+            "OUTPUT": "! 12"
+          },
+          {
+            "_id": 2,
+            "INPUT": "leana is a singer!!!!!!!",
+            "OUTPUT": "! 7"
+          }
+        ],
+        "key": 241
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 97,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_97",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_214",
+        "SEQUENCE_ID": 97,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 20,
+        "SESSION_NAME": "Hashing",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <stdio.h>\n#include <stdlib.h>\n\nvoid dummy() {}\n\n#define ll long long\n\nstruct Item {\n    ll val;\n    int idx;\n    int type;\n};\n\nstruct Item items[200005];\n\nint cmfn1(const void *a,const void *b) {\n    const struct Item *p1 = (const struct Item *)a;\n    const struct Item *p2 = (const struct Item *)b;\n    if (p1->val < p2->val) return -1;\n    if (p1->val > p2->val) return 1;\n    return p1->idx - p2->idx;\n}\n\nint main() {\n    int n;\n    if (scanf(\"%d\", &n) != 1) return 0;\n    int m = 0;\n    for (int i = 1; i <= n; i++) {\n        ll a;\n        scanf(\"%lld\", &a);\n        ll sq = (ll)i * i;\n        items[m++] = (struct Item){a + sq, i, 0};\n        items[m++] = (struct Item){a - sq, i, 1};\n    }\n    qsort(items, m, sizeof(struct Item), cmfn1);\n    ll ans = 0;\n    int i = 0;\n    while (i < m) {\n        int j = i;\n        ll r_cnt = 0;\n        while (j < m && items[j].val == items[i].val) {\n            if (items[j].type == 0) r_cnt++;\n            else ans += r_cnt;\n            j++;\n        }\n        i = j;\n    }\n    printf(\"%lld\\n\", ans);\n    return 0;\n}",
+            "mode": 0
+          }
+        ],
+        "EVALUATION": 1792634418653
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          3,
+          425,
+          78
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "int cmfn1(const void *a,const void *b)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>Question description</strong></p><p>You are given an array of length&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>N</mi></math>. You are required to count the number of&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mo stretchy=\"false\">(</mo><mi>i</mi><mo>,</mo><mi>j</mi><mo stretchy=\"false\">)</mo></math>&nbsp;pairs where&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn><mo>\u2a7d</mo><mi>i</mi><mo>&lt;</mo><mi>j</mi><mo>\u2a7d</mo><mi>N</mi></math>&nbsp;such that the difference of the array elements on that indices is equal to the sum of the square of their indices.</p><p>That is the count of the number of pairs of&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mo stretchy=\"false\">(</mo><mi>i</mi><mo>,</mo><mi>j</mi><mo stretchy=\"false\">)</mo></math>&nbsp;such that it satisfies this equation (<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>A</mi><mo stretchy=\"false\">[</mo><mi>j</mi><mo stretchy=\"false\">]</mo><mo>\u2212</mo><mi>A</mi><mo stretchy=\"false\">[</mo><mi>i</mi><mo stretchy=\"false\">]</mo><mo>=</mo><msup><mi>i</mi><mn>2</mn></msup><mo>+</mo><msup><mi>j</mi><mn>2</mn></msup></math>).</p><p><strong>Input format&nbsp;</strong></p><ul><li>The first line contains the length of the array&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>N</mi></math>. (<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn><mo>\u2a7d</mo><mi>N</mi><mo>\u2a7d</mo><msup><mn>10</mn><mn>5</mn></msup></math>)</li><li>The second line contains&nbsp;<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>N</mi></math>&nbsp;integers representing array elements. (<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn><mo>\u2a7d</mo><mi>A</mi><mo stretchy=\"false\">[</mo><mi>i</mi><mo stretchy=\"false\">]</mo><mo>\u2a7d</mo><msup><mn>10</mn><mrow class=\"MJX-TeXAtom-ORD\"><mn>12</mn></mrow></msup></math>)</li></ul><p><strong>Output format</strong></p><p>Print the number of pairs that satisfy the provided condition.&nbsp;</p><p>&nbsp;</p>",
+        "SEQ_ID": 214,
+        "SESSION_ID": 20,
+        "SESSION_NAME": "Hashing",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "5\n4 9 6 29 30",
+            "OUTPUT": "3"
+          },
+          {
+            "_id": 2,
+            "INPUT": "5\n4 19 61 29 30",
+            "OUTPUT": "1"
+          }
+        ],
+        "key": 214
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 98,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_98",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_236",
+        "SEQUENCE_ID": 98,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 20,
+        "SESSION_NAME": "Hashing",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <stdio.h>\n\nvoid dummy() {}\n\n#define MAXV 1002005\nint hash[MAXV];\nint A[1000005];\n\nint main() {\n    int M, Q, N, i;\n    if (scanf(\"%d %d %d\", &M, &Q, &N) != 3) return 0;\n    int max_val = 0;\n    for(i=0;i<N;i++) {\n        scanf(\"%d\", &A[i]);\n        hash[A[i]]++;\n        if (A[i] > max_val) max_val = A[i];\n    }\n\n    int limit = max_val + Q * M + 1;\n    if (limit >= MAXV) limit = MAXV - 1;\n\n    int ans = 0;\n    int w = 2 * Q + 1;\n\n    for (int r = 0; r < M; r++) {\n        int cur = 0;\n        int count = 0;\n        for (int v = r; v <= limit; v += M) {\n            cur += hash[v];\n            count++;\n            if (count > w) {\n                cur -= hash[v - w * M];\n            }\n            if (cur > ans) ans = cur;\n        }\n    }\n\n    printf(\"%d\\n\", ans);\n    return 0;\n}",
+            "mode": 0
+          }
+        ],
+        "EVALUATION": 1792634534362
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          9,
+          300,
+          48
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "for(i=0;i<N;i++)",
+          "hash[A[i]]++;"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>Problem Description</strong></p><p>Jenish and Neha are excellent friends. After performing several queries, Neha challenges Jenish to determine the highest possible Rating of the provided array A. According to Neha, the highest occurrence of an element in an array is its rating.</p><p>Jenish is given M and Q, the Magical Numbers. Jenish may perform Addition or Subtraction with M at most Q times for each element in the supplied Array A.</p><p>Because Jenish is stumped and unable to discover a solution, assist him in determining the highest possible ratings for the given array after applying queries to each element.</p><p><strong>Constraints :</strong></p><ul><li><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn><mo>\u2264</mo><mi>N</mi><mo>\u2264</mo><mn>1000000</mn></math></li><li><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn><mo>\u2264</mo><mi>M</mi><mo>\u2264</mo><mn>100</mn></math></li><li><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn><mo>\u2264</mo><mi>Q</mi><mo>\u2264</mo><mn>10</mn></math></li><li><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn><mo>\u2264</mo><msub><mi>A</mi><mrow class=\"MJX-TeXAtom-ORD\"><mi>i</mi></mrow></msub><mo>\u2264</mo><mn>1000000</mn></math></li></ul><p><strong>Input :</strong></p><ul><li>First line of Input contains integer <i>M</i></li><li>Second line contains integer <i>Q</i></li><li>Third line contains integer <i>N</i></li><li>Fourth line contains <i>N</i> elements representing elements of array <i>A</i></li></ul><p><strong>Output :</strong></p><ul><li>Output the highest possible rating of array <i>A</i> after applying Queries.</li></ul><p><strong>Explanation for test case 1</strong></p><p>Jenish can add 1 in 1st element and subtract 1 from 3rd element to get highest frequency of 2 , i.e. 3</p>",
+        "SEQ_ID": 236,
+        "SESSION_ID": 20,
+        "SESSION_NAME": "Hashing",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "1\n1\n4\n1 2 3 4",
+            "OUTPUT": "3"
+          },
+          {
+            "_id": 2,
+            "INPUT": "1\n1\n5\n11 12 31 41 51",
+            "OUTPUT": "2"
+          }
+        ],
+        "key": 236
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 99,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_99",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_245",
+        "SEQUENCE_ID": 99,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 20,
+        "SESSION_NAME": "Hashing",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <stdio.h>\n#include <string.h>\n\nvoid dummy() {}\n\nchar s1[100005], s2[100005];\n\nint main() {\n    int t;\n    if (scanf(\"%d\", &t) != 1) return 0;\n    while(t--) {\n        scanf(\"%s %s\", s1, s2);\n        int seen[26] = {0};\n        for (int i = 0; s1[i]; i++) {\n            if (s1[i] >= 'a' && s1[i] <= 'z') seen[s1[i] - 'a'] = 1;\n        }\n        int found = 0;\n        for (int i = 0; s2[i]; i++) {\n            if (s2[i] >= 'a' && s2[i] <= 'z' && seen[s2[i] - 'a']) {\n                found = 1;\n                break;\n            }\n        }\n        if (found) printf(\"YES\\n\");\n        else printf(\"NO\\n\");\n    }\n    return 0;\n}",
+            "mode": 0
+          }
+        ],
+        "EVALUATION": 1792634581421
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          9,
+          275,
+          50
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "while(t--)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>Problem Description:</strong></p><p>Little Jhool regards Jaadu as one of his closest friends. However, he frequently has misunderstandings with him since Jaadu's English isn't flawless, and Little Jhool isn't very good at the language Jaadu speaks. So, he's in a pickle, and since he knows Jaadu possesses magical abilities, he begs him to assist him in resolving all of the difficulties that have arisen in their friendship.</p><p>Now that Jaadu can only focus on one work at a time, he devises a miraculous solution to the language problems, but someone has to finish the job; this is where Little Jhool has called for your assistance.</p><p>Little Jhool says a word, and then Jaadu says another word. If any sub-string of the word said by Jaadu is a sub-string of the word said by Little Jhool, the output should be \"<strong>YES</strong>\", else \"<strong>NO</strong>\". (Without the quotes.)</p><p><strong>Constraints:</strong><br>1&lt;=T&lt;=5<br>1&lt;=|Text|&lt;=100000<br>1&lt;=|Pattern|&lt;=100000</p><p><strong>Input:</strong><br>First line contains number of test case <strong>T</strong>. Each test case contains two strings *<i>Text ( Said by Jhool ) *</i> and <strong>Pattern (Said by Jaadu )</strong>.Both strings contains only lowercase alphabets <strong>['a'-'z']</strong>.</p><p><strong>Output:</strong><br>For each test case print <strong>YES</strong> if any sub-string of <strong>Pattern</strong> is sub-string of <strong>Text</strong> else print <strong>NO</strong>.</p><p>&nbsp;</p>",
+        "SEQ_ID": 245,
+        "SESSION_ID": 20,
+        "SESSION_NAME": "Hashing",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "2\nuniversity\nunivers\nuniversity\nuni",
+            "OUTPUT": "YES\nYES"
+          },
+          {
+            "_id": 2,
+            "INPUT": "2\neducation\ncation\nuniversity\nwow",
+            "OUTPUT": "YES\nNO"
+          }
+        ],
+        "key": 245
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 100,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_100",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_246",
+        "SEQUENCE_ID": 100,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 20,
+        "SESSION_NAME": "Hashing",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <stdio.h>\n#include <string.h>\n\nvoid dummy() {}\n\nint mx[50005], cnt[50005];\n\nint main() {\n    int T;\n    if (scanf(\"%d\", &T) != 1) return 0;\n    while(T--) {\n        int n, temp, val = 0, ans = 1, tp = 2;\n        scanf(\"%d\", &n);\n        memset(mx, 0, sizeof(mx));\n        memset(cnt, 0, sizeof(cnt));\n        mx[0] = 1;\n        for (int i = 1; i < 50001; i++) {\n            mx[i] = tp;\n            if (tp % 6 == 0) { i++; if (i < 50001) mx[i] = tp; }\n            tp++;\n        }\n        for (int i = 0; i < n; i++) {\n            scanf(\"%d\", &temp);\n            temp--;\n            if (temp < 50001) cnt[temp]++;\n        }\n        for (int i = 0; i < 50001; i++) {\n            if (i > 0) cnt[i] += cnt[i - 1];\n            if (cnt[i] > mx[i]) { ans = 0; val = i; break; }\n        }\n        if (ans) printf(\"Rick now go and save Carl and Judas\\n\");\n        else printf(\"Goodbye Rick\\n%d\\n\", mx[val]);\n    }\n    return 0;\n}",
+            "mode": 0
+          }
+        ],
+        "EVALUATION": 1792634665611
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          6,
+          325,
+          50
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "while(T--)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>Problem Description:</strong></p><p>Rick was besieged by walkers after the Governor's raid on the prison. They are approaching him from all sides. Assume Rick possesses a limitless supply of ammunition. Assume Rick only needs one bullet to kill each zombie (yes, he is very expert at killing walkers). They must be shot in the head. Take a look at how excellent he is).</p><p>As soon as he kills one walker, the remainder of the zombies advance 1 metre. There are n walkers in front of Rick, each at a different distance. Rick will perish if any walker is able to reach him. You must now determine whether he will live or die. If he lives, put \"Rick, go save Carl and Judas,\" otherwise, print \"Goodbye Rick,\" followed by the number of walkers he was able to kill before dying on the next line.</p><p>Rick's gun can also fire 6 rounds without reloading. He reloads in 1 second, during which time walkers advance 1 metre.</p><p><strong>Constraints</strong><br>1&lt;=t&lt;=100<br>1&lt;=n&lt;=100000<br>1&lt;=dis[i]&lt;=50000</p><p><strong>Input Format</strong><br>First line contains an integer t indicating number of test cases.</p><p>Next line contains an integer n denoting no.of walkers followed by n space separated integers denoting the distance of walkers from him.</p><p><strong>Output Format</strong><br>For each test case output one line denoting the answer as explained above.</p><p>&nbsp;</p>",
+        "SEQ_ID": 246,
+        "SESSION_ID": 20,
+        "SESSION_NAME": "Hashing",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "2\n5\n2 4 2 5 6\n4\n2 2 2 2",
+            "OUTPUT": "Rick now go and save Carl and Judas\nGoodbye Rick\n2"
+          },
+          {
+            "_id": 2,
+            "INPUT": "2\n7\n2 3 5 4 2 5 6\n5\n2 2 2 2 2",
+            "OUTPUT": "Goodbye Rick\n5\nGoodbye Rick\n2"
+          }
+        ],
+        "key": 246
+      },
+      "queryData": {},
+      "status": []
+    }
+  }
+]

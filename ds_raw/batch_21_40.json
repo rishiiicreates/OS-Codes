@@ -1,0 +1,1250 @@
+[
+  {
+    "seq": 21,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_21",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_137",
+        "SEQUENCE_ID": 21,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 13,
+        "SESSION_NAME": "Arrays",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <stdio.h>\n\nint n1,n2;\n\nvoid solve(int a1[], int a2[], int k){\n    int idx[100] = {0}, i;\n    while(k--){\n        long long min_s = 1e18;\n        int b = 0;\n        for(i=0; i<n2; i++){\n            long long s = (long long)a1[idx[i]] + a2[i];\n            if(idx[i] < n1 && s < min_s){ min_s = s; b = i; }\n        }\n        printf(\"(%d,%d) \", a1[idx[b]++], a2[b]);\n    }\n}\n\nint main(){\n    int i, k;\n    scanf(\"%d\", &n1);\n    int a1[n1];\n    for(i=0;i<n1;i++) scanf(\"%d\", &a1[i]);\n    scanf(\"%d\", &n2);\n    int a2[n2];\n    for(i=0;i<n2;i++) scanf(\"%d\", &a2[i]);\n    scanf(\"%d\", &k);\n    solve(a1, a2, k);\n    return 0;\n}",
+            "mode": 0
+          }
+        ],
+        "EVALUATION": 1792594073497
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          6,
+          250,
+          38
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "int a1[n1]",
+          "int n1,n2;",
+          "while(k--)",
+          "for(i=0;i<n1;i++)",
+          "for(i=0;i<n2;i++)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p>Question description</p><p>Simon is studying B.Tech.-Mechanical Engineering.&nbsp;</p><p>He's going to attend a computer science-based subject exam this semester.</p><p>Due to the less preparation in the previous monthly tests, &nbsp;his internal mark decreased.&nbsp;</p><p>His computer science Professor made an offer one more chance to boost up his internal marks.&nbsp;</p><p>Professor assigns a program to Simon for the internal mark bootup.&nbsp;</p><p>So Simon wants to solve Questions which is given by the test coordinator.</p><p>the question was, two integer arrays nums1 and nums2 sorted in ascending order and an integer k.<br>Define a pair (u,v) which consists of one element from the first array and one element from the second array.<br>Simon need to identify the k pairs (u1,v1),(u2,v2) \u2026(uk,vk) with the smallest sums.</p><p>can you help him?</p><p>Constraints</p><p>0&lt;n1&lt;100</p><p>0&lt;n2 &lt;100</p><p>0&lt;k&lt;100</p><p>Explanation</p><p>nums1 = [1,7,11], nums2 = [2,4,6], k = 3</p><p>Return: [1,2],[1,4],[1,6]</p><p>The first 3 pairs are returned from the sequence:<br>[1,2],[1,4],[1,6],[7,2],[7,4],[11,2],[7,6],[11,4],[11,6]</p>",
+        "SEQ_ID": 137,
+        "SESSION_ID": 13,
+        "SESSION_NAME": "Arrays",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "3\n3 4 5\n3\n4 6 8\n3",
+            "OUTPUT": "(3,4) (4,4) (5,4)"
+          },
+          {
+            "_id": 2,
+            "INPUT": "3\n1 7 11\n3\n2 4 6\n3",
+            "OUTPUT": "(1,2) (1,4) (1,6)"
+          }
+        ],
+        "key": 137
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 22,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_22",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_136",
+        "SEQUENCE_ID": 22,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 13,
+        "SESSION_NAME": "Arrays",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <stdio.h>\n\nint main(){\n    int n, x, best = 0, max_c = 0;\n    int f[1005] = {0};\n    if(scanf(\"%d\", &n) != 1) return 0;\n    for(int i=0; i<n; i++){\n        scanf(\"%d\", &x);\n        f[x]++;\n        if(f[x] > max_c){\n            max_c = f[x];\n            best = x;\n        }\n    }\n    printf(\"%d\\n\", best);\n    return 0;\n}",
+            "mode": 0
+          }
+        ],
+        "EVALUATION": 1792594139157
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          5,
+          185,
+          38
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "0",
+          "0",
+          "0"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p>Question description</p><p>Simon is studying B.Tech.-Mechanical Engineering.&nbsp;</p><p>He's going to attend a computer science-based subject exam this semester.</p><p>Due to the less preparation in the previous monthly tests, &nbsp;his internal mark decreased.&nbsp;</p><p>His computer science Professor made an offer one more chance to boost up his internal marks.&nbsp;</p><p>Professor assigns a program to Simon for the internal mark boostup.&nbsp;</p><p>So Simon wants to identify the element of array which occurs most time in the array</p><p>Can you help him ?</p><p>Function Description</p><figure class=\"image\"><img src=\"data:image/png;base64,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\"></figure><p>Constraints</p><p>0&lt;n&lt;100</p><p>0&lt;arr&lt;1000</p><p>Input Format&nbsp;</p><p>&nbsp;&nbsp; -First line will contain the number of elements present in the array.<br>&nbsp;&nbsp;&nbsp; -Second line will contain the elements of array</p><p>Output Format<br><strong>&nbsp;&nbsp;&nbsp; </strong>-Output contain only line that contains the element which occurs most times in the array.</p><p>&nbsp;</p>",
+        "SEQ_ID": 136,
+        "SESSION_ID": 13,
+        "SESSION_NAME": "Arrays",
+        "TAGS": [
+          "Data Structures",
+          "Arrays"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "9\n1 2 1 2 1 4 5 1 2",
+            "OUTPUT": "1"
+          },
+          {
+            "_id": 2,
+            "INPUT": "8\n11 22 33 44 55 66 77 44",
+            "OUTPUT": "44"
+          }
+        ],
+        "key": 136
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 23,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_23",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_127",
+        "SEQUENCE_ID": 23,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 13,
+        "SESSION_NAME": "Arrays",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <stdio.h>\n\n#define MAX 10\n#define LEN 50\n\nchar name[MAX][LEN];\nint price[MAX];\nint afford[MAX];\nint dollar, items, bought;\n\nvoid show(){\n    for(int i=0; i<items; i++)\n        printf(\"I %s afford %s\\n\", afford[i] ? \"can\" : \"can't\", name[i]);\n    if(bought) printf(\"%d\\n\", dollar);\n    else printf(\"I need more Dollar!\\n\");\n}\n\nint main(){\n    int i, s;\n    scanf(\"%d%d\", &dollar, &items);\n    for(i=0;i<items;i++) scanf(\"%s%d\", name[i], &price[i]);\n    for(s=0; s<items; s++){\n        int b = -1;\n        for(i=0; i<items; i++){\n            if(!afford[i] && price[i] <= dollar){\n                if(b < 0 || price[i] < price[b]) b = i;\n            }\n        }\n        if(b < 0) break;\n        dollar -= price[b];\n        afford[b] = 1;\n        bought++;\n    }\n    show();\n    return 0;\n}",
+            "mode": 0
+          }
+        ],
+        "EVALUATION": 1792594255783
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          11,
+          250,
+          33
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "char name[MAX][LEN];",
+          "int price[MAX]",
+          "afford[MAX]",
+          "for(i=0;i<items;i++)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p>Problem Description:<br>Good news! Suresh get to go to America on a class trip! Bad news, he don't know how to use the Dollar which is the name of the American cash system. America uses coins for cash a lot more than the Kuwait does. Dollar comes in coins for values of: 1, 2, 10, 50, 100, &amp; 500 To practice your Dollar skills, suresh have selected random items from Amazon.co.us and put them into a list along with their prices in Dollar. Suresh now want to create a program to check suresh Dollar math.<br><br>Suresh goal is to maximize your buying power to buy AS MANY items as you can with your available Dollar.<br><br>Input Format:<br>File listing 2 to 6 items in the format of:<br><br>ITEM DDDDD<br>ITEM = the name of the item you want to buy<br>DDDDD = the price of the item (in Dollar)<br><br>Output Format:<br>Print the output in a separate lines contains, List the items suresh can afford to buy. Each item on its own line. Suresh goal is to buy as many items as possible. If suresh can only afford the one expensive item, or 2 less expensive items on a list, but not all three, then list the less expensive items as affordable. If suresh cannot afford anything in the list, output \"I need more Dollar!\" after the items. The final line you output should be the remaining Dollar he will have left over after make purchases.</p>",
+        "SEQ_ID": 127,
+        "SESSION_ID": 13,
+        "SESSION_NAME": "Arrays",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "6000 3\nPhone-case 1486\nCandybar 863\nSunglasses 5529",
+            "OUTPUT": "I can afford Phone-case\nI can afford Candybar\nI can't afford Sunglasses\n3651"
+          },
+          {
+            "_id": 2,
+            "INPUT": "2100 3\nCamera 69555\nTV 76439\niPhone 90000",
+            "OUTPUT": "I can't afford Camera\nI can't afford TV\nI can't afford iPhone\nI need more Dollar!"
+          }
+        ],
+        "key": 127
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 24,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_24",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_130",
+        "SEQUENCE_ID": 24,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 13,
+        "SESSION_NAME": "Arrays",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <stdio.h>\n#include <math.h>\n\nint main(){\n    int q;\n    if(scanf(\"%d\", &q) != 1) return 0;\n    while(q--){\n        long long a, b;\n        scanf(\"%lld%lld\", &a, &b);\n        int ans = (int)floor(sqrt(b)) - (int)ceil(sqrt(a)) + 1;\n        printf(\"%d\\n\", ans);\n    }\n    return 0;\n}",
+            "mode": 0
+          }
+        ],
+        "EVALUATION": 1792594391692
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          4,
+          118,
+          25
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "while(q--)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p>Problem Description:<br>Caleb likes to challenge Selvan's math ability.&nbsp;</p><p>He will provide a starting and ending value that describes a range of integers, inclusive of the endpoints.&nbsp;</p><p>Selvan must determine the number of square integers within that range.<br><br>Note:&nbsp;</p><p>A square integer is an integer which is the square of an integer, e.g. 1, 4, 9, 16, 25<br><br>Constraints:<br>1 &lt;= q &lt;= 100<br>1 &lt;= start &lt;= 10^9<br>1 &lt;= end &lt;= 10^9</p><p><br>Input Format<br>The first line contains 'q', number of test cases.<br>Each of the next 'q' lines contains two space-separated integers, representing 'start' and 'end'.</p><p><br>Output Format:<br>Print the number of square integers within that range.</p>",
+        "SEQ_ID": 130,
+        "SESSION_ID": 13,
+        "SESSION_NAME": "Arrays",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "8\n78 144\n87 193\n11 46\n19 39\n84 187\n12 88\n15 85\n71 161",
+            "OUTPUT": "4\n4\n3\n2\n4\n6\n6\n4"
+          },
+          {
+            "_id": 2,
+            "INPUT": "4\n4 33\n9 71\n34 98\n29 61\n",
+            "OUTPUT": "4\n6\n4\n2"
+          }
+        ],
+        "key": 130
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 25,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_25",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_133",
+        "SEQUENCE_ID": 25,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 13,
+        "SESSION_NAME": "Arrays",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <stdio.h>\n\nint rotLeft(int arr[],int n,int d){\n    d %= n;\n    for(int i = 0; i < n; i++){\n        printf(\"%d%c\", arr[(i + d) % n], i == n - 1 ? '\\n' : ' ');\n    }\n    return 0;\n}\n\nint rotRight(int arr[],int n,int d){\n    d %= n;\n    for(int i = 0; i < n; i++){\n        printf(\"%d%c\", arr[(i - d + n) % n], i == n - 1 ? '\\n' : ' ');\n    }\n    return 0;\n}\n\nint main(){\n    int n, d;\n    char dir;\n    scanf(\"%d\", &n);\n    int arr[105];\n    for(int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    scanf(\"%d\", &d);\n    scanf(\" %c\", &dir);\n    if(dir == 'L') rotLeft(arr, n, d);\n    else rotRight(arr, n, d);\n    return 0;\n}",
+            "mode": 0
+          }
+        ],
+        "EVALUATION": 1792594451096
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          4,
+          365,
+          68
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "int rotLeft(int arr[],int n,int d)",
+          "int rotRight(int arr[],int n,int d)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>CTS Interview Question</strong></p><p>Question description</p><p>Issac is a Language teacher at a high school in Madurai.&nbsp;</p><p>Sabari is a student, he is studying programming while during Language class.&nbsp;</p><p>Issac tells Sabari to leave the other subject and learn Tamil.&nbsp;</p><p>Sabari asked permission for 10 minutes, Finally, Sabri got permission to solve the program.</p><p>The computer teacher has given homework on the topic of Arrays and &nbsp;where he need to do Array Rotation as per the input of question.&nbsp;. But Sabari is not good at C Programming.&nbsp;</p><p>Can you help him to solve the programming problem?</p><p>Constraints</p><p>0&lt;n&lt; 100</p><p>0&lt;arr&lt;1000</p><p><strong>Input Format</strong><br><strong>&nbsp; &nbsp;\u2013</strong>First line predicts the total number of elements present int the array.<br>&nbsp;&nbsp;&nbsp; -Second line contains the elements of array<br>&nbsp;&nbsp;&nbsp; -Third line contains the number of time rotation need to be done<br>&nbsp;&nbsp;&nbsp; -Fourth line contains the character <strong>\u2018L\u2019 </strong>or <strong>\u2018R\u2019 </strong>that defines what type of rotation needs to be done.</p><p><strong>Output Format</strong><br>&nbsp;&nbsp;&nbsp; -Output contains only line that is only the resultant output</p>",
+        "SEQ_ID": 133,
+        "SESSION_ID": 13,
+        "SESSION_NAME": "Arrays",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "5\n1 2 3 4 5\n4\nL",
+            "OUTPUT": "5 1 2 3 4"
+          },
+          {
+            "_id": 2,
+            "INPUT": "7\n10 11 12 13 14 15 16\n4\nR",
+            "OUTPUT": "13 14 15 16 10 11 12"
+          }
+        ],
+        "key": 133
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 26,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_26",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_111",
+        "SEQUENCE_ID": 26,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 13,
+        "SESSION_NAME": "Arrays",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <stdio.h>\n\nint colours[100];\nlong long scount[100][100];\nlong long col[100][100];\n\nint main(){\n    int n;\n    while(scanf(\"%d\", &n) == 1){\n        for(int i = 0; i < n; i++){\n            scanf(\"%d\", &colours[i]);\n            col[i][i] = colours[i];\n            scount[i][i] = 0;\n        }\n        for(int l = 2; l <= n; l++){\n            for(int i = 0; i <= n - l; i++){\n                int j = i + l - 1;\n                col[i][j] = (col[i][j-1] + colours[j]) % 100;\n                scount[i][j] = 1e18;\n                for(int k = i; k < j; k++){\n                    long long cur = scount[i][k] + scount[k+1][j] + col[i][k] * col[k+1][j];\n                    if(cur < scount[i][j]) scount[i][j] = cur;\n                }\n            }\n        }\n        printf(\"%lld\\n\", scount[0][n-1]);\n    }\n    return 0;\n}",
+            "mode": 0
+          }
+        ],
+        "EVALUATION": 1792594561713
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          9,
+          465,
+          43
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "scount[100][100]",
+          "colours[100]"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p>Problem Description:</p><p>Umesh has n mixtures in front of him, arranged in a row. Each mixture has one of 100 different colors (colors have numbers from 0 to 99).</p><p>He wants to mix all these mixtures together. At each step, he is going to take two mixtures that stand next to each other and mix them together, and put the resulting mixture in their place.</p><p>Functional Description:</p><p>When mixing two mixtures of colors a and b, the resulting mixture will have the color (a+b) mod 100.</p><p>Also, there will be some smoke in the process. The amount of smoke generated when mixing two mixtures of colors a and b is a*b.</p><p>Find out what is the minimum amount of smoke that Umesh can get when mixing all the mixtures together.</p><p>Constraints:</p><p>1 &lt;= n &lt;= 100</p><p>Input Format:</p><p>There will be a number of test cases in the input.</p><p>The first line of each test case will contain n, the number of mixtures,&nbsp;</p><p>The second line will contain n integers representing the initial colors of the mixtures.</p><p>Output Format:</p><p>For each test case, output the minimum amount of smoke.</p>",
+        "SEQ_ID": 111,
+        "SESSION_ID": 13,
+        "SESSION_NAME": "Arrays",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "3\n216 374 234\n7\n333 567 908 234 411 581 291",
+            "OUTPUT": "89244\n175432"
+          },
+          {
+            "_id": 2,
+            "INPUT": "2\n716 314\n3\n411 581 291",
+            "OUTPUT": "224824\n198663"
+          }
+        ],
+        "key": 111
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 27,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_27",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_123",
+        "SEQUENCE_ID": 27,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 13,
+        "SESSION_NAME": "Arrays",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <stdio.h>\n#include <string.h>\n#define PREFIXES 9\nchar *si[] = {\"B\",\"KB\",\"MB\",\"GB\",\"TB\",\"PB\",\"EB\",\"ZB\",\"YB\"}, *b2[] = {\"B\",\"KiB\",\"MiB\",\"GiB\",\"TiB\",\"PiB\",\"EiB\",\"ZiB\",\"YiB\"};\nint main(){\n    double siq[PREFIXES],b2q[PREFIXES];\n    double val, bytes;\n    char unit[5];\n    int i, idx = 0;\n    siq[0] = b2q[0] = 1;\n    for(i=1;i<PREFIXES;i++){\n        siq[i] = siq[i-1] * 1000; b2q[i] = b2q[i-1] * 1024;\n    }\n    scanf(\"%lf %s\", &val, unit);\n    while(strcmp(unit, si[idx])) idx++;\n    bytes = val * siq[idx];\n    for(i = PREFIXES - 1; i > 0; i--) if(bytes >= b2q[i]) break;\n    printf(\"%.2f %s\\n\", bytes / b2q[i], b2[i]);\n    return 0;\n}",
+            "mode": 0
+          }
+        ],
+        "EVALUATION": 1792594743016
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          6,
+          270,
+          23
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "double siq[PREFIXES],b2q[PREFIXES];",
+          "for(i=1;i<PREFIXES;i++)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p>Problem Description:<br>Steve is suspicious that the pen drive he just bought for his computer said 1EB on the box, but when he plugged it into his computer the OS says it only has 931PB of space.</p><p>&nbsp;Meena says that's because hard drive marketing uses base-10 to calculate space, but computer science (and OS) use base-2 (and always have). So, using base-10, 1 Exabyte (EB) would be 10^18 (1,000,000,000,000,000,000) bytes.</p><p>&nbsp;But in base-2 it would be 2^60 (1,152,921,504,606,846,976) bytes.&nbsp;</p><p>Most humans use base-10 when counting, so there is confusion. (Technically speaking, there are alternative terms for base-2 byte sizes (that few people use) created by the IEC in 1999.)&nbsp;</p><p>Help Meena explain it to steve by writing a program that will take storage space given in base-10, and convert it to base-2 using the tables below for reference.<br><br><br>Input Format:<br>You will receive a computer pen drive size as a whole integer, a space, then a 2-letter size code reported in Base-10 SI Units from the marketing text on the box.&nbsp;</p><p>Your program should then convert to the base-2 Binary size the hard drive will show as available space in the OS rounded to the nearest 2 decimal places in the largest binary size you can express a whole number in (e.g. do not write 1030 MiB, write 1.01 GiB)<br><br>Output Format:<br>Print the output in a single line contains, convert the size given in base-10 to base-2 units which will be reported in the operating system, rounded to 2 decimal places.&nbsp;</p><p>Make sure Meena's program outputs the base-2 Binary 3 letter code for her program's output, to help Steve understand the differences.</p>",
+        "SEQ_ID": 123,
+        "SESSION_ID": 13,
+        "SESSION_NAME": "Arrays",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "1 ZB",
+            "OUTPUT": "867.36 EiB"
+          },
+          {
+            "_id": 2,
+            "INPUT": "5 ZB",
+            "OUTPUT": "4.24 ZiB"
+          }
+        ],
+        "key": 123
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 28,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_28",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_132",
+        "SEQUENCE_ID": 28,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 13,
+        "SESSION_NAME": "Arrays",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <stdio.h>\n\nint main(){\n    int n;\n    scanf(\"%d\", &n);\n    int array[n];\n    for(int i=0;i<n;i++) scanf(\"%d\", &array[i]);\n    for(int i=0;i<n;i++){\n        for(int j=i+1;j<n;j++){\n            if(array[i]>array[j]){\n                int t = array[i];\n                array[i] = array[j];\n                array[j] = t;\n            }\n        }\n    }\n    for(int i = 0; i < n - 1; i += 2){\n        int t = array[i];\n        array[i] = array[i+1];\n        array[i+1] = t;\n    }\n    for(int i = 0; i < n; i++) printf(\"%d \", array[i]);\n    return 0;\n}",
+            "mode": 0
+          }
+        ],
+        "EVALUATION": 1792594795912
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          7,
+          225,
+          38
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "int array[n]",
+          "for(int i=0;i<n;i++)",
+          "if(array[i]>array[j])"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>TCS Interview Question</strong></p><p>Question description</p><p>Ravi participated in TCS off campus interview at reputed institution, one of the technical question he has to complete with in the given time, where you need to sort the array in the waveform. There might be multiple possible output of the program. the following pattern output is appreciated.</p><p>Function Description</p><p>This is a simple method of solving this question which contains basic 2 steps and they are as follow</p><p><strong>Step : 1 \u2013</strong> Sort the array in ascending order.<br><strong>Step : 2 \u2013</strong> Swap all adjacent elements of the array</p><p>Let us consider the input array be {3, 6, 5, 10, 7, 20}. After sorting, we get {3, 5, 6, 7, 10, 20}. After swapping adjacent elements, we get {5, 3, 7, 6, 20, 10}.&nbsp;</p><figure class=\"image\"><img src=\"data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gIoSUNDX1BST0ZJTEUAAQEAAAIYAAAAAAIQAABtbnRyUkdCIFhZWiAAAAAAAAAAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAAHRyWFlaAAABZAAAABRnWFlaAAABeAAAABRiWFlaAAABjAAAABRyVFJDAAABoAAAAChnVFJDAAABoAAAAChiVFJDAAABoAAAACh3dHB0AAAByAAAABRjcHJ0AAAB3AAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAFgAAAAcAHMAUgBHAEIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFhZWiAAAAAAAABvogAAOPUAAAOQWFlaIAAAAAAAAGKZAAC3hQAAGNpYWVogAAAAAAAAJKAAAA+EAAC2z3BhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABYWVogAAAAAAAA9tYAAQAAAADTLW1sdWMAAAAAAAAAAQAAAAxlblVTAAAAIAAAABwARwBvAG8AZwBsAGUAIABJAG4AYwAuACAAMgAwADEANv/bAEMA///////////////////////////////////////////////////////////////////////////////////////bAEMB///////////////////////////////////////////////////////////////////////////////////////AABEIAqwGzgMBIgACEQEDEQH/xAAXAAEBAQEAAAAAAAAAAAAAAAAAAgED/8QAJxABAQACAgIDAQADAQADAQAAAAERMQJREiFBYXEyIoHwoUJikXL/xAAWAQEBAQAAAAAAAAAAAAAAAAAAAQL/xAAYEQEBAQEBAAAAAAAAAAAAAAAAAREhQf/aAAwDAQACEQMRAD8A6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA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\"></figure><p>Constraints</p><p>0&lt;n&lt; 100</p><p>0&lt;arr&lt;1000</p><p><strong>Input Format</strong><br>&nbsp;&nbsp;&nbsp; -First line contains the value of n that is the total number of elements in the array.<br>&nbsp;&nbsp;&nbsp; -Second line contains the space separated elements of array.</p><p><strong>Output Format</strong><br>&nbsp;&nbsp;&nbsp; -Output contains only line that is only the resultant array in the wave form fashion.</p>",
+        "SEQ_ID": 132,
+        "SESSION_ID": 13,
+        "SESSION_NAME": "Arrays",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "6\n3 6 5 10 7 20",
+            "OUTPUT": "5 3 7 6 20 10"
+          },
+          {
+            "_id": 2,
+            "INPUT": "8\n10 5 6 3 2 20 98 80",
+            "OUTPUT": "3 2 6 5 20 10 98 80"
+          }
+        ],
+        "key": 132
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 29,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_29",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_108",
+        "SEQUENCE_ID": 29,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 13,
+        "SESSION_NAME": "Arrays",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <stdio.h>\n\nint main(){\n    int t;\n    scanf(\"%d\", &t);\n    while(t--){\n        int n, m;\n        scanf(\"%d%d\", &n, &m);\n        int C[m][n];\n        for(int i = 0; i < n; i++)\n            for(int j = 0; j < m; j++)\n                scanf(\"%d\", &C[i][j]);\n        int x1, y1, x2, y2;\n        scanf(\"%d%d%d%d\", &x1, &y1, &x2, &y2);\n        long long sum = 0;\n        for(int i = x1 - 1; i < x2; i++)\n            for(int j = y1 - 1; j < y2; j++)\n                sum += C[i][j];\n        printf(\"%lld\\n\", sum);\n    }\n    return 0;\n}",
+            "mode": 0
+          }
+        ],
+        "EVALUATION": 1792594879210
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          6,
+          195,
+          33
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "int C[m][n];",
+          "C[i][j]"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p>Problem Description:</p><p>Nirobi have given a matrix C of size N x M to Rio. &nbsp;</p><p>Also Rio are given position of submatrix as X1, Y1 and X2, Y2 inside the matrix. &nbsp;</p><p>Now Rio needs to find the sum of all elements inside that submatrix.</p><p>Can you help Rio in completing the task assigned by Nirobi.</p><p>Constraints:</p><p>1 \u2264 T \u2264 15</p><p>1 \u2264 N, M \u2264 103</p><p>1 \u2264 C[N][M] \u2264 106</p><p>1 &lt;= X1, Y1, X2, Y2 &lt;= M</p><p>Input Format:</p><p>The first line of input contains an integer T denoting the number of test cases. &nbsp;</p><p>The first line of each test case is n and m,n is the number of rows and m is the number of columns.</p><p>The second line of each test case contains C[N][M]. &nbsp;</p><p>The third line contains four value of X1, Y1, X2, Y2. X1, Y1 is the top left cell and X2, Y2 is the bottom right cell.</p><p>Output Format:</p><p>Print the sum of all elements inside that submatrix.</p>",
+        "SEQ_ID": 108,
+        "SESSION_ID": 13,
+        "SESSION_NAME": "Arrays",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "1\n3 3\n91 8 71 14 2 11 6 51 3\n1 2 1 3",
+            "OUTPUT": "79"
+          },
+          {
+            "_id": 2,
+            "INPUT": "1\n3 3\n9 18 7 14 2 11 6 51 3\n1 2 1 3",
+            "OUTPUT": "25"
+          }
+        ],
+        "key": 108
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 30,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_30",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_89",
+        "SEQUENCE_ID": 30,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 13,
+        "SESSION_NAME": "Arrays",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <stdio.h>\n#include <stdlib.h>\n\n#define MAXN 105\n#define read(x) scanf(\"%d\", &x)\n\nint s[MAXN];\n\nint cmp(const void *a, const void *b){\n    return (*(int*)a - *(int*)b);\n}\n\nvoid sol(){\n    int n;\n    scanf(\"%d\", &n);\n    for(int i = 0; i < n; i++) read(s[i]);\n    qsort(s, n, sizeof(int), cmp);\n    int ans = 1, cur = 1;\n    for(int i = 1; i < n; i++){\n        if(s[i] > s[i-1]) cur++;\n        ans += cur;\n    }\n    printf(\"%d\\n\", ans);\n}\n\nint main(){\n    int t;\n    scanf(\"%d\", &t);\n    while(t--) sol();\n    return 0;\n}",
+            "mode": 0
+          }
+        ],
+        "EVALUATION": 1792594932750
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          13,
+          325,
+          51
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "int s[MAXN];",
+          "void sol()",
+          "read(s[i])"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p>Problem Description:<br>Bear Grylls is a forest lover, so he spends some free time taking care of many of her loved ones' animals. He likes to offer them treats, but wants to do that in an impartial way.<br><br>Bear Grylls decided that it was logical for animals of the same size to get the same amount of treats and for larger animals to get strictly more treats than smaller ones. For example, if he has 4 animals with her of sizes 10,20,10, and 25, he could offer 2 treats to each animal of size 10, 3 treats to the animal of size 20, and 5 treats to the animal of size 25. This requires her to buy a total of 2+3+2+5=12 treats. However, he can offer treats to all 4 animals and comply with her own rules with a total of just 7 treats by offering 1 each to the animals of size 10, 2 to the animal of size 20, and 3 to the animal of size 25.<br><br>Help Bear Grylls plan her next animal day. Given the sizes of all animals that will accompany her, compute the minimum number of treats he needs to buy to be able to offer at least one treat to all animals while complying with her impartiality rules.<br><br>Constraints:<br>1\u2264T\u2264100.<br>1\u2264Si\u2264100, for all i.<br>2\u2264N\u2264100.<br><br>Input Format:<br>The first line of the input gives the number of test cases, T. T test cases follow.&nbsp;</p><p>Each test case consists of two lines.&nbsp;</p><p>The first line of a test case contains a single integer N, the number of animals in Bear Grylls's next animal day.&nbsp;</p><p>The second line of a test case contains N integers S1,S2,\u2026,SN, representing the sizes of each animal.<br><br>Output Format:<br>Print the output in a separate lines contains, the minimum number of treats he needs to buy to be able to offer at least one treat to all animals while complying with her impartiality rules.</p>",
+        "SEQ_ID": 89,
+        "SESSION_ID": 13,
+        "SESSION_NAME": "Arrays",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "3\n4\n10 20 10 25\n5\n7 7 7 7 7\n2\n100 1",
+            "OUTPUT": "7\n5\n3"
+          },
+          {
+            "_id": 2,
+            "INPUT": "5\n5\n8 6 4 8 9\n3\n8 5 2\n4\n101 120 110 215\n5\n1711 171 711 71 71\n2\n110 11",
+            "OUTPUT": "13\n6\n10\n11\n3"
+          }
+        ],
+        "key": 89
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 31,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_31",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_51",
+        "SEQUENCE_ID": 31,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 14,
+        "SESSION_NAME": "Linked List",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct node node;\nstruct node {\n    int data;\n    node *next;\n};\n\nnode *start = NULL;\n\nvoid display(){\n    printf(\"Linked List:\");\n    node *p = start;\n    while(p){\n        printf(\"->%d\", p->data);\n        p = p->next;\n    }\n}\n\nint main(){\n    int n, x;\n    scanf(\"%d\", &n);\n    for(int i = 0; i < n; i++){\n        scanf(\"%d\", &x);\n        node *p1 = (node*)malloc(sizeof(node));\n        p1->data = x;\n        p1->next=start;\n        start = p1;\n    }\n    display();\n    return 0;\n}",
+            "mode": 0
+          }
+        ],
+        "EVALUATION": 1792594983937
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          3,
+          150,
+          33
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "struct node",
+          "node *next;",
+          "*start",
+          "p1->next=start;",
+          "void display()"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>Question description</strong></p><p>Lalitha is a IT expert who training youngsters struggling in coding to make them better.</p><p>Lalitha usually gives interesting problems to the youngsters &nbsp;to make them love the coding.One such day Lalitha provided the youngsters to solve that The new node is always placed before the Linked List's head.</p><p>The newly inserted node becomes the Linked List's new head.</p><p>If the current Linked List is 11-&gt;151-&gt;201-&gt;251, for example,</p><p>We add item 5 to the front of the list.</p><p>The Linked List will then be 5-&gt;11-&gt;151-&gt;201-&gt;251.</p><p>Let's call the function that moves the item to the top of the list push ().</p><p>The push() must receive a pointer to the head pointer, because push must change the head pointer to point to the new node &nbsp; &nbsp;&nbsp;</p><p><strong>Constraints:</strong></p><p>1 &lt; arr &lt;100</p><p><strong>INPUT</strong></p><p>First line contains the number of datas- N. Second line contains N integers(i.e, the datas to be inserted).</p><p><strong>OUTPUT</strong></p><p>Display the final Linked List.</p><p>&nbsp;</p>",
+        "SEQ_ID": 51,
+        "SESSION_ID": 14,
+        "SESSION_NAME": "Linked List",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "5\n103 401 801 101 100 ",
+            "OUTPUT": "Linked List:->100->101->801->401->103"
+          },
+          {
+            "_id": 2,
+            "INPUT": "7\n11 21 13 41 81 11 10 ",
+            "OUTPUT": "Linked List:->10->11->81->41->13->21->11"
+          }
+        ],
+        "key": 51
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 32,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_32",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_157",
+        "SEQUENCE_ID": 32,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 14,
+        "SESSION_NAME": "Linked List",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <stdio.h>\n#include <stdlib.h>\n\nstruct n {\n    int data;\n    struct n *next;\n};\n\nstruct n *head = NULL;\n\nvoid insert(int data){\n    struct n *t = (struct n*)malloc(sizeof(struct n));\n    t->data = data;\n    if(!head){\n        head = t;\n        t->next = head;\n        return;\n    }\n    struct n *p = head;\n    while(p->next != head) p = p->next;\n    p->next = t;\n    t->next = head;\n}\n\nvoid display(struct n *h){\n    if(!h) return;\n    struct n *p = h;\n    printf(\"[h]\");\n    do {\n        printf(\"=>%d\", p->data);\n        p = p->next;\n    } while(p != h);\n    printf(\"=>[h]\\n\");\n}\n\nstruct n *split_list(int parity){\n    struct n *h = NULL, *last = NULL, *p = head;\n    do {\n        if(p->data % 2 == parity){\n            struct n *t = (struct n*)malloc(sizeof(struct n));\n            t->data = p->data;\n            if(!h) h = t;\n            else last->next = t;\n            t->next = h;\n            last = t;\n        }\n        p = p->next;\n    } while(p != head);\n    return h;\n}\n\nint main(){\n    int num;\n    if(scanf(\"%d\", &num) != 1) return 0;\n    for(int i = 1; i <= num; i++) insert(i);\n    printf(\"Complete linked_list:\\n\");\n    display(head);\n    printf(\"Odd:\\n\");\n    display(split_list(1));\n    printf(\"Even:\\n\");\n    display(split_list(0));\n    return 0;\n}",
+            "mode": 0
+          }
+        ],
+        "EVALUATION": 1792595044935
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          4,
+          620,
+          115
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "void insert(int data)",
+          "struct n *next;",
+          "void display(struct n *h)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>Question description</strong></p><p>sanam's Dream came true after he got an Appointment order from Google.Simon's family was very happy of his achievement.&nbsp;</p><p>The company mentioned Basic Salary, DA, HRA with some other benefits.&nbsp;</p><p>But not highlighted the Gross salary in the order.&nbsp;</p><p>sanam's father wanted to know the Gross salary of his son.&nbsp;</p><p>sanam try to his gross salary from HR department. they informed that you have to get pass grade in first month entry test. the entry test has 5 questions. one of the question was,&nbsp;<strong> </strong>Split a circular linked list in two halves. you have to split the circular Linked List with the same size of Divisions.Maybe if circular Linked List is odd, you have to change the number of node, it is even .</p><p>Can you help sanam?</p><p><strong>Function Description</strong></p><p>First count the number of node in Circular Linked List.</p><p>Second, you have to make the List even.</p><p>Third, you need to make the List half. the front is the same size like the rear. Finally, I have to make two circular Linked List.</p><p><strong>Constraints</strong></p><p>0&lt;n&lt;10</p><p><strong>Input Format:</strong><br>The First line represents the number of input in the circular linked list elements&nbsp;<br><br><strong>Output Format:</strong><br>First Line indicates the complete linked list</p><p>second line indicates the odd list</p><p>third line indicates the even list</p><p>Refer sample test cases.</p>",
+        "SEQ_ID": 157,
+        "SESSION_ID": 14,
+        "SESSION_NAME": "Linked List",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "6",
+            "OUTPUT": "Complete linked_list:\n[h]=>1=>2=>3=>4=>5=>6=>[h]\nOdd:\n[h]=>1=>3=>5=>[h]\nEven:\n[h]=>2=>4=>6=>[h]"
+          },
+          {
+            "_id": 2,
+            "INPUT": "15",
+            "OUTPUT": "Complete linked_list:\n[h]=>1=>2=>3=>4=>5=>6=>7=>8=>9=>10=>11=>12=>13=>14=>15=>[h]\nOdd:\n[h]=>1=>3=>5=>7=>9=>11=>13=>15=>[h]\nEven:\n[h]=>2=>4=>6=>8=>10=>12=>14=>[h]"
+          }
+        ],
+        "key": 157
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 33,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_33",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_54",
+        "SEQUENCE_ID": 33,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 14,
+        "SESSION_NAME": "Linked List",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <stdio.h>\n\ntypedef struct node node;\nstruct node { int data; node *next; };\nnode *start, a[105], p2_buf, *p2 = &p2_buf;\nint n, f, x;\n\nint find_p(int p){\n    for(int i = 0; i < n; i++) if(a[i].data == p) return i;\n    return -1;\n}\n\nvoid display(){\n    printf(\"Linked List:\");\n    for(int i = 0; i < n; i++){\n        if(i == f) printf(\"->%d\", x);\n        printf(\"->%d\", a[i].data);\n    }\n    printf(\"\\n\");\n}\n\nint main(){\n    int p;\n    scanf(\"%d\", &n);\n    for(int i = 0; i < n; i++) scanf(\"%d\", &a[i].data);\n    scanf(\"%d%d\", &p, &x);\n    f = find_p(p);\n    if(f < 0) printf(\"Node not found!\\n\");\n    node *p1 = a;\n    p2->next=p1;\n    display();\n    return 0;\n}",
+            "mode": 0
+          }
+        ],
+        "EVALUATION": 1792595335258
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          3,
+          275,
+          66
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "struct node",
+          "node *next;",
+          "*start",
+          "p2->next=p1;",
+          "void display()"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>Question description</strong></p><p>Problem Description:</p><p>For Engineering Second -year students, the instructor is organising a surprise test. &nbsp;</p><p>He's given you a new node is added before the given node of the given Linked List.&nbsp;</p><p>For example if the given Linked List is 5-&gt;10-&gt;15-&gt;20-&gt;25 and&nbsp;</p><p>we add an item 30 before node 15, then the Linked List becomes 5-&gt;10-&gt;30-&gt;15-&gt;20-&gt;25.</p><p>Since a Linked List is typically represented by the head of it, we have to traverse the list till node and then insert the node.&nbsp;</p><p><strong>Constraints:</strong></p><p>1 &lt; arr &lt;100</p><p><strong>Input Format</strong></p><p>First line contains the number of datas- N.&nbsp;</p><p>Second line contains N integers(the given linked list).</p><p>Third line contains the node P before which the node to be inserted.&nbsp;</p><p>Fourth line contain the node X to be inserted.</p><p><strong>Output Format</strong></p><p>case 1(node P found in Linked list) :</p><p>Display the final Linked List.</p><p>case 2(node P not found in Linked list) :</p><p>Print Node not found!</p><p>Display the Linked list.</p>",
+        "SEQ_ID": 54,
+        "SESSION_ID": 14,
+        "SESSION_NAME": "Linked List",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "4\n115 210 116 110\n116\n17",
+            "OUTPUT": "Linked List:->115->210->17->116->110"
+          },
+          {
+            "_id": 2,
+            "INPUT": "4\n15 20 16 10\n25\n17",
+            "OUTPUT": "Node not found!\nLinked List:->15->20->16->10"
+          }
+        ],
+        "key": 54
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 34,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_34",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_156",
+        "SEQUENCE_ID": 34,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 14,
+        "SESSION_NAME": "Linked List",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <stdio.h>\n#include <stdlib.h>\n\nstruct Node {\n    int data;\n    struct Node *next; \n};\n\nvoid sortedInsert(struct Node** head_ref, struct Node* new_node)\n{\n    struct Node* current = *head_ref;\n    if (current == NULL)\n    {\n        new_node->next = new_node;\n        *head_ref = new_node;\n        return;\n    }\n    if (current->data >= new_node->data)\n    {\n        while(current->next != *head_ref)\n            current = current->next;\n        current->next = new_node;\n        new_node->next = *head_ref;\n        *head_ref = new_node;\n        return;\n    }\n    while (current->next != *head_ref && current->next->data < new_node->data)\n        current = current->next;\n    new_node->next = current->next;\n    current->next = new_node;\n}\n\nvoid printList(struct Node *start)\n{\n    struct Node *temp;\n    if (start != NULL)\n    {\n        temp = start;\n        do {\n            printf(\"%d \", temp->data);\n            temp = temp->next;\n        } while (temp != start);\n    }\n}\n\nint main()\n{\n    int n, val;\n    struct Node *head = NULL;\n    if (scanf(\"%d\", &n) != 1) return 0;\n    for (int i = 0; i < n; i++)\n    {\n        scanf(\"%d\", &val);\n        struct Node *temp = (struct Node*)malloc(sizeof(struct Node));\n        temp->data = val;\n        temp->next = NULL;\n        sortedInsert(&head, temp);\n    }\n    printList(head);\n    return 0;\n}",
+            "mode": 0
+          }
+        ],
+        "EVALUATION": 1792595396365
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          6,
+          345,
+          68
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "struct Node *next; ",
+          "void sortedInsert(struct Node** head_ref, struct Node* new_node)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>Question description</strong></p><p>Varman's Dream came true after he got an Appointment order from Google.Simon's family was very happy of his achievement.&nbsp;</p><p>The company mentioned Basic Salary, DA, HRA with some other benefits.&nbsp;</p><p>But not highlighted the Gross salary in the order.&nbsp;</p><p>varman's father wanted to know the Gross salary of his son.&nbsp;</p><p>varman try to his gross salary from HR department. they informed that you have to get pass grade in first month entry test. the entry test has 5 questions. one of the question was,&nbsp;<strong> </strong>Sorted insert in circular linked list.</p><p>Can you help varman?</p><p><strong>Function Description</strong></p><p>First case one is if linked list is empty then since new_node is only node in circular linked list, make a self loop.and change the&nbsp; head pointer&nbsp; to the new_node pointer.</p><p>&nbsp;Second case is new node insert in starting or before the head node.</p><p>A- Find out the last node using a loop .<br>&nbsp;&nbsp;&nbsp;&nbsp; While(present-&gt;!=*head_ref)<br>&nbsp;&nbsp;&nbsp;&nbsp; present=present-&gt;next;<br>B- Change the next of last node;<br>&nbsp;&nbsp;&nbsp;&nbsp; present-&gt;next=new-node;<br>C- Change next of new node to point to head.<br>&nbsp;&nbsp;&nbsp;&nbsp; new_node-&gt;next=*head_ref;<br>D- Change the head pointer to point to new node.<br>&nbsp;&nbsp;&nbsp;&nbsp; *head_ref=new_node;</p><p>Third case is when we insert the new node after the head in any position,then</p><p>&nbsp;A- Locate the node after which new node is to be inserted.<br>&nbsp;&nbsp;&nbsp; &nbsp; while(present-&gt;next!= *head_ref &amp;&amp;<br>&nbsp;&nbsp;&nbsp; &nbsp; present-&gt;next-&gt;data data)<br>&nbsp;&nbsp;&nbsp;&nbsp; { present = present-&gt;next; }<br>B- Make next of new_node as next of the located pointer<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; new_node-&gt;next = present-&gt;next;<br>C- Change the next of the located pointer<br>&nbsp;&nbsp;&nbsp;&nbsp; present-&gt;next = new_node;&nbsp;</p><p><strong>Constraints</strong></p><p>0&lt;n&lt;100</p><p><strong>Input Format:</strong><br>The First line of the input represents the number of elements</p><p>Second line represents the elements of circular linked list</p><p><br><strong>Output Format:</strong><br>single line prints the results as per sample test cases</p><p>&nbsp;</p>",
+        "SEQ_ID": 156,
+        "SESSION_ID": 14,
+        "SESSION_NAME": "Linked List",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "6\n10 20 30 45 34 56",
+            "OUTPUT": "10 20 30 34 45 56"
+          },
+          {
+            "_id": 2,
+            "INPUT": "6\n1 2 11 12 56  90",
+            "OUTPUT": "1 2 11 12 56 90"
+          }
+        ],
+        "key": 156
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 35,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_35",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_83",
+        "SEQUENCE_ID": 35,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 14,
+        "SESSION_NAME": "Linked List",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <stdio.h>\n\nstruct node {\n    int data;\n    struct node *next;\n};\n\nstruct node pool[1005];\nint p_idx;\n\nvoid swapNodes(struct node **head_ref, int x, int y) \n{ \n    if (x == y) return; \n\n    struct node *prevX = 0, *currX = *head_ref; \n    while (currX && currX->data != x) \n    { \n        prevX = currX; \n        currX = currX->next; \n    } \n\n    struct node *prevY = 0, *currY = *head_ref; \n    while (currY && currY->data != y) \n    { \n        prevY = currY; \n        currY = currY->next; \n    } \n\n    if (!currX || !currY) return; \n\n    if (prevX) prevX->next = currY; \n    else *head_ref = currY; \n\n    if (prevY) prevY->next = currX; \n    else *head_ref = currX; \n\n    struct node *temp = currY->next; \n    currY->next = currX->next; \n    currX->next = temp; \n} \n\nvoid printList(struct node *n, char *msg) \n{ \n    printf(\"%s\", msg); \n    for (; n; n = n->next) printf(\"-->%d\", n->data); \n    printf(\"\\n\"); \n} \n\nint main() \n{ \n    int n, val, x, y; \n    struct node *head = 0; \n    scanf(\"%d\", &n); \n    for (int i = 0; i < n; i++) \n    { \n        scanf(\"%d\", &val); \n        struct node *t = &pool[p_idx++];\n        t->data = val;\n        t->next = head;\n        head = t; \n    } \n    scanf(\"%d%d\", &x, &y); \n    printList(head, \"before Swapping:\"); \n    swapNodes(&head, x, y); \n    printList(head, \"after Swapping:\"); \n    return 0; \n}",
+            "mode": 0
+          }
+        ],
+        "EVALUATION": 1792595528540
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          10,
+          385,
+          74
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "struct node",
+          "struct node *next;",
+          "void swapNodes(struct node **head_ref, int x, int y)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>Question description</strong></p><p>Kapildev works in the mobile phone marketing industry.</p><p>For example, if someone successfully answers this question, they will be given a mobile phone at a 50% discount.</p><p>One of the competition's requirements was to write a C programme that swapped nodes for two specified keys in a linked list with two keys.</p><p>By altering linkages, nodes should be switched.</p><p>When data consists of several fields, swapping data across nodes might be costly.</p><p>It is reasonable to presume that all keys in a linked list are unique.<br><br>example :&nbsp;</p><p>Given linked list : 10-&gt;15-&gt;12-&gt;13-&gt;20-&gt;14 and&nbsp;</p><p>swap keys X=12 and Y=20.&nbsp;</p><p>Linked list after swapping : 10-&gt;15-&gt;20-&gt;13-&gt;12-&gt;14<br>(if X or Y or Both are not present in Linked List, ABORT the Swapping)<br><br><br>&nbsp;</p><p><strong>Constraints&nbsp;</strong></p><p>1&lt; N &lt; 1000</p><p>1&lt; &nbsp;X &lt; 1000</p><p><br><strong>Input Format</strong><br>First line contains the number of datas- N.<br>Second line contains N integers(the given linked list).<br>Third Line contains 2 key nodes(X and Y) to be Swapped.</p><p><br><strong>Output Format</strong><br>linked list before swapping keys<br>linked list after swapping keys</p>",
+        "SEQ_ID": 83,
+        "SESSION_ID": 14,
+        "SESSION_NAME": "Linked List",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "4\n1 2 3 4\n2 3",
+            "OUTPUT": "before Swapping:-->4-->3-->2-->1\nafter Swapping:-->4-->2-->3-->1"
+          },
+          {
+            "_id": 2,
+            "INPUT": "4\n11 21 31 41\n21 41",
+            "OUTPUT": "before Swapping:-->41-->31-->21-->11\nafter Swapping:-->21-->31-->41-->11"
+          }
+        ],
+        "key": 83
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 36,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_36",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_77",
+        "SEQUENCE_ID": 36,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 14,
+        "SESSION_NAME": "Linked List",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct node node;\nstruct node {\n    int data;\n    node *next;\n};\n\nnode *start, *tail;\nint n, d, i;\n\nvoid create(){\n    scanf(\"%d\", &n);\n    for(i=0;i<n;i++){\n        node *p = (node*)malloc(sizeof(node));\n        scanf(\"%d\", &p->data);\n        p->next = NULL;\n        if(!start) start = p;\n        else tail->next = p;\n        tail = p;\n    }\n}\n\nvoid del_nodes(){\n    scanf(\"%d\", &d);\n    while(d-- && start) start = start->next;\n}\n\nvoid display(){\n    printf(\"Linked List:\");\n    for(node *p = start; p; p = p->next) printf(\"->%d\", p->data);\n    printf(\"\\n\");\n}\n\nint main(){\n    create();\n    del_nodes();\n    display();\n    return 0;\n}",
+            "mode": 0
+          }
+        ],
+        "EVALUATION": 1792635759430
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          3,
+          230,
+          50
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "struct node",
+          "node *next;",
+          "void create()",
+          "for(i=0;i<n;i++)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p>Question description</p><p style=\"text-align:justify;\">Dr.Jegan is faculty, who handling data structure course for software engineering department second year students.</p><p style=\"text-align:justify;\">one day this faculty was handling very interesting topic in data structure such that Linked List, he has given the following explanation for Linked list concept.</p><p style=\"text-align:justify;\">\"<strong>Linked List is a sequence of links which contains items. Each link contains a connection to another link. Linked list is the second most-used data structure after array. Following are the important terms to understand the concept of Linked List.</strong></p><p style=\"text-align:justify;\"><strong>Link \u2212 Each link of a linked list can store a data called an element.</strong></p><p style=\"text-align:justify;\"><strong>Next \u2212 Each link of a linked list contains a link to the next link called Next.</strong></p><p style=\"text-align:justify;\"><strong>LinkedList \u2212 A Linked List contains the connection link to the first link called First.</strong>\"</p><p>During this lecture time, last bench students was asking surprise test for Linked list concept.</p><p>So the faculty decided to conduct test on the topic of Linked List.&nbsp;</p><p>the question was given to last bench students that is,&nbsp;</p><p>The nodes are deleted D times from the beginning of the given linked list.&nbsp;</p><p>For example if the given Linked List is 5-&gt;10-&gt;15-&gt;20-&gt;25 and remove 2 nodes,&nbsp;</p><p>then the Linked List becomes 15-&gt;20-&gt;25.&nbsp;</p><p><strong>Constraint :</strong></p><p>1&lt; N &lt; 1000</p><p>1&lt; P &lt; N-1</p><p><strong>INPUT Format</strong></p><p>First line contains the number of datas- N.&nbsp;</p><p>Second line contains N integers(the given linked list).</p><p>Third line contains no. of nodes to be deleted.</p><p><strong>OUTPUT Format</strong></p><p>Single line represents the final linked list after deletion.</p><p>&nbsp;</p>",
+        "SEQ_ID": 77,
+        "SESSION_ID": 14,
+        "SESSION_NAME": "Linked List",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "4\n9 77 12 6\n2",
+            "OUTPUT": "Linked List:->12->6"
+          },
+          {
+            "_id": 2,
+            "INPUT": "6\n45 21 91 77 12 61\n4",
+            "OUTPUT": "Linked List:->12->61"
+          }
+        ],
+        "key": 77
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 37,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_37",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_86",
+        "SEQUENCE_ID": 37,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 14,
+        "SESSION_NAME": "Linked List",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <stdio.h>\n#include <stdlib.h>\n\nstruct node {\n    int data;\n    struct node *next;\n};\n\nint count(struct node* head,int search_for)\n{\n    struct node* current = head;\n    int c = 0;\n    while (current != NULL)\n    {\n        if (current->data == search_for)\n            c++;\n        current = current->next;\n    }\n    return c;\n}\n\nvoid printList(struct node *n)\n{\n    printf(\"Linked list:\");\n    while (n != NULL)\n    {\n        printf(\"-->%d\", n->data);\n        n = n->next;\n    }\n    printf(\"\\n\");\n}\n\nint main()\n{\n    int n, val, x;\n    struct node *head = NULL;\n    if (scanf(\"%d\", &n) != 1) return 0;\n    for (int i = 0; i < n; i++)\n    {\n        scanf(\"%d\", &val);\n        struct node *new_node = (struct node*)malloc(sizeof(struct node));\n        new_node->data = val;\n        new_node->next = head;\n        head = new_node;\n    }\n    scanf(\"%d\", &x);\n    printList(head);\n    printf(\"Count of %d:%d\\n\", x, count(head, x));\n    return 0;\n}",
+            "mode": 0
+          }
+        ],
+        "EVALUATION": 1792595667721
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          10,
+          385,
+          74
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "struct node",
+          "struct node *next;",
+          "int count(struct node* head,int search_for)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>Question description</strong></p><p>Admission for the current Academic year is happening in Most of the Universities across the Country.&nbsp;</p><p>Once the Students got admitted they are assigned a unique Registration Number.&nbsp;</p><p>Admission in charges used to assign give these details in some order.&nbsp;</p><p>But during enrolment of the student there is a specific entrance test for admitted students to get scholarship.&nbsp;</p><p>now admission cell conducting a test. &nbsp;one of the question was , a singly linked list and a key, count number of occurrences of given key in linked list.</p><p><br><strong>For example,&nbsp;</strong></p><p>if given linked list is 1-&gt;2-&gt;1-&gt;2-&gt;1-&gt;3-&gt;1 and given key is 1, then output should be 4.<br>&nbsp;</p><p><strong>Constraints&nbsp;</strong></p><p>1&lt; N &lt; 1000</p><p>1&lt; &nbsp;X &lt; 1000</p><p><br><strong>Input Format</strong><br>First line contains the number of datas- N.<br>Second line contains N integers(the given linked list).</p><p>Third line contain key X.</p><p><br><strong>Output Format</strong><br>First Line indicates the linked list</p><p>Display the number of occurrences of X.</p>",
+        "SEQ_ID": 86,
+        "SESSION_ID": 14,
+        "SESSION_NAME": "Linked List",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "5\n1 2 3 4 5\n5",
+            "OUTPUT": "Linked list:-->5-->4-->3-->2-->1\nCount of 5:1"
+          },
+          {
+            "_id": 2,
+            "INPUT": "4\n11 21 31 41\n11",
+            "OUTPUT": "Linked list:-->41-->31-->21-->11\nCount of 11:1"
+          }
+        ],
+        "key": 86
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 38,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_38",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_148",
+        "SEQUENCE_ID": 38,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 14,
+        "SESSION_NAME": "Linked List",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <stdio.h>\n#include <stdlib.h>\n\nstruct Node {\n    int data;\n    struct Node *next;\n    struct Node *prev;\n};\n\nvoid insertStart(struct Node** head,int data)\n{\n    struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));\n    new_node->data = data; new_node->next = *head; new_node->prev = NULL;\n    if (*head != NULL) (*head)->prev = new_node;\n    *head = new_node;\n}\n\nstruct Node* printForward(struct Node* node)\n{\n    struct Node* last = NULL;\n    while (node != NULL) {\n        printf(\"%d \", node->data); last = node; node = node->next;\n    }\n    printf(\"\\n\");\n    return last;\n}\n\nvoid printBackward(struct Node* last)\n{\n    while (last != NULL) {\n        printf(\"%d \", last->data); last = last->prev;\n    }\n    printf(\"\\n\");\n}\n\nint main()\n{\n    int n, val;\n    struct Node* head = NULL;\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &val); insertStart(&head, val);\n    }\n    struct Node* last = printForward(head);\n    printBackward(last);\n    return 0;\n}",
+            "mode": 0
+          }
+        ],
+        "EVALUATION": 1792595741214
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          2,
+          269,
+          47
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "struct Node",
+          "struct Node *next;",
+          "struct Node *prev;",
+          "void insertStart(struct Node** head,int data)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p>Question description</p><p>saran, subash, and Yasir alias Pari are three first-year engineering students of the State Technical Institution (STI), India. While saran and subash are average students who come from a Middle class, Yasir is from a rich family. saran studies, engineering as per his father's wishes, while subash, whose family is poor, studies engineering to improve his family's financial situation.&nbsp;<br><br>Yasir, however, studies engineering of his simple passion for developing android applications.&nbsp;</p><p>Yasir is participating in a hackathon for android application development. the task is Insertion&nbsp; in a Doubly Linked list at beginig.</p><p>&nbsp;</p><p>Functional Description:</p><p>In the doubly linked list, we would use the following steps to insert a new node at the beginning of the doubly linked list.</p><ul><li>Create a new node</li><li>Assign its data value</li><li>Assign newly created node\u2019s next ptr to current head reference. So, it points to the previous start node of the linked list address</li><li>Change the head reference to the new node\u2019s address.</li><li>Change the next node\u2019s previous pointer to new node\u2019s address (head reference)</li></ul><p>&nbsp;</p><p>Constraints</p><p>0&lt;N&lt;100</p><p>0&lt;arr&lt;1000</p><p>Input Format</p><p>First line indicates the number of elements N to be inserted in array</p><p>Second line indicates the array elements according to the N</p><p>Output Format</p><p>First line represents the doubly linked list in forward direction</p><p>Second Line represents &nbsp;the doubly linked list in backward direction</p><p>&nbsp;</p>",
+        "SEQ_ID": 148,
+        "SESSION_ID": 14,
+        "SESSION_NAME": "Linked List",
+        "TAGS": [
+          "Data Structures",
+          "Algorithms",
+          "Arrays"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "16\n1 3 4 7 9 11 13 14 18 19 23 24 56 32 98 17",
+            "OUTPUT": "17 98 32 56 24 23 19 18 14 13 11 9 7 4 3 1 \n1 3 4 7 9 11 13 14 18 19 23 24 56 32 98 17 "
+          },
+          {
+            "_id": 2,
+            "INPUT": "15\n0 1 2 0 1 1 1 0 2 0 2 2 0 1 2",
+            "OUTPUT": "2 1 0 2 2 0 2 0 1 1 1 0 2 1 0 \n0 1 2 0 1 1 1 0 2 0 2 2 0 1 2 "
+          }
+        ],
+        "key": 148
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 39,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_39",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_80",
+        "SEQUENCE_ID": 39,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 14,
+        "SESSION_NAME": "Linked List",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct node node;\nstruct node {\n    int data;\n    node *next;\n};\n\nnode *start;\nint n, i;\n\nnode* find_node(int target){\n    node *p2 = start;\n    while(p2){\n        if(p2->data == target) return p2;\n        p2=p2->next;\n    }\n    return NULL;\n}\n\nvoid del(){\n    int target = -999999;\n    scanf(\"%d\", &target);\n    node *p2 = find_node(target);\n    if(!p2){\n        printf(\"Invalid Node! \");\n        return;\n    }\n    p2->next = NULL;\n}\n\nvoid display(){\n    printf(\"Linked List:\");\n    for(node *p = start; p; p = p->next) printf(\"->%d\", p->data);\n    printf(\"\\n\");\n}\n\nint main(){\n    scanf(\"%d\", &n);\n    node dummy = {0, NULL}, *tail = &dummy;\n    for(i=0;i<n;i++){\n        node *p = (node*)malloc(sizeof(node));\n        scanf(\"%d\", &p->data);\n        p->next = NULL;\n        tail->next = p;\n        tail = p;\n    }\n    start = dummy.next;\n    del();\n    display();\n    return 0;\n}",
+            "mode": 0
+          }
+        ],
+        "EVALUATION": 1792595866416
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          3,
+          280,
+          59
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "struct node",
+          "node *next;",
+          "p2=p2->next;",
+          "void del()",
+          "void display()",
+          "for(i=0;i<n;i++)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>Question description</strong></p><p style=\"text-align:justify;\">the popular engineering college got lowest pass percentage in last &nbsp;semester. the principal conducted faculty meeting and decided to visit all the classes surprisingly.&nbsp;</p><p style=\"text-align:justify;\">Dr.Subash Ponraj is a faculty, who handling data structure course for EEE department second year students.</p><p style=\"text-align:justify;\">one day this faculty was handling very interesting topic in data structure such that Linked List,</p><p>During this lecture time, principal surprisingly visited to the class and asking &nbsp;to conduct surprise test on Linked list concept.</p><p>So the faculty decided to conduct test on the topic of Linked List.&nbsp;</p><p>the question was given to last bench students that is,&nbsp;</p><p>The nodes are deleted after a certain given node in the linked list.&nbsp;</p><p>For example if the given Linked List is 5-&gt;10-&gt;15-&gt;20-&gt;25 and&nbsp;</p><p>delete after 15 then the Linked List becomes 5-&gt;10-&gt;15. &nbsp;</p><p><strong>Constraint :</strong></p><p>1&lt; N &lt; 1000</p><p>1&lt; P &lt; N-1</p><p><strong>INPUT Format</strong></p><p>First line contains the number of datas- N.&nbsp;</p><p>Second line contains N integers(the given linked list).</p><p>Third line contains position of the node to be deleted.</p><p><strong>OUTPUT Format</strong></p><p>Single line represents the final linked list after deletion.</p>",
+        "SEQ_ID": 80,
+        "SESSION_ID": 14,
+        "SESSION_NAME": "Linked List",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "6\n6 9 3 8 0 2\n8",
+            "OUTPUT": "Linked List:->6->9->3->8"
+          },
+          {
+            "_id": 2,
+            "INPUT": "10\n11 12 6 9 3 8 0 2\n1",
+            "OUTPUT": "Invalid Node! Linked List:->11->12->6->9->3->8->0->2->1->0"
+          }
+        ],
+        "key": 80
+      },
+      "queryData": {},
+      "status": []
+    }
+  },
+  {
+    "seq": 40,
+    "data": {
+      "Status": 1,
+      "studentData": {
+        "_id": "26_40",
+        "COURSE_ID": 26,
+        "Q_ID": "DS_REGULAR_SET1_85",
+        "SEQUENCE_ID": 40,
+        "COURSE_NAME": "DS",
+        "LEVEL": 1,
+        "SESSION": 14,
+        "SESSION_NAME": "Linked List",
+        "STATUS": 2,
+        "CODE": [
+          {
+            "value": "#include <stdio.h>\n#include <stdlib.h>\n\nstruct node {\n    int data;\n    struct node *next;\n};\n\nvoid printMiddle(struct node *head)\n{\n    struct node *slow_ptr = head;\n    struct node *fast_ptr = head;\n\n    if (head != NULL)\n    {\n        while (fast_ptr != NULL && fast_ptr->next != NULL)\n        {\n            fast_ptr = fast_ptr->next->next;\n            slow_ptr = slow_ptr->next;\n        }\n        printf(\"The middle element is [%d]\\n\", slow_ptr->data);\n    }\n}\n\nvoid printList(struct node *ptr)\n{\n    printf(\"Linked list:\");\n    while (ptr != NULL)\n    {\n        printf(\"-->%d\", ptr->data);\n        ptr = ptr->next;\n    }\n    printf(\"\\n\");\n}\n\nint main()\n{\n    int n, val;\n    struct node *head = NULL;\n    if (scanf(\"%d\", &n) != 1) return 0;\n    for (int i = 0; i < n; i++)\n    {\n        scanf(\"%d\", &val);\n        struct node *new_node = (struct node*)malloc(sizeof(struct node));\n        new_node->data = val;\n        new_node->next = head;\n        head = new_node;\n    }\n    printList(head);\n    printMiddle(head);\n    return 0;\n}",
+            "mode": 0
+          }
+        ],
+        "EVALUATION": 1792595922236
+      },
+      "questionData": {
+        "COMPLEXITY": [
+          10,
+          385,
+          74
+        ],
+        "COURSE_NAME": "DS",
+        "DEFAULT_CODE": 0,
+        "LEVEL": 1,
+        "MANDATORY": [
+          "struct node",
+          "struct node *next;",
+          "void printMiddle(struct node *head)"
+        ],
+        "MODE": "REGULAR",
+        "Q_DESC": "<p><strong>Question description</strong></p><p>Admission for the current Academic year is happening in Most of the Universities across the Country.&nbsp;</p><p>Once the Students got admitted they are assigned a unique Registration Number.&nbsp;</p><p>Admission in charges used to assign give these details in some order.&nbsp;</p><p>But during enrolment of the student there is a specific entrance test for admitted students to get scholarship.&nbsp;</p><p>now admission cell conducting a test. So your task is &nbsp;generate a program for a singly linked list, find middle of the linked list.<br><br>If there are even nodes, then print second middle element.</p><p><br><strong>For example,&nbsp;</strong></p><p>if given linked list is 1-&gt;2-&gt;3-&gt;4-&gt;5 then&nbsp;</p><p>output should be 3.</p><p><br>If there are even nodes,&nbsp;</p><p>then there would be two middle nodes, we need to print second middle element.<br>For example, if given linked list is 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;6 then&nbsp;</p><p>output should be 4.<br>&nbsp;</p><p><strong>Constraints&nbsp;</strong></p><p>1&lt; N &lt; 1000</p><p>1&lt; &nbsp;X &lt; 1000</p><p><br><strong>Input Format</strong><br>First line contains the number of datas- N.<br>Second line contains N integers(the given linked list).</p><p><br><strong>Output Format</strong><br>First Line indicates the linked list</p><p>second line indicates the middle element of the linked list.</p>",
+        "SEQ_ID": 85,
+        "SESSION_ID": 14,
+        "SESSION_NAME": "Linked List",
+        "TAGS": [
+          "Data Structures"
+        ],
+        "TESTCASES": [
+          {
+            "_id": 1,
+            "INPUT": "4\n1 2 3 4",
+            "OUTPUT": "Linked list:-->4-->3-->2-->1\nThe middle element is [2]"
+          },
+          {
+            "_id": 2,
+            "INPUT": "4\n11 21 31 41",
+            "OUTPUT": "Linked list:-->41-->31-->21-->11\nThe middle element is [21]"
+          }
+        ],
+        "key": 85
+      },
+      "queryData": {},
+      "status": []
+    }
+  }
+]
