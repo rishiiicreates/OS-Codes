@@ -11,11 +11,14 @@ public class swing extends JFrame implements ActionListener{
     private JButton SubmitButton;
 
     public swing(){
+
+        //setdata
         setTitle("SpiderMan");
         setSize(320,160);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new GridLayout(3, 2, 5, 5));
 
+        //make layout
         JLabel nameLabel = new JLabel("Name:");
         nameField = new JTextField(20);
         JLabel emailLabel = new JLabel("Email:");
@@ -23,6 +26,7 @@ public class swing extends JFrame implements ActionListener{
         SubmitButton = new JButton("Submit");
         SubmitButton.addActionListener(this);
 
+        //addlayout
         add(nameLabel);
         add(nameField);
         add(emailLabel);

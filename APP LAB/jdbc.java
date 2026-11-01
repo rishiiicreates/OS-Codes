@@ -8,9 +8,10 @@ public class jdbc {
             //connection
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection("jdbc:sqlite:test.db");
-
-            //creation
+            
             Statement statement = connection.createStatement();
+            
+            //creation
             String CreateSQL = "CREATE TABEL IF NOT EXIST Employee " + "(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, age INT)";
             statement.executeUpdate(CreateSQL);
 
